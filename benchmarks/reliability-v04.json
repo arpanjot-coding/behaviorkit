@@ -82,5 +82,6 @@
     },
     "sdist": "includes documented configs, scripts and golden fixtures"
   },
-  "ci_workflow": "https://github.com/arpanjot-coding/behaviorkit/actions/workflows/tests.yml?query=branch%3Afeat%2Fsystem-foundations"
+  "ci_workflow": "https://github.com/arpanjot-coding/behaviorkit/actions/workflows/tests.yml?query=branch%3Afeat%2Fsystem-foundations",
+  "github_actions_evidence": "github-actions-v04.json"
 }

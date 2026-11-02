@@ -1,0 +1,113 @@
+{
+  "schema_version": "ci-evidence/1",
+  "revision": "4303623698342ac31cadb5b6e489ebe3ca652f08",
+  "run_url": "https://github.com/arpanjot-coding/behaviorkit/actions/runs/41486106545",
+  "conclusion": "success",
+  "jobs": [
+    "replay Python 3.10",
+    "replay Python 3.12",
+    "vision contracts AMD Linux",
+    "vision contracts AMD Windows",
+    "vision contracts Apple M1 virtual",
+    "optional tracker/resource full suite Linux",
+    "clean package build/install"
+  ],
+  "platforms": [
+    {
+      "artifact": "platform-macos-14",
+      "environment": {
+        "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "system": "Darwin",
+        "architecture": "arm64",
+        "platform": "macOS-14.8.9-arm64-arm-64bit",
+        "behaviorkit": "0.4.0a1",
+        "logical_cpus": 3,
+        "cpu_name": "Apple M1 (Virtual)",
+        "cpu_vendor": "Apple",
+        "test_exit_code": 0,
+        "status": "passed",
+        "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification."
+      },
+      "passed": 123,
+      "skipped": 2,
+      "failed": 0,
+      "skip_reasons": [
+        {
+          "test": "test_resource_monitor_streams_native_metrics_with_hard_bound",
+          "reason": "could not import 'psutil': No module named 'psutil'"
+        },
+        {
+          "test": "test_real_bytetrack_outputs_only_observed_confirmed_boxes",
+          "reason": "could not import 'trackers': No module named 'trackers'"
+        }
+      ]
+    },
+    {
+      "artifact": "platform-ubuntu-24.04",
+      "environment": {
+        "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]",
+        "system": "Linux",
+        "architecture": "x86_64",
+        "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+        "behaviorkit": "0.4.0a1",
+        "logical_cpus": 4,
+        "cpu_name": "AMD EPYC 9V74 80-Core Processor",
+        "cpu_vendor": "AMD",
+        "test_exit_code": 0,
+        "status": "passed",
+        "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification."
+      },
+      "passed": 122,
+      "skipped": 3,
+      "failed": 0,
+      "skip_reasons": [
+        {
+          "test": "test_resource_monitor_streams_native_metrics_with_hard_bound",
+          "reason": "could not import 'psutil': No module named 'psutil'"
+        },
+        {
+          "test": "test_real_bytetrack_outputs_only_observed_confirmed_boxes",
+          "reason": "could not import 'trackers': No module named 'trackers'"
+        },
+        {
+          "test": "test_coreml_real_delegation",
+          "reason": "requires actual Apple Silicon hardware"
+        }
+      ]
+    },
+    {
+      "artifact": "platform-windows-2025",
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "system": "Windows",
+        "architecture": "AMD64",
+        "platform": "Windows-2025Server-10.0.26100-SP0",
+        "behaviorkit": "0.4.0a1",
+        "logical_cpus": 4,
+        "cpu_name": "AMD EPYC 7763 64-Core Processor                ",
+        "cpu_vendor": "AMD",
+        "test_exit_code": 0,
+        "status": "passed",
+        "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification."
+      },
+      "passed": 122,
+      "skipped": 3,
+      "failed": 0,
+      "skip_reasons": [
+        {
+          "test": "test_resource_monitor_streams_native_metrics_with_hard_bound",
+          "reason": "could not import 'psutil': No module named 'psutil'"
+        },
+        {
+          "test": "test_real_bytetrack_outputs_only_observed_confirmed_boxes",
+          "reason": "could not import 'trackers': No module named 'trackers'"
+        },
+        {
+          "test": "test_coreml_real_delegation",
+          "reason": "requires actual Apple Silicon hardware"
+        }
+      ]
+    }
+  ],
+  "scope": "Generated fixtures and software contracts. Three actual learned models on AMD/M1 remain unqualified."
+}

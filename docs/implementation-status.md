@@ -24,7 +24,7 @@
 
 ## Recorded checks
 
-The [reliability report](../benchmarks/reliability-v04.json) links exact results and evidence scopes. Local Intel Windows suite: **124 passed, one CoreML-only skip**, including optional ByteTrack, resource monitoring, precision-export graph checks and schema validation. The prior baseline was 80 passed/one skip. New package/CI results are recorded separately when completed.
+The [reliability report](../benchmarks/reliability-v04.json) links exact results and evidence scopes. Local Intel Windows suite: **124 passed, one CoreML-only skip**, including optional ByteTrack, resource monitoring, precision-export graph checks and schema validation. The prior baseline was 80 passed/one skip. The [current cross-platform CI record](../benchmarks/github-actions-v04.json) records all seven successful jobs: AMD Linux/Windows each 122 passed with three optional/hardware skips; Apple M1 virtual 123 passed with two optional skips, including successful tiny CoreML delegation. The dedicated optional-tracking job and clean package job also pass. These remain generated-fixture checks, not all-learned-model AMD/M1 qualification.
 
 The three learned models each pass the new candidate/track/rule path on Intel CPU and NVIDIA CUDA. Each short case has 16 sampled frames, maximum count one, an empty-scene count and one observed one-second dwell confirmation at 1.2 seconds. Saved replay is exact and makes zero further inference calls. Separate two-frame profiles show requested provider execution. These repeated-still positive/negative tests do not cover moving-camera surveillance accuracy.
 
