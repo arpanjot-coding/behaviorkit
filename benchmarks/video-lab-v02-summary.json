@@ -1,0 +1,963 @@
+{
+  "version": "0.2.0",
+  "kind": "exploratory_video_lab",
+  "status": "completed_execution_not_accuracy_certification",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.2.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "1 %, 1541 MiB, 5.80 W"
+  },
+  "sample_fps": 5,
+  "confidence": 0.3,
+  "dwell_seconds": 3,
+  "max_gap_seconds": 0.5,
+  "threads": 4,
+  "provider": "cuda",
+  "config": {
+    "schema_version": "0.1",
+    "zones": {
+      "view": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "rules": [
+      {
+        "id": "visible_people",
+        "kind": "count",
+        "zone": "view",
+        "confidence": 0.3
+      },
+      {
+        "id": "observed_dwell",
+        "kind": "dwell",
+        "zone": "view",
+        "confidence": 0.3,
+        "seconds": 3,
+        "max_gap_seconds": 0.5
+      }
+    ]
+  },
+  "annotation_protocol": "Exploratory, single-reviewer visible-person count spot checks made from prepared clips before model execution. Not a held-out dataset, no independent second review, no exhaustive box/identity/event ground truth. Count a person only when visually distinguishable; abstain when occlusion prevents a reliable count. Checkpoints are at exact clip seconds; nearest inference sample must be within 0.11 seconds.",
+  "sources": {
+    "shelf": {
+      "file": "shelf.mp4",
+      "title": "Woman in a Store Placing Products Respectively",
+      "creator": "Gustavo Fring / Pexels",
+      "page": "https://www.pexels.com/video/woman-in-a-store-placing-products-respectively-5103990/",
+      "download": "https://videos.pexels.com/video-files/5103990/5103990-uhd_3840_2160_30fps.mp4",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "use_note": "Normal product handling. No criminal allegation or endorsement implied. Silent resized excerpt used in an explanatory demo; original asset is not relicensed as Apache-2.0.",
+      "sha256": "f6ba6259cb3b565f0a06f0bda7d5f61707720e29cbfa53505c03f653ecd0d0fe"
+    },
+    "basket": {
+      "file": "basket.mp4",
+      "title": "A Woman Carrying a Shopping Basket",
+      "creator": "Kampus Production / Pexels",
+      "page": "https://www.pexels.com/video/a-woman-carrying-a-shopping-basket-8420585/",
+      "download": "https://videos.pexels.com/video-files/8420585/8420585-uhd_3840_2160_25fps.mp4",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "use_note": "Normal shopping and visual occlusion. No criminal allegation or endorsement implied. Original asset is not relicensed as Apache-2.0.",
+      "sha256": "28b699db60e85b2fde8b95837cb5db3d894833d54a67fdb8c59733990f0f919c"
+    },
+    "film": {
+      "file": "kleptomaniac.webm",
+      "title": "The Kleptomaniac (1905)",
+      "creator": "Edwin S. Porter / Edison Manufacturing Company",
+      "page": "https://commons.wikimedia.org/wiki/File:The_Kleptomaniac_(1905)_-_yt.webm",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/7/7f/The_Kleptomaniac_%281905%29_-_yt.webm",
+      "license": "Public Domain Mark 1.0; expired film copyright as identified by Wikimedia Commons",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "use_note": "Dramatised fictional theft, not actual CCTV evidence. Silent excerpts only. Historical low-resolution material is a domain-shift stress case, not representative modern camera accuracy.",
+      "sha256": "c96b00071243580ec214d4e1ca6f3e840bdb06145cdbedb1e85ea41a07ee29a5"
+    }
+  },
+  "cases": [
+    {
+      "id": "shelf",
+      "source": "shelf",
+      "start": 4,
+      "seconds": 14,
+      "title": "Normal product handling",
+      "tag": "NORMAL ACTIVITY",
+      "description": "A person handles and places products. Counting and dwell are measurable; product handling alone does not establish theft.",
+      "challenge": "Object interaction, cropped body, ordinary retail activity.",
+      "theft_reference": false,
+      "prepared": {
+        "frames": 210,
+        "fps": 15,
+        "width": 960,
+        "height": 540,
+        "seconds": 14.0,
+        "sha256": "a9709563a6d170db1875cdbeedef5a6ac50c4c0fc534f6ee02f5d81b087d3217",
+        "bytes": 1289762,
+        "audio": false,
+        "transform": "Silent excerpt; resized to <=960 pixels wide; sampled at 15 fps; source offset mapped to clip time zero."
+      }
+    },
+    {
+      "id": "basket",
+      "source": "basket",
+      "start": 0,
+      "seconds": 8.4,
+      "title": "Shopping through occlusion",
+      "tag": "VISIBILITY STRESS",
+      "description": "A shopper and basket move behind foreground shelving. Missing visual evidence can interrupt a track and reset dwell.",
+      "challenge": "Moving foreground occlusion and a partly visible person.",
+      "theft_reference": false,
+      "prepared": {
+        "frames": 126,
+        "fps": 15,
+        "width": 960,
+        "height": 540,
+        "seconds": 8.4,
+        "sha256": "48fa5a72ca2aabc3a4b7fa3f39b30c7cc55a44ee406a8df1b1e314eae8cead8f",
+        "bytes": 1154402,
+        "audio": false,
+        "transform": "Silent excerpt; resized to <=960 pixels wide; sampled at 15 fps; source offset mapped to clip time zero."
+      }
+    },
+    {
+      "id": "bread",
+      "source": "film",
+      "start": 408,
+      "seconds": 16,
+      "title": "Staged bread-taking scene",
+      "tag": "FICTIONAL THEFT",
+      "description": "An excerpt from a 1905 drama shows a person approaching the bread display, taking an item and moving away. The supplied rules do not classify that sequence as theft.",
+      "challenge": "Small object, hand\u2013object interaction, grayscale film and motion.",
+      "theft_reference": true,
+      "prepared": {
+        "frames": 240,
+        "fps": 15,
+        "width": 480,
+        "height": 360,
+        "seconds": 16.0,
+        "sha256": "ff11741e0ae591ce6552355bf1757f577dccd3f8c46297cfd2536ea647270ed6",
+        "bytes": 1362801,
+        "audio": false,
+        "transform": "Silent excerpt; resized to <=960 pixels wide; sampled at 15 fps; source offset mapped to clip time zero."
+      }
+    },
+    {
+      "id": "concealment",
+      "source": "film",
+      "start": 145,
+      "seconds": 25,
+      "title": "Staged department-store scene",
+      "tag": "FICTIONAL THEFT",
+      "description": "A crowded shop scene from the same drama contains handling and concealment. A person detector can observe people while missing the meaning of the action.",
+      "challenge": "Crowding, occlusion, small objects and identity fragmentation.",
+      "theft_reference": true,
+      "prepared": {
+        "frames": 375,
+        "fps": 15,
+        "width": 480,
+        "height": 360,
+        "seconds": 25.0,
+        "sha256": "fcdf7a2cd882306ce774e91f35da92205f957bf71ebad57bdca44d7ad49a5a30",
+        "bytes": 1834766,
+        "audio": false,
+        "transform": "Silent excerpt; resized to <=960 pixels wide; sampled at 15 fps; source offset mapped to clip time zero."
+      }
+    }
+  ],
+  "models": [
+    "rtmdet-tiny",
+    "d-fine-n",
+    "rf-detr-nano"
+  ],
+  "runs": [
+    {
+      "case": "shelf",
+      "model": "rtmdet-tiny",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 70,
+      "events": 1,
+      "count_min": 0,
+      "count_max": 1,
+      "track_ids_seen": 1,
+      "reset_records": 0,
+      "p50_detector_ms": 16.186849970836192,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 3.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 5,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 5.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 10,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 10.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 13,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 13.0,
+            "observed": 1,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 6,
+        "exact": 6,
+        "mean_absolute_error": 0,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "normal product handling; action recognition unsupported",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "observations_sha256": "6221410d080d8fdeef097455ab949cce6020af0c5f533631babc794275cbd08a"
+    },
+    {
+      "case": "basket",
+      "model": "rtmdet-tiny",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 42,
+      "events": 0,
+      "count_min": 0,
+      "count_max": 2,
+      "track_ids_seen": 6,
+      "reset_records": 8,
+      "p50_detector_ms": 14.953700010664761,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": null,
+            "reason": "Foreground shelving substantially obstructs the person; count not reliably annotatable.",
+            "status": "human_abstained"
+          },
+          {
+            "t": 5,
+            "count": null,
+            "reason": "Foreground occlusion; do not label invisible people as zero.",
+            "status": "human_abstained"
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 1,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 2,
+        "exact": 2,
+        "mean_absolute_error": 0,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "normal shopping with occlusion; no theft allegation",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "observations_sha256": "7bd6d4304f1fc1ab4b19b5dd15234c9bdb63b6b2be610db259daa7dd7bba84ea"
+    },
+    {
+      "case": "bread",
+      "model": "rtmdet-tiny",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 80,
+      "events": 0,
+      "count_min": 0,
+      "count_max": 3,
+      "track_ids_seen": 6,
+      "reset_records": 8,
+      "p50_detector_ms": 14.184650004608557,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 3.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 5,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 5.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 0,
+            "absolute_error": 1
+          },
+          {
+            "t": 10,
+            "count": 2,
+            "status": "scored",
+            "sample_timestamp": 10.0,
+            "observed": 0,
+            "absolute_error": 2
+          },
+          {
+            "t": 13,
+            "count": 2,
+            "status": "scored",
+            "sample_timestamp": 13.0,
+            "observed": 3,
+            "absolute_error": 1
+          }
+        ],
+        "scored": 6,
+        "exact": 3,
+        "mean_absolute_error": 0.6666666666666666,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "fictional theft scenario; theft classifier absent",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "observations_sha256": "493d504899cb2ff1cee1e1ecea778ac1fac52eadd277a2aba785e04a803508fc"
+    },
+    {
+      "case": "concealment",
+      "model": "rtmdet-tiny",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 125,
+      "events": 9,
+      "count_min": 0,
+      "count_max": 11,
+      "track_ids_seen": 44,
+      "reset_records": 100,
+      "p50_detector_ms": 14.465700020082295,
+      "spot_checks": {
+        "checks": [],
+        "scored": 0,
+        "exact": 0,
+        "mean_absolute_error": null,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "fictional concealment scenario; theft classifier absent",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "observations_sha256": "72670b177411e760d2c74e7c814a951982f06e93047d063eac9f9c885930bf59"
+    },
+    {
+      "case": "shelf",
+      "model": "d-fine-n",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 70,
+      "events": 1,
+      "count_min": 0,
+      "count_max": 1,
+      "track_ids_seen": 1,
+      "reset_records": 0,
+      "p50_detector_ms": 13.766650023171678,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 3.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 5,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 5.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 10,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 10.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 13,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 13.0,
+            "observed": 1,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 6,
+        "exact": 6,
+        "mean_absolute_error": 0,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "normal product handling; action recognition unsupported",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "observations_sha256": "2ce681768533982debd3a03a9340b702e9342b1edbf08272201ce80680764371"
+    },
+    {
+      "case": "basket",
+      "model": "d-fine-n",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 42,
+      "events": 0,
+      "count_min": 0,
+      "count_max": 5,
+      "track_ids_seen": 17,
+      "reset_records": 17,
+      "p50_detector_ms": 13.893399998778477,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": null,
+            "reason": "Foreground shelving substantially obstructs the person; count not reliably annotatable.",
+            "status": "human_abstained"
+          },
+          {
+            "t": 5,
+            "count": null,
+            "reason": "Foreground occlusion; do not label invisible people as zero.",
+            "status": "human_abstained"
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 1,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 2,
+        "exact": 2,
+        "mean_absolute_error": 0,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "normal shopping with occlusion; no theft allegation",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "observations_sha256": "a46f27d6a1e3e1624e4421ea11784ace034b233a8b378a3a26dfa9f5fbf26ac7"
+    },
+    {
+      "case": "bread",
+      "model": "d-fine-n",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 80,
+      "events": 1,
+      "count_min": 0,
+      "count_max": 5,
+      "track_ids_seen": 20,
+      "reset_records": 30,
+      "p50_detector_ms": 13.50929998443462,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 3.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 5,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 5.0,
+            "observed": 0,
+            "absolute_error": 1
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 0,
+            "absolute_error": 1
+          },
+          {
+            "t": 10,
+            "count": 2,
+            "status": "scored",
+            "sample_timestamp": 10.0,
+            "observed": 0,
+            "absolute_error": 2
+          },
+          {
+            "t": 13,
+            "count": 2,
+            "status": "scored",
+            "sample_timestamp": 13.0,
+            "observed": 5,
+            "absolute_error": 3
+          }
+        ],
+        "scored": 6,
+        "exact": 2,
+        "mean_absolute_error": 1.1666666666666667,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "fictional theft scenario; theft classifier absent",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "observations_sha256": "76ef7cfc10d45a084bca02e793f4a5608fb385334d24b66832f8bd68666c81e5"
+    },
+    {
+      "case": "concealment",
+      "model": "d-fine-n",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 125,
+      "events": 15,
+      "count_min": 0,
+      "count_max": 17,
+      "track_ids_seen": 109,
+      "reset_records": 231,
+      "p50_detector_ms": 14.23819997580722,
+      "spot_checks": {
+        "checks": [],
+        "scored": 0,
+        "exact": 0,
+        "mean_absolute_error": null,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "fictional concealment scenario; theft classifier absent",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "observations_sha256": "2332ad0bf52f3096c1aeae3b1e90f06ee00173842336c41c49093d104f0663ec"
+    },
+    {
+      "case": "shelf",
+      "model": "rf-detr-nano",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 70,
+      "events": 1,
+      "count_min": 0,
+      "count_max": 1,
+      "track_ids_seen": 1,
+      "reset_records": 0,
+      "p50_detector_ms": 11.767449992476031,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 3.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 5,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 5.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 10,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 10.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 13,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 13.0,
+            "observed": 1,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 6,
+        "exact": 6,
+        "mean_absolute_error": 0,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "normal product handling; action recognition unsupported",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "observations_sha256": "ec2a33f790b7ccc4b63e2a354e59a826853433ff854002fe2707556ae64b9a81"
+    },
+    {
+      "case": "basket",
+      "model": "rf-detr-nano",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 42,
+      "events": 0,
+      "count_min": 0,
+      "count_max": 1,
+      "track_ids_seen": 5,
+      "reset_records": 4,
+      "p50_detector_ms": 11.602650018176064,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": null,
+            "reason": "Foreground shelving substantially obstructs the person; count not reliably annotatable.",
+            "status": "human_abstained"
+          },
+          {
+            "t": 5,
+            "count": null,
+            "reason": "Foreground occlusion; do not label invisible people as zero.",
+            "status": "human_abstained"
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 1,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 2,
+        "exact": 2,
+        "mean_absolute_error": 0,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "normal shopping with occlusion; no theft allegation",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "observations_sha256": "d0b8459b1645a4da99f03d8a1a2fdb24131d8e1c38df3f1875be42cf48015aeb"
+    },
+    {
+      "case": "bread",
+      "model": "rf-detr-nano",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 80,
+      "events": 1,
+      "count_min": 0,
+      "count_max": 2,
+      "track_ids_seen": 6,
+      "reset_records": 13,
+      "p50_detector_ms": 11.47950001177378,
+      "spot_checks": {
+        "checks": [
+          {
+            "t": 1,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 1.0,
+            "observed": 1,
+            "absolute_error": 0
+          },
+          {
+            "t": 3,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 3.0,
+            "observed": 0,
+            "absolute_error": 1
+          },
+          {
+            "t": 5,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 5.0,
+            "observed": 0,
+            "absolute_error": 1
+          },
+          {
+            "t": 7,
+            "count": 1,
+            "status": "scored",
+            "sample_timestamp": 7.0,
+            "observed": 0,
+            "absolute_error": 1
+          },
+          {
+            "t": 10,
+            "count": 2,
+            "status": "scored",
+            "sample_timestamp": 10.0,
+            "observed": 0,
+            "absolute_error": 2
+          },
+          {
+            "t": 13,
+            "count": 2,
+            "status": "scored",
+            "sample_timestamp": 13.0,
+            "observed": 2,
+            "absolute_error": 0
+          }
+        ],
+        "scored": 6,
+        "exact": 2,
+        "mean_absolute_error": 0.8333333333333334,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "fictional theft scenario; theft classifier absent",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "observations_sha256": "5cc0649a1bd7149909b31ca2f65fd968c0079d66d06a1bebe2307a46f8d5dc3a"
+    },
+    {
+      "case": "concealment",
+      "model": "rf-detr-nano",
+      "provider": "cuda",
+      "status": "executed",
+      "sampled_frames": 125,
+      "events": 9,
+      "count_min": 0,
+      "count_max": 10,
+      "track_ids_seen": 34,
+      "reset_records": 35,
+      "p50_detector_ms": 11.641999997664243,
+      "spot_checks": {
+        "checks": [],
+        "scored": 0,
+        "exact": 0,
+        "mean_absolute_error": null,
+        "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+      },
+      "complex_behavior": {
+        "supported": false,
+        "library_prediction": null,
+        "human_reference": "fictional concealment scenario; theft classifier absent",
+        "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+      },
+      "replay_verified": true,
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "observations_sha256": "639533a5a00e86148d5c77f651268a79ab9a439eb776fb2204560be12f4c69db"
+    }
+  ],
+  "verification": {
+    "rtmdet-tiny": {
+      "kernel_events_by_provider": {
+        "CUDAExecutionProvider": 214
+      },
+      "requested_provider": "CUDAExecutionProvider",
+      "requested_provider_observed": true,
+      "gpu_execution_observed": true,
+      "coreml_delegation_observed": false,
+      "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+    },
+    "d-fine-n": {
+      "kernel_events_by_provider": {
+        "CUDAExecutionProvider": 744
+      },
+      "requested_provider": "CUDAExecutionProvider",
+      "requested_provider_observed": true,
+      "gpu_execution_observed": true,
+      "coreml_delegation_observed": false,
+      "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+    },
+    "rf-detr-nano": {
+      "kernel_events_by_provider": {
+        "CUDAExecutionProvider": 707
+      },
+      "requested_provider": "CUDAExecutionProvider",
+      "requested_provider_observed": true,
+      "gpu_execution_observed": true,
+      "coreml_delegation_observed": false,
+      "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+    }
+  },
+  "limits": [
+    "Four excerpts from three sources; the two film excerpts are not independent videos.",
+    "Fictional historical theft is a domain-shift stress case, not modern CCTV accuracy.",
+    "Manual spot checks are sparse and single-reviewer; ambiguous views are explicitly unscored.",
+    "No action/theft classifier is implemented. Dwell events do not establish crime.",
+    "All inference is precomputed locally. Browser playback has no model/LLM/API inference calls."
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "schema_version": "0.1",
+  "kind": "model_latency_synthetic",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.1.0",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "97 %, 8216 MiB, 133.19 W"
+  },
+  "input": {
+    "kind": "seeded synthetic RGB image",
+    "seed": 2026,
+    "width": 1280,
+    "height": 720,
+    "warning": "Latency only. No detection or event accuracy measured; excludes video decode and tracking."
+  },
+  "profiling_enabled": false,
+  "profiling_note": "Timed session has profiling disabled. A separate, identically configured session runs one profiled verification inference. session.run timings include transfers and wait for CPU outputs.",
+  "system_conditions": "Shared Windows desktop; background GPU workload was not controlled. Point samples are context only, not idle-system performance or a definitive model ranking.",
+  "opencv_threads": 1,
+  "iterations": 50,
+  "warmup": 10,
+  "requested_provider": "cuda",
+  "models": [
+    {
+      "name": "rtmdet-tiny",
+      "session_create_seconds": 1.2926301999832503,
+      "status": "ok",
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "rtmdet-tiny",
+        "contract": "rtmdet_decoded",
+        "sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+        "checkpoint_sha256": "78e30dcce0c6f594eaff0d6977b84b4103688b4aff0ad1aa16008a8cc854a7fb",
+        "checkpoint_url": "https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_tiny_8xb32-300e_coco/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth",
+        "license_basis": "Apache-2.0 code; verify checkpoint provenance",
+        "source": "https://github.com/open-mmlab/mmdetection",
+        "export": {
+          "mmdet": "3.3.0",
+          "prior_offset": 0.0
+        },
+        "parity": {
+          "status": "passed",
+          "sample": "one seeded random tensor; tensor parity, not accuracy",
+          "alignment": "tensor order",
+          "max_absolute_error": {
+            "boxes": 0.00213623046875,
+            "scores": 1.0095536708831787e-06
+          }
+        },
+        "inputs": [
+          "images"
+        ],
+        "outputs": [
+          "boxes",
+          "scores"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "session_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 16.339156000176445,
+          "p50": 16.13994999206625,
+          "p95": 18.890230008400977,
+          "p99": 20.454931032145392,
+          "min": 13.689000043086708,
+          "max": 21.683900034986436
+        },
+        "inference_transfer_ms": {
+          "mean": 33.795523998560384,
+          "p50": 38.09475002344698,
+          "p95": 42.899830007809214,
+          "p99": 45.744341972167604,
+          "min": 10.16840001102537,
+          "max": 46.52059997897595
+        },
+        "postprocess_ms": {
+          "mean": 0.22584199905395508,
+          "p50": 0.20939999376423657,
+          "p95": 0.3855049930280074,
+          "p99": 0.43153199425432825,
+          "min": 0.12770004104822874,
+          "max": 0.4477999755181372
+        },
+        "total_ms": {
+          "mean": 50.360521997790784,
+          "p50": 55.01830001594499,
+          "p95": 59.0033000218682,
+          "p99": 62.41715101001318,
+          "min": 25.168499967548996,
+          "max": 63.72550001833588
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\models\\rtmdet-tiny\\ort-profile_2026-11-02_11-20-36_531.json",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 214
+        },
+        "gpu_execution_observed": true
+      }
+    },
+    {
+      "name": "d-fine-n",
+      "session_create_seconds": 0.619154800020624,
+      "status": "ok",
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "d-fine-n",
+        "contract": "dfine_deploy",
+        "sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+        "checkpoint_sha256": "41973938d2784d38a9836990d805b8392855ebf611aba55f0f7add90e110744c",
+        "checkpoint_url": "https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
+        "license_basis": "Apache-2.0; use COCO-only checkpoint, review upstream terms",
+        "source": "https://github.com/Peterande/D-FINE",
+        "export": {
+          "upstream_commit": "956d1709314c2c6a4df6f34de232054578a7449f"
+        },
+        "parity": {
+          "status": "passed",
+          "sample": "one seeded random tensor; tensor parity, not accuracy",
+          "alignment": "same-label box/score bipartite alignment for D-FINE top-K tie permutations",
+          "max_absolute_error": {
+            "labels": 0.0,
+            "boxes": 0.00390625,
+            "scores": 1.9352883100509644e-06
+          }
+        },
+        "inputs": [
+          "images",
+          "orig_target_sizes"
+        ],
+        "outputs": [
+          "labels",
+          "boxes",
+          "scores"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "session_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 6.719263999257237,
+          "p50": 6.545549986185506,
+          "p95": 9.202025015838444,
+          "p99": 10.094800998922436,
+          "min": 3.9083000156097114,
+          "max": 10.690200026147068
+        },
+        "inference_transfer_ms": {
+          "mean": 51.39698600047268,
+          "p50": 55.88845000602305,
+          "p95": 60.700844958773814,
+          "p99": 76.8929119972745,
+          "min": 21.518199995625764,
+          "max": 77.40309997461736
+        },
+        "postprocess_ms": {
+          "mean": 0.16543399775400758,
+          "p50": 0.14019999071024358,
+          "p95": 0.3076950088143348,
+          "p99": 0.4984189919196064,
+          "min": 0.12619997141882777,
+          "max": 0.624299980700016
+        },
+        "total_ms": {
+          "mean": 58.281683997483924,
+          "p50": 63.69335000636056,
+          "p95": 68.9633499860065,
+          "p99": 82.9842419596389,
+          "min": 26.266800006851554,
+          "max": 84.61799996439368
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\models\\d-fine-n\\ort-profile_2026-11-02_11-20-44_971.json",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 744
+        },
+        "gpu_execution_observed": true
+      }
+    },
+    {
+      "name": "rf-detr-nano",
+      "session_create_seconds": 1.4180594999925233,
+      "status": "ok",
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "rf-detr-nano",
+        "contract": "rfdetr_raw",
+        "sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+        "checkpoint_sha256": "d8d6b9ee57d4d0ed2b1f305163624712a0532cb7bce0c747317984fc5457440d",
+        "checkpoint_url": "https://repo.roboflow.com/rfdetr/nano_coco/checkpoint_best_regular.pth",
+        "license_basis": "Apache-2.0 Nano weights; other family sizes can differ",
+        "source": "https://github.com/roboflow/rf-detr",
+        "export": {
+          "rfdetr": "1.11.2"
+        },
+        "parity": {
+          "status": "upstream_export",
+          "note": "Upstream RF-DETR exporter; no independent PyTorch/ONNX parity check performed by this script."
+        },
+        "inputs": [
+          "input"
+        ],
+        "outputs": [
+          "dets",
+          "labels"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "session_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 5.0386139983311296,
+          "p50": 4.777900001499802,
+          "p95": 7.073154998943209,
+          "p99": 7.535778000601566,
+          "min": 3.4952000132761896,
+          "max": 7.647400023415685
+        },
+        "inference_transfer_ms": {
+          "mean": 44.30933600058779,
+          "p50": 43.125149997649714,
+          "p95": 62.655529993935474,
+          "p99": 68.06009900057687,
+          "min": 20.43549995869398,
+          "max": 70.43409999459982
+        },
+        "postprocess_ms": {
+          "mean": 2.5300779927056283,
+          "p50": 2.450649975799024,
+          "p95": 3.0989349994342774,
+          "p99": 3.3601690048817536,
+          "min": 2.1830000332556665,
+          "max": 3.5374999861232936
+        },
+        "total_ms": {
+          "mean": 51.87802799162455,
+          "p50": 50.91109999921173,
+          "p95": 70.6203949957853,
+          "p99": 76.29589200892951,
+          "min": 27.414500014856458,
+          "max": 77.81940000131726
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\models\\rf-detr-nano\\ort-profile_2026-11-02_11-20-51_853.json",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 707
+        },
+        "gpu_execution_observed": true
+      }
+    }
+  ],
+  "environment_after": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.1.0",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "98 %, 8334 MiB, 130.12 W"
+  }
+}

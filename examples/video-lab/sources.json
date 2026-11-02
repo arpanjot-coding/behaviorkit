@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "description": "Exploratory demo cases, not a held-out accuracy benchmark. No clip depicts an identified real-world theft suspect.",
+  "sources": {
+    "shelf": {
+      "file": "shelf.mp4",
+      "title": "Woman in a Store Placing Products Respectively",
+      "creator": "Gustavo Fring / Pexels",
+      "page": "https://www.pexels.com/video/woman-in-a-store-placing-products-respectively-5103990/",
+      "download": "https://videos.pexels.com/video-files/5103990/5103990-uhd_3840_2160_30fps.mp4",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "use_note": "Normal product handling. No criminal allegation or endorsement implied. Silent resized excerpt used in an explanatory demo; original asset is not relicensed as Apache-2.0."
+    },
+    "basket": {
+      "file": "basket.mp4",
+      "title": "A Woman Carrying a Shopping Basket",
+      "creator": "Kampus Production / Pexels",
+      "page": "https://www.pexels.com/video/a-woman-carrying-a-shopping-basket-8420585/",
+      "download": "https://videos.pexels.com/video-files/8420585/8420585-uhd_3840_2160_25fps.mp4",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "use_note": "Normal shopping and visual occlusion. No criminal allegation or endorsement implied. Original asset is not relicensed as Apache-2.0."
+    },
+    "film": {
+      "file": "kleptomaniac.webm",
+      "title": "The Kleptomaniac (1905)",
+      "creator": "Edwin S. Porter / Edison Manufacturing Company",
+      "page": "https://commons.wikimedia.org/wiki/File:The_Kleptomaniac_(1905)_-_yt.webm",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/7/7f/The_Kleptomaniac_%281905%29_-_yt.webm",
+      "license": "Public Domain Mark 1.0; expired film copyright as identified by Wikimedia Commons",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "use_note": "Dramatised fictional theft, not actual CCTV evidence. Silent excerpts only. Historical low-resolution material is a domain-shift stress case, not representative modern camera accuracy."
+    }
+  },
+  "cases": [
+    {"id":"shelf","source":"shelf","start":4,"seconds":14,"title":"Normal product handling","tag":"NORMAL ACTIVITY","description":"A person handles and places products. Counting and dwell are measurable; product handling alone does not establish theft.","challenge":"Object interaction, cropped body, ordinary retail activity.","theft_reference":false},
+    {"id":"basket","source":"basket","start":0,"seconds":8.4,"title":"Shopping through occlusion","tag":"VISIBILITY STRESS","description":"A shopper and basket move behind foreground shelving. Missing visual evidence can interrupt a track and reset dwell.","challenge":"Moving foreground occlusion and a partly visible person.","theft_reference":false},
+    {"id":"bread","source":"film","start":408,"seconds":16,"title":"Staged bread-taking scene","tag":"FICTIONAL THEFT","description":"An excerpt from a 1905 drama shows a person approaching the bread display, taking an item and moving away. The supplied rules do not classify that sequence as theft.","challenge":"Small object, hand–object interaction, grayscale film and motion.","theft_reference":true},
+    {"id":"concealment","source":"film","start":145,"seconds":25,"title":"Staged department-store scene","tag":"FICTIONAL THEFT","description":"A crowded shop scene from the same drama contains handling and concealment. A person detector can observe people while missing the meaning of the action.","challenge":"Crowding, occlusion, small objects and identity fragmentation.","theft_reference":true}
+  ]
+}

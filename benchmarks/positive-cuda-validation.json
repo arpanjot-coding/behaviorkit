@@ -1,0 +1,93 @@
+{
+  "kind": "controlled_single_person_regression",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.2.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "9 %, 2102 MiB, 9.20 W"
+  },
+  "provider": "cuda",
+  "image_sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "image_source": "NASA public-domain astronaut image via scikit-image v0.25.2; https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.astronaut",
+  "conditions": "One still person repeated for 4.2 seconds, followed by blank frames; 5 Hz processing. Not real motion, occlusion or general camera accuracy.",
+  "models": [
+    {
+      "model": "rtmdet-tiny",
+      "static_image": [
+        {
+          "confidence": 0.7425788044929504,
+          "box": [
+            0.017134523019194603,
+            0.027144145220518112,
+            0.7157400250434875,
+            0.994227409362793
+          ]
+        }
+      ],
+      "cpu_agreement": {
+        "max_normalized_box_error": 7.033348083496094e-05,
+        "confidence_error": 3.7670135498046875e-05,
+        "tolerance": 0.005
+      },
+      "status": "passed",
+      "sampled_frames": 26,
+      "events": 1,
+      "dwell_timestamp": 3.2,
+      "selected_provider": "cuda"
+    },
+    {
+      "model": "d-fine-n",
+      "static_image": [
+        {
+          "confidence": 0.9240469336509705,
+          "box": [
+            0.01693093776702881,
+            0.02870476245880127,
+            0.7142202854156494,
+            0.9963055849075317
+          ]
+        }
+      ],
+      "cpu_agreement": {
+        "max_normalized_box_error": 0.0024324655532836914,
+        "confidence_error": 0.002233564853668213,
+        "tolerance": 0.005
+      },
+      "status": "passed",
+      "sampled_frames": 26,
+      "events": 1,
+      "dwell_timestamp": 3.2,
+      "selected_provider": "cuda"
+    },
+    {
+      "model": "rf-detr-nano",
+      "static_image": [
+        {
+          "confidence": 0.9741411209106445,
+          "box": [
+            0.03226706385612488,
+            0.03051292896270752,
+            0.7115936279296875,
+            0.9911847114562988
+          ]
+        }
+      ],
+      "cpu_agreement": {
+        "max_normalized_box_error": 3.743171691894531e-05,
+        "confidence_error": 0.00017327070236206055,
+        "tolerance": 0.005
+      },
+      "status": "passed",
+      "sampled_frames": 26,
+      "events": 1,
+      "dwell_timestamp": 3.2,
+      "selected_provider": "cuda"
+    }
+  ]
+}

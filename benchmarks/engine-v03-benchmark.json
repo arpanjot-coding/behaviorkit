@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "kind": "engine_only",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.3.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel"
+  },
+  "workload": {
+    "tracks": 100,
+    "rules": 20,
+    "batches": 5000,
+    "warmup_batches": 100,
+    "sampling_hz": 5
+  },
+  "evaluation_ms": {
+    "mean": 0.26816553984535857,
+    "p50": 0.26190001517534256,
+    "p95": 0.2985099999932573,
+    "p99": 0.37299998803064227,
+    "min": 0.24359999224543571,
+    "max": 1.7932999762706459
+  },
+  "final_dwell_states": 1000,
+  "emitted_events": 1000,
+  "limits": "Excludes model inference, decoding, input construction, serialization and tracking; synthetic identical-box observations."
+}

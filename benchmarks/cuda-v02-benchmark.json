@@ -1,0 +1,317 @@
+{
+  "schema_version": "0.1",
+  "kind": "model_latency_synthetic",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.2.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "5 %, 2224 MiB, 12.07 W"
+  },
+  "input": {
+    "kind": "seeded synthetic RGB image",
+    "seed": 2026,
+    "width": 1280,
+    "height": 720,
+    "warning": "Latency only. No detection or event accuracy measured; excludes video decode and tracking."
+  },
+  "profiling_enabled": false,
+  "profiling_note": "Timed session has profiling disabled. A separate session verifies the selected execution provider. session.run timings include transfers and wait for CPU outputs.",
+  "system_conditions": "Shared host; background workloads were not controlled. Point samples are context only, not idle-system performance or a definitive model ranking.",
+  "threads_requested": 4,
+  "opencv_threads": 1,
+  "iterations": 20,
+  "warmup": 5,
+  "requested_provider": "cuda",
+  "models": [
+    {
+      "name": "rtmdet-tiny",
+      "session_create_seconds": 0.5187534000142477,
+      "status": "ok",
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "rtmdet-tiny",
+        "contract": "rtmdet_decoded",
+        "sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+        "checkpoint_sha256": "78e30dcce0c6f594eaff0d6977b84b4103688b4aff0ad1aa16008a8cc854a7fb",
+        "checkpoint_url": "https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_tiny_8xb32-300e_coco/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth",
+        "license_basis": "Apache-2.0 code; verify checkpoint provenance",
+        "source": "https://github.com/open-mmlab/mmdetection",
+        "export": {
+          "mmdet": "3.3.0",
+          "prior_offset": 0.0
+        },
+        "parity": {
+          "status": "passed",
+          "sample": "one seeded random tensor; tensor parity, not accuracy",
+          "alignment": "tensor order",
+          "max_absolute_error": {
+            "boxes": 0.00213623046875,
+            "scores": 1.0095536708831787e-06
+          }
+        },
+        "inputs": [
+          "images"
+        ],
+        "outputs": [
+          "boxes",
+          "scores"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "selected_provider": "cuda",
+      "provider_note": "Explicit provider request; initialization failure is an error.",
+      "intra_op_threads": 4,
+      "session_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 9.026965004159138,
+          "p50": 8.958099962910637,
+          "p95": 9.495904989307746,
+          "p99": 9.541580983204767,
+          "min": 8.728799992240965,
+          "max": 9.552999981679022
+        },
+        "inference_transfer_ms": {
+          "mean": 5.596554995281622,
+          "p50": 5.537049990380183,
+          "p95": 6.03787996515166,
+          "p99": 6.092295981361531,
+          "min": 5.192000011447817,
+          "max": 6.105899985413998
+        },
+        "postprocess_ms": {
+          "mean": 0.11962500575464219,
+          "p50": 0.1163500128313899,
+          "p95": 0.1548550033476204,
+          "p99": 0.18001101794652635,
+          "min": 0.09359995601698756,
+          "max": 0.18630002159625292
+        },
+        "total_ms": {
+          "mean": 14.743145005195402,
+          "p50": 14.736249984707683,
+          "p95": 15.251894984976389,
+          "p99": 15.301978968200274,
+          "min": 14.088900003116578,
+          "max": 15.314499964006245
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\benchmarks\\profiles\\ort-profile_2026-11-02_11-56-41_465.json",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 214
+        },
+        "requested_provider": "CUDAExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": true,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      }
+    },
+    {
+      "name": "d-fine-n",
+      "session_create_seconds": 0.21099049999611452,
+      "status": "ok",
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "d-fine-n",
+        "contract": "dfine_deploy",
+        "sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+        "checkpoint_sha256": "41973938d2784d38a9836990d805b8392855ebf611aba55f0f7add90e110744c",
+        "checkpoint_url": "https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
+        "license_basis": "Apache-2.0; use COCO-only checkpoint, review upstream terms",
+        "source": "https://github.com/Peterande/D-FINE",
+        "export": {
+          "upstream_commit": "956d1709314c2c6a4df6f34de232054578a7449f"
+        },
+        "parity": {
+          "status": "passed",
+          "sample": "one seeded random tensor; tensor parity, not accuracy",
+          "alignment": "same-label box/score bipartite alignment for D-FINE top-K tie permutations",
+          "max_absolute_error": {
+            "labels": 0.0,
+            "boxes": 0.00390625,
+            "scores": 1.9352883100509644e-06
+          }
+        },
+        "inputs": [
+          "images",
+          "orig_target_sizes"
+        ],
+        "outputs": [
+          "labels",
+          "boxes",
+          "scores"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "selected_provider": "cuda",
+      "provider_note": "Explicit provider request; initialization failure is an error.",
+      "intra_op_threads": 4,
+      "session_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 5.867835000390187,
+          "p50": 5.753050034400076,
+          "p95": 6.3938999926904225,
+          "p99": 7.1523799729766315,
+          "min": 5.507699970621616,
+          "max": 7.341999968048185
+        },
+        "inference_transfer_ms": {
+          "mean": 8.477524999761954,
+          "p50": 8.283199975267053,
+          "p95": 9.784985004807822,
+          "p99": 10.243797003640793,
+          "min": 7.775600010063499,
+          "max": 10.358500003349036
+        },
+        "postprocess_ms": {
+          "mean": 0.08586000185459852,
+          "p50": 0.0874000252224505,
+          "p95": 0.09713498293422163,
+          "p99": 0.0976669869851321,
+          "min": 0.07080001523718238,
+          "max": 0.09779998799785972
+        },
+        "total_ms": {
+          "mean": 14.43122000200674,
+          "p50": 14.214750030077994,
+          "p95": 15.894925009342844,
+          "p99": 17.416824963293035,
+          "min": 13.441000017337501,
+          "max": 17.797299951780587
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\benchmarks\\profiles\\ort-profile_2026-11-02_11-56-44_376.json",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 744
+        },
+        "requested_provider": "CUDAExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": true,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      }
+    },
+    {
+      "name": "rf-detr-nano",
+      "session_create_seconds": 0.3802873999811709,
+      "status": "ok",
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "rf-detr-nano",
+        "contract": "rfdetr_raw",
+        "sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+        "checkpoint_sha256": "d8d6b9ee57d4d0ed2b1f305163624712a0532cb7bce0c747317984fc5457440d",
+        "checkpoint_url": "https://repo.roboflow.com/rfdetr/nano_coco/checkpoint_best_regular.pth",
+        "license_basis": "Apache-2.0 Nano weights; other family sizes can differ",
+        "source": "https://github.com/roboflow/rf-detr",
+        "export": {
+          "rfdetr": "1.11.2"
+        },
+        "parity": {
+          "status": "upstream_export",
+          "note": "Upstream RF-DETR exporter; no independent PyTorch/ONNX parity check performed by this script."
+        },
+        "inputs": [
+          "input"
+        ],
+        "outputs": [
+          "dets",
+          "labels"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "selected_provider": "cuda",
+      "provider_note": "Explicit provider request; initialization failure is an error.",
+      "intra_op_threads": 4,
+      "session_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 4.051799996523187,
+          "p50": 4.025350033771247,
+          "p95": 4.256600036751479,
+          "p99": 4.271799975540489,
+          "min": 3.8932000170461833,
+          "max": 4.2755999602377415
+        },
+        "inference_transfer_ms": {
+          "mean": 7.363380005699582,
+          "p50": 7.027649990050122,
+          "p95": 9.014845002093352,
+          "p99": 9.045929017593153,
+          "min": 6.678599980659783,
+          "max": 9.053700021468103
+        },
+        "postprocess_ms": {
+          "mean": 1.73804999794811,
+          "p50": 1.7094000068027526,
+          "p95": 1.8046349578071388,
+          "p99": 2.017966989660635,
+          "min": 1.6377000138163567,
+          "max": 2.07129999762401
+        },
+        "total_ms": {
+          "mean": 13.153230000170879,
+          "p50": 12.86490002530627,
+          "p95": 14.789515011943877,
+          "p99": 14.844462987966835,
+          "min": 12.294900021515787,
+          "max": 14.858199981972575
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\benchmarks\\profiles\\ort-profile_2026-11-02_11-56-45_896.json",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 707
+        },
+        "requested_provider": "CUDAExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": true,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      }
+    }
+  ],
+  "environment_after": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.2.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "6 %, 2293 MiB, 26.40 W"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "cross_platform_dependency_resolution",
+  "status": "resolved_not_executed",
+  "target": {
+    "system": "macOS 14+",
+    "architecture": "arm64",
+    "python": "CPython 3.12"
+  },
+  "note": "Binary dependency downloads from the package index on Windows. No Apple CPU or CoreML execution was performed. Wheels are not bundled.",
+  "wheels": [
+    {
+      "file": "av-19.0.2-cp312-abi3-macosx_14_0_arm64.whl",
+      "bytes": 18556422,
+      "sha256": "b0dff6dfcc6ff9944fbbff15bc4ee2d90a2c1695d493bdea96e86f48823e9feb"
+    },
+    {
+      "file": "flatbuffers-25.12.19-py2.py3-none-any.whl",
+      "bytes": 26661,
+      "sha256": "7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4"
+    },
+    {
+      "file": "numpy-2.5.4-cp312-cp312-macosx_14_0_arm64.whl",
+      "bytes": 5451717,
+      "sha256": "9cb18a327b49c5c337f972b03682f6a49855525faaf3c0d3e9c96cd0fd8880a8"
+    },
+    {
+      "file": "onnxruntime-1.31.1-cp312-cp312-macosx_14_0_arm64.whl",
+      "bytes": 20882125,
+      "sha256": "96dd2564b10ea7153ad9c207e7cd8e5917cb3ba521e0e0a62ac03486fdc8d56c"
+    },
+    {
+      "file": "opencv_python_headless-5.0.0.93-cp37-abi3-macosx_13_0_arm64.whl",
+      "bytes": 48322581,
+      "sha256": "030ca5e0837a2963ab36ef896baa9767eb8d2b83353fb28af5a521e40dd8756f"
+    },
+    {
+      "file": "packaging-26.3-py3-none-any.whl",
+      "bytes": 129956,
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "file": "protobuf-7.36.2-cp310-abi3-macosx_10_9_universal2.whl",
+      "bytes": 456039,
+      "sha256": "cbc70b17ee27e28894c7fee8bb04be1abead49e936bc70eb60052531eee2079e"
+    }
+  ]
+}

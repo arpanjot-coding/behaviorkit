@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "behaviorkit": "0.3.0",
+  "status": "ok",
+  "kind": "replay",
+  "batches": 125,
+  "events": 9,
+  "count_samples": 125,
+  "final_dwell_states": 10,
+  "config_sha256": "811ebb1e83f04d3f14dcb0ecc37ed14c4dfb20adce64c641d63c558dc5d376ab",
+  "config_fingerprint": "5b5af5c113a8ac08489444273ef80c0a7d098fb5dbac21b16645ae15ee9fb13f",
+  "config_snapshot_sha256": "811ebb1e83f04d3f14dcb0ecc37ed14c4dfb20adce64c641d63c558dc5d376ab",
+  "observations_sha256": "c272ba7680f41ca6764c75aff0f6265d7c770d9c8efe81cbb0b08f65a5420f73",
+  "trace_enabled": false,
+  "transition_records": 0,
+  "diagnostic_records": 0,
+  "output": "C:\\Users\\sarpa\\Documents\\Codex\\2026-11-02\\files-mentioned-by-the-user-behaviorkit\\outputs\\behaviorkit-prototype\\examples\\video-lab\\results\\data\\concealment\\rf-detr-nano\\replay"
+}

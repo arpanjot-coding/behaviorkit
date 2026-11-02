@@ -1,0 +1,480 @@
+{
+  "checked": "2026-11-02",
+  "title": "Developer gaps and product opportunities",
+  "thesis": "BehaviorKit's most credible direction is a portable, explainable event layer around existing detectors, trackers and video runtimes. The opportunity is to make timing, uncertainty, deployment qualification and behaviour-level regression testing fit together.",
+  "method": "Primary documentation, upstream issues/discussions, research papers and an audit of the local prototype, updated after v0.3 hardening. Issue reports demonstrate engineering friction; they are not a survey, a prevalence estimate or evidence of willingness to pay. Priorities and acceptance criteria are proposed engineering judgments. Current documentation was checked on 2 November 2026; historical issues are identified separately.",
+  "gaps": [
+    {
+      "id": "event-evaluation",
+      "priority": "next",
+      "category": "Evaluation",
+      "title": "Developers can measure model FPS without knowing whether an alert improved.",
+      "pain": "A detector upgrade can improve image metrics while creating more broken identities, duplicated dwell episodes or missed alerts. Sparse count snapshots and synthetic latency benchmarks do not measure event accuracy.",
+      "existing": "TrackEval already provides tracking metrics. FiftyOne already evaluates temporal segments and exposes matched, false-positive and missed detections. General annotation and evaluation infrastructure should be integrated, not rebuilt.",
+      "opportunity": "Add a small behaviour regression runner that connects camera clips, labelled episodes, model/tracker/configuration fingerprints and replayable event failures. Report count error, event precision/recall, duplicates, confirmation delay and unknown coverage together.",
+      "prototype": "Partial. Deterministic replay, count spot checks and software tests exist. There is no held-out camera-event evaluation, exhaustive identity ground truth or event precision/recall report.",
+      "acceptance": [
+        "Use explicit temporal event-matching rules and separate scenes/days across tuning and evaluation.",
+        "Every false or missed event links to its observations, configuration and evidence interval.",
+        "Compare a proposed tracker/model change against the same labelled clips, including normal lookalikes."
+      ],
+      "risk": "A small curated demo must not become an accuracy guarantee. Annotation disagreements and unknown visibility need explicit treatment.",
+      "sources": [
+        {
+          "label": "FiftyOne temporal detection evaluation",
+          "url": "https://docs.voxel51.com/user_guide/evaluation/detections.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "TrackEval metrics and implementations",
+          "url": "https://github.com/JonathonLuiten/TrackEval",
+          "kind": "Official repository"
+        }
+      ]
+    },
+    {
+      "id": "time-coverage",
+      "priority": "next",
+      "category": "Event semantics",
+      "title": "Elapsed time is not the same as continuously observed presence.",
+      "pain": "Timers based on first-seen wall time or frame counts can silently bridge missed observations, variable sampling, decoder stalls and source resets. Developers need to choose continuous, cumulative or explicitly tolerated-gap semantics.",
+      "existing": "Supervision's example timers store first observations and subtract frame indices or a system clock. Current Roboflow trackers already supports capture timestamps, so timestamp support itself is not a new feature.",
+      "opportunity": "Standardize an end-to-end observation contract: source PTS, receipt monotonic time, optional capture UTC, clock quality, source epoch, coverage and explicit reset reasons. Rules declare their time and gap policy.",
+      "prototype": "Partial foundation. Source timestamps, epochs, uncovered observations, strict dwell resets and public reset traces exist in v0.3. Clock quality, capture UTC and live arrival age remain absent.",
+      "acceptance": [
+        "The same saved observations reproduce identical events.",
+        "Uncovered intervals never silently become zero occupancy or continued dwell.",
+        "Variable-rate, duplicate, out-of-order, clock-jump and reconnect fixtures have declared outcomes; capture UTC is never invented from receive time."
+      ],
+      "risk": "Bridging a gap can improve recall while asserting more than was observed. Make that a named policy with measurable consequences.",
+      "sources": [
+        {
+          "label": "Supervision time-in-zone timer source",
+          "url": "https://raw.githubusercontent.com/roboflow/supervision/develop/examples/time_in_zone/utils/timers.py",
+          "kind": "Official example source"
+        },
+        {
+          "label": "Trackers dynamic-frame-rate guide",
+          "url": "https://github.com/roboflow/trackers/blob/develop/docs/guides/dynamic-frame-rate.md",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "DeepStream camera and host timestamp distinctions",
+          "url": "https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_NTP_Timestamp.html",
+          "kind": "Official documentation"
+        }
+      ]
+    },
+    {
+      "id": "tracker-contract",
+      "priority": "next",
+      "category": "Tracking",
+      "title": "A tracker swap can change the meaning of counts and dwell.",
+      "pain": "Duplicate detections, occlusion and identity fragmentation can reset timers or create multiple logical episodes for one person. Increasing a confidence threshold can remove a duplicate while discarding useful observations.",
+      "existing": "The Apache-2.0 trackers project already supplies several established algorithms and timestamp-aware interfaces. Supervision 0.31 removed its old ByteTrack wrapper and now documents the external update() interface. A 2024 upstream discussion illustrates ID-switch and duplicate-detection friction, not a claim that all current algorithms share that defect.",
+      "opportunity": "Provide a stable tracker adapter and record whether a box is observed, unconfirmed or predicted. Compare identity quality and downstream event error, rather than claiming that a replacement algorithm fixes behaviour automatically.",
+      "prototype": "Partial. v0.3 uses maximum-cardinality IoU association with two-hit confirmation, bounded retained state and explicit eviction diagnostics. The small assignment oracle passes; a production motion/appearance tracker adapter and held-out identity evaluation remain absent.",
+      "acceptance": [
+        "Unconfirmed or predicted-only boxes do not silently count as current visual evidence.",
+        "Adapters preserve source time, source identity and resets across files/reconnects.",
+        "Report fragmentation and HOTA/IDF1 alongside count and dwell event error on held-out clips."
+      ],
+      "risk": "Appearance features add compute and do not justify identity claims across arbitrary cameras. Keep the fixed-camera scope narrow.",
+      "sources": [
+        {
+          "label": "Roboflow trackers repository",
+          "url": "https://github.com/roboflow/trackers",
+          "kind": "Official repository"
+        },
+        {
+          "label": "Supervision current tracker migration FAQ",
+          "url": "https://supervision.roboflow.com/latest/faq/",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "ID-switch discussion #1001, March 2024",
+          "url": "https://github.com/roboflow/supervision/discussions/1001",
+          "kind": "Historical developer report"
+        }
+      ]
+    },
+    {
+      "id": "runtime-qualification",
+      "priority": "next",
+      "category": "Deployment",
+      "title": "Available hardware providers do not prove useful acceleration.",
+      "pain": "A provider can be advertised while graph nodes execute elsewhere. Package versions, CUDA/cuDNN combinations, shape support and export contracts can change between installations.",
+      "existing": "ONNX Runtime already exposes graph-provider partitioning, profiling and DLL preloading. Its current CUDA documentation says default GPU packages changed to CUDA 13 starting with ORT 1.27. Broad dependency ranges are not equivalent to tested deployment recipes.",
+      "opportunity": "Ship versioned environment recipes and an actual-model qualification command: requested/selected provider, kernel assignments, model hash, numerical reference tolerances and end-to-end smoke results. Validate class IDs, coordinate inversion and preprocessing with golden inputs.",
+      "prototype": "Partial. Manifests, hashes, tensor metadata/runtime-output checks, explicit-provider initialization checks and separate provider profiles exist. A tested Windows NVIDIA snapshot exists, but maintained per-target recipes, physical AMD/M1 qualification and independent RF-DETR tensor parity remain pending.",
+      "acceptance": [
+        "Each advertised target has a clean-environment installation recipe and a real-model report.",
+        "Unavailable explicit providers fail; permitted fallback is visible, and partial GPU execution is not called GPU-only.",
+        "Reject incompatible class/preprocessing/output contracts before processing user video."
+      ],
+      "risk": "Pinning everything forever is not maintenance. Maintain a small tested matrix and make unsupported combinations explicit.",
+      "sources": [
+        {
+          "label": "ONNX Runtime execution providers",
+          "url": "https://onnxruntime.ai/docs/execution-providers/",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "ORT CUDA/cuDNN package compatibility",
+          "url": "https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "Provider fallback developer discussion",
+          "url": "https://github.com/onnx/onnx/discussions/6341",
+          "kind": "Developer discussion"
+        },
+        {
+          "label": "RF-DETR class-index issue #306, historical duplicate",
+          "url": "https://github.com/roboflow/rf-detr/issues/306",
+          "kind": "Historical developer report"
+        }
+      ]
+    },
+    {
+      "id": "freshness",
+      "priority": "next",
+      "category": "Streaming",
+      "title": "A busy video pipeline can quietly become a stale video pipeline.",
+      "pain": "When decode or inference is slower than a source, a growing queue can produce plausible alerts about old frames. Throughput alone hides the age of evidence.",
+      "existing": "GStreamer appsink exposes bounded queues and leaky policies. Ultralytics already distinguishes dropping old frames from buffering all frames. Those mechanisms are established; the missing product contract is what dropped or stale evidence means to downstream rules.",
+      "opportunity": "Offer latest-frame and lossless modes with explicit age budgets, bounded queues, drop reasons and rule coverage. If a freshness budget cannot be met, expose degraded/unknown state instead of presenting old observations as current.",
+      "prototype": "Gap for live use. The offline runner samples source PTS but has no live queues, frame-age budget or live admission policy.",
+      "acceptance": [
+        "Overload a 30 fps source with a slower consumer and prove queue occupancy remains bounded.",
+        "Report processed/dropped samples, queue age and per-camera p95 evidence age.",
+        "No event silently consumes evidence older than its configured age budget."
+      ],
+      "risk": "Dropping frames can improve freshness while losing brief actions. Do not hide that tradeoff or reuse lossless semantics.",
+      "sources": [
+        {
+          "label": "GStreamer appsink queue limits and leaking",
+          "url": "https://gstreamer.freedesktop.org/documentation/app/appsink.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "Ultralytics stream buffering options",
+          "url": "https://docs.ultralytics.com/modes/predict/",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "Growing-latency issue #4211, historical and closed",
+          "url": "https://github.com/ultralytics/ultralytics/issues/4211",
+          "kind": "Historical developer report"
+        }
+      ]
+    },
+    {
+      "id": "source-lifecycle",
+      "priority": "after",
+      "category": "Streaming",
+      "title": "Camera outages must not block other cameras or preserve old dwell.",
+      "pain": "RTSP sources can time out, freeze or behave differently inside a deployed runtime. Reconnection changes timestamp continuity and therefore the validity of an event episode.",
+      "existing": "OpenCV has read/open timeouts for supported backends. DeepStream has source reconnection settings. Frigate and OBS discussions illustrate deployment-specific RTSP failures, not a universal defect in every reader.",
+      "opportunity": "Integrate a mature ingest backend behind a small source-health interface: connecting, healthy, stale, recovering and stopped. Isolate decoder workers, bound retries and create a new epoch on discontinuity.",
+      "prototype": "Not implemented. The video runner deliberately accepts existing local files, not RTSP streams.",
+      "acceptance": [
+        "Injected disconnect/restart tests recover within configured timeouts.",
+        "One stalled source cannot block healthy sources.",
+        "An outage cannot silently carry a dwell episode forward; retry/backoff and epoch changes are observable."
+      ],
+      "risk": "A simple Python reconnect loop is not a complete media runtime. Keep backend adapters optional and test the target codecs and cameras.",
+      "sources": [
+        {
+          "label": "DeepStream source reconnection properties",
+          "url": "https://docs.nvidia.com/deepstream/9.2/text/DS_plugin_gst-nvurisrcbin",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "OpenCV video I/O timeout properties",
+          "url": "https://docs.opencv.org/4.12.0/d4/d15/group__videoio__flags__base.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "Frigate RTSP deployment discussion #23309, May 2026",
+          "url": "https://github.com/blakeblackshear/frigate/discussions/23309",
+          "kind": "Developer support report"
+        },
+        {
+          "label": "OBS RTSP freeze issue #12744, October 2025",
+          "url": "https://github.com/obsproject/obs-studio/issues/12744",
+          "kind": "Developer report"
+        }
+      ]
+    },
+    {
+      "id": "zone-calibration",
+      "priority": "after",
+      "category": "Configuration",
+      "title": "Drawing a zone is easy; validating its event semantics is harder.",
+      "pain": "Boundary jitter and mismatched sampling/gap settings can create or erase episodes. A configuration that looks right on one frame can fail when boxes wobble, a view changes or the video is resized.",
+      "existing": "Frigate already offers a visual zone editor, zone inertia and loitering settings. CVAT already represents video tracks, keyframes, occlusion and outside flags. Supervision has also fixed specific line-crossing edge cases.",
+      "opportunity": "Build a focused setup wizard that exports validated BehaviorKit JSON, explains bottom-center anchors, previews time-based entry/exit hysteresis and tests a short labelled clip. Import annotation formats instead of creating an annotation platform.",
+      "prototype": "Partial. Strict normalized geometry/configuration validation exists. No visual editor, spatial hysteresis or calibration smoke test is provided.",
+      "acceptance": [
+        "Draw a zone without hand-editing coordinates and export a reproducible config.",
+        "Resizing preserves normalized geometry; invalid polygons and incompatible dwell/sample policies fail early.",
+        "Measure false transitions and the confirmation delay introduced by hysteresis; smoothing is not presumed beneficial."
+      ],
+      "risk": "An editor can make an invalid assumption easy to save. Expose pending transitions, uncertainty and tested source/scene versions.",
+      "sources": [
+        {
+          "label": "Frigate zones, inertia and loitering",
+          "url": "https://docs.frigate.video/configuration/zones/",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "CVAT video annotation representation",
+          "url": "https://docs.cvat.ai/docs/dataset_management/formats/format-cvat/",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "Supervision release notes",
+          "url": "https://github.com/roboflow/supervision/releases",
+          "kind": "Official release notes"
+        }
+      ]
+    },
+    {
+      "id": "stage-profiling",
+      "priority": "after",
+      "category": "Performance",
+      "title": "The slowest stage may be decoding or copying rather than inference.",
+      "pain": "A fast network benchmark excludes parts of the real application. CPU colour conversion, resizing, host/device transfers, tracking and serialization can dominate latency or resource use.",
+      "existing": "ONNX Runtime I/O Binding and mature media runtimes already support relevant acceleration paths. Interoperability is hardware-specific; a current PyAV Windows/AMD issue illustrates a hardware-frame limitation rather than universal zero-copy support.",
+      "opportunity": "First expose complete stage and evidence-age measurements. Then qualify hardware decode or device-buffer adapters only where measured savings justify their complexity.",
+      "prototype": "Partial. v0.3 records decode/sampling, RGB conversion, detector stages, tracking, rules and result serialization, plus sampled pipeline time. Live evidence age, device-buffer paths and sustained native-resource profiling remain absent.",
+      "acceptance": [
+        "Measure decode, conversion, transfer, inference, postprocessing, tracking, rules and serialization separately.",
+        "Report end-to-end p50/p95 delay and processed/dropped observations alongside throughput.",
+        "Require actual target-hardware evidence before advertising hardware decode or zero-copy."
+      ],
+      "risk": "A faster stage does not guarantee lower whole-pipeline cost. Include warm-up, transfer synchronization and background-load conditions.",
+      "sources": [
+        {
+          "label": "ONNX Runtime I/O Binding",
+          "url": "https://onnxruntime.ai/docs/performance/tune-performance/iobinding.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "PyAV video APIs",
+          "url": "https://pyav.basswood.io/docs/stable/api/video.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "PyAV D3D11/AMD hardware-frame issue #2433, October 2026",
+          "url": "https://github.com/PyAV-Org/PyAV/issues/2433",
+          "kind": "Developer report"
+        }
+      ]
+    },
+    {
+      "id": "capacity-soak",
+      "priority": "after",
+      "category": "Operations",
+      "title": "Multi-camera capacity and long-running stability need their own evidence.",
+      "pain": "Per-session CPU pools and shared GPU work can contend. Reconnects and model reloads exercise native threads, file handles, allocators and VRAM that a short Python allocation test does not measure.",
+      "existing": "ORT documents thread-pool behaviour and shared pools. DeepStream already supports stream batching and synchronization. Native resource-retention issues require careful interpretation: retained allocator memory is not automatically a leak.",
+      "opportunity": "Add bounded session caches, explicit shutdown, an optional camera admission policy and soak tooling. Reuse sessions and mature batching backends instead of presenting a new scheduler as universally faster.",
+      "prototype": "Partial. v0.3 supports explicit source cleanup and bounded tracker retirement diagnostics. There is still one-file processing and a bounded Python rule-state soak, with no multi-camera admission test or multi-hour decoded-video RSS/VRAM/native-thread validation.",
+      "acceptance": [
+        "A stalled camera cannot starve others; test heterogeneous resolution/FPS loads.",
+        "Measure per-camera age budgets, RSS, VRAM, native threads and handles through hours of processing and reconnect/reload cycles.",
+        "Reject or visibly degrade configurations exceeding measured capacity."
+      ],
+      "risk": "Hardware capacity is workload-specific. Do not multiply a single-model FPS figure into an untested camera-count claim.",
+      "sources": [
+        {
+          "label": "ORT thread management",
+          "url": "https://onnxruntime.ai/docs/performance/tune-performance/threading.html",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "DeepStream stream mux and scheduling",
+          "url": "https://docs.nvidia.com/deepstream/text/DS_plugin_gst-nvstreammux2",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "PyAV native-thread retention issue #2402, August 2026",
+          "url": "https://github.com/PyAV-Org/PyAV/issues/2402",
+          "kind": "Developer report"
+        },
+        {
+          "label": "ORT memory issue #26831, bot-closed with later reports",
+          "url": "https://github.com/microsoft/onnxruntime/issues/26831",
+          "kind": "Developer report, not a universal diagnosis"
+        }
+      ]
+    },
+    {
+      "id": "event-delivery",
+      "priority": "after",
+      "category": "Integration",
+      "title": "An event callback does not define delivery, retries or episode lifecycle.",
+      "pain": "Applications need to know whether a message starts, updates, confirms, cancels or ends an episode. Restarts and retries can otherwise create duplicated logical alerts or confusing histories.",
+      "existing": "Frigate already publishes per-ID MQTT lifecycles. CloudEvents already standardizes source and event identity, including recognition of retransmitted duplicates. These are useful contracts to adopt.",
+      "opportunity": "Offer typed envelopes and optional MQTT/webhook adapters, with idempotent consumer examples and an outbox where durable delivery is required. Keep evidence identity separate from transport attempts.",
+      "prototype": "Partial. v0.3 evaluates events during file processing, flushes result records, emits configuration-scoped event IDs and exposes public start/confirm/reset traces. Durable delivery, acknowledgements, full episode lifecycle messages and restart-safe outboxes remain absent.",
+      "acceptance": [
+        "Retries preserve logical identity and failed delivery remains observable.",
+        "The supplied consumer handles duplicate delivery without creating a duplicate alert.",
+        "Document restart, source-epoch, configuration-version and start/confirm/end/cancel behaviour."
+      ],
+      "risk": "Do not promise exactly-once delivery across arbitrary brokers, webhooks or application databases.",
+      "sources": [
+        {
+          "label": "Frigate MQTT lifecycle contract",
+          "url": "https://docs.frigate.video/integrations/mqtt/",
+          "kind": "Official documentation"
+        },
+        {
+          "label": "Frigate per-ID update interpretation discussion #21056",
+          "url": "https://github.com/blakeblackshear/frigate/discussions/21056",
+          "kind": "Integration friction, reporter-side logging issue"
+        },
+        {
+          "label": "CloudEvents identity and source specification",
+          "url": "https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md",
+          "kind": "Primary specification"
+        }
+      ]
+    },
+    {
+      "id": "scene-drift",
+      "priority": "later",
+      "category": "Configuration",
+      "title": "A fixed zone can become wrong after the camera is moved.",
+      "pain": "A spatial rule can continue producing plausible events even when a changed camera view invalidates its geometry. A configuration update can also leave old episode state attached to a new scene.",
+      "existing": "Supervision 0.31 now documents coordinate-transform support for zones. Its October 2026 camera-motion request should not be described as an entirely unresolved ecosystem capability.",
+      "opportunity": "For the fixed-camera scope, introduce scene revisions and a camera-drift guard. Either use a qualified existing transform adapter or invalidate affected rules and require revalidation.",
+      "prototype": "Not implemented. Epoch resets exist, but automatic camera drift, scene revisions and geometry migration do not.",
+      "acceptance": [
+        "Translated-view fixtures either map coordinates through a validated transform or mark coverage uncertain.",
+        "A scene/configuration revision cannot accidentally inherit an old dwell episode.",
+        "Events record the geometry and scene revision used."
+      ],
+      "risk": "Camera drift detection can itself fail. Do not silently compensate for a view that no longer supports the original task.",
+      "sources": [
+        {
+          "label": "Supervision camera-motion request #2656",
+          "url": "https://github.com/roboflow/supervision/issues/2656",
+          "kind": "Developer report, October 2026"
+        },
+        {
+          "label": "Supervision current release notes",
+          "url": "https://github.com/roboflow/supervision/releases",
+          "kind": "Official release notes"
+        }
+      ]
+    },
+    {
+      "id": "observable-actions",
+      "priority": "later",
+      "category": "Behaviour",
+      "title": "Complex actions need relationships and temporal evidence, not a crime label on a box.",
+      "pain": "Handling, taking, carrying, concealment and exit can look similar in normal activity. Count/dwell outputs do not establish ownership, authorization or payment, and a local action model needs task-specific validation.",
+      "existing": "MMAction2 already supports action recognition, localization, skeleton approaches and spatiotemporal detection. AVA supplies annotated atomic actions. These are building blocks, not a turnkey theft-intent oracle.",
+      "opportunity": "Add an optional local action/relationship adapter emitting observable predicates, then combine them with an explicit temporal state machine. Start with a narrow pickup/carry/exit task and labelled normal lookalikes.",
+      "prototype": "Not implemented. The demo intentionally reports theft/concealment as unsupported.",
+      "acceptance": [
+        "Compare a pose/geometry baseline with a compact local temporal model on staged target actions and normal lookalikes.",
+        "Measure event precision/recall, false alerts and end-to-end compute on the target hardware.",
+        "Review exact checkpoint/data terms and keep unavailable ownership/payment context explicitly unknown."
+      ],
+      "risk": "No source reviewed proves that accurate, inexpensive general theft recognition is already achieved. Avoid assigning intent from an observable sequence alone.",
+      "sources": [
+        {
+          "label": "MMAction2 official repository",
+          "url": "https://github.com/open-mmlab/mmaction2",
+          "kind": "Official repository"
+        },
+        {
+          "label": "MMAction2 temporal detection demos",
+          "url": "https://github.com/open-mmlab/mmaction2/blob/main/demo/README.md",
+          "kind": "Official examples"
+        },
+        {
+          "label": "AVA atomic visual actions paper",
+          "url": "https://arxiv.org/abs/1705.08421",
+          "kind": "Primary research paper"
+        }
+      ]
+    },
+    {
+      "id": "release-provenance",
+      "priority": "next",
+      "category": "Developer experience",
+      "title": "Setup and artifact trust are adoption work, not just documentation work.",
+      "pain": "Developers must reproduce model preparation, distinguish code/weight/media terms and install a compatible runtime. A source archive without a public issue/release channel leaves collaboration and discovery harder.",
+      "existing": "Upstream repos provide models, exporters and licenses. BehaviorKit should preserve their provenance and provide a small reproducible distribution rather than bundle an entire export environment.",
+      "opportunity": "Resolve the working title/distribution identity, publish a maintained project repository and reviewed package release, add tested constraints/recipes, and make model artifact acquisition explicit with hashes and terms. Separate runtime installation from export tooling.",
+      "prototype": "Partial. Original code is Apache-2.0; source ZIP, local wheel and manifests exist. No public project GitHub repository or PyPI release is published. The website source repository is private hosting infrastructure, not a public library repo.",
+      "acceptance": [
+        "A fresh developer can follow a clean supported recipe without guessing class maps or mixing CPU/GPU runtime distributions.",
+        "Published release artifacts have a version, provenance, supported platform matrix and reproducible smoke command.",
+        "Code, exact weights, runtime binaries and demo media retain separately recorded terms."
+      ],
+      "risk": "Commercial-friendly design is not blanket clearance for arbitrary third-party artifacts. A package name or public release must be verified before publication.",
+      "sources": [
+        {
+          "label": "Prototype source and recorded status",
+          "url": "/downloads/behaviorkit-prototype-source.zip",
+          "kind": "Local source audit"
+        },
+        {
+          "label": "Current installation and artifact documentation",
+          "url": "/docs/installation.html",
+          "kind": "Prototype documentation"
+        },
+        {
+          "label": "Exact model-preparation contracts",
+          "url": "/docs/model-contracts.html",
+          "kind": "Prototype documentation"
+        }
+      ]
+    }
+  ],
+  "sequence": [
+    {
+      "phase": "0",
+      "title": "Make the current prototype easy to reproduce",
+      "text": "Resolve release identity, public collaboration channels, tested environment recipes and actual-model qualification. Finish physical AMD and M1 checks before claiming those targets verified."
+    },
+    {
+      "phase": "1",
+      "title": "Prove behaviour quality on a small held-out camera corpus",
+      "text": "Add event regression evaluation, a current tracker adapter and explicit boundary/gap policies. Optimize alert quality against normal lookalikes before adding more behaviours."
+    },
+    {
+      "phase": "2",
+      "title": "Introduce bounded live sources and delivery",
+      "text": "Build source-health/freshness contracts around mature ingest backends. Add reconnect/overload fixtures, stage profiling and typed delivery semantics."
+    },
+    {
+      "phase": "3",
+      "title": "Expand only after measured bottlenecks",
+      "text": "Add camera admission, native-resource soaks, scene drift and narrowly defined local action sequences where pilot evidence justifies the work."
+    }
+  ],
+  "validation_questions": [
+    "What exact event does the developer need, and which normal activity is commonly confused with it?",
+    "Which detector, tracker, runtime and camera backend are already deployed?",
+    "Where is engineering time lost: setup, false alerts, missed events, reconnects, calibration or integrating results?",
+    "What evidence age, confirmation delay, false-alert rate and hardware budget are acceptable?",
+    "Can the team provide rights-cleared labelled clips split by camera/day, including failures?",
+    "Would a replayable failure report and qualified adapter save more work than another pretrained model?",
+    "How must an event survive retries, source resets, configuration changes and application restarts?"
+  ],
+  "non_goals": [
+    "Rebuild a general detector/tracker training framework.",
+    "Replace GStreamer, DeepStream, Frigate, CVAT or FiftyOne wholesale.",
+    "Assume one model's FPS proves multi-camera capacity.",
+    "Market arbitrary theft or intent recognition before task-specific evaluation.",
+    "Infer developer demand, willingness to pay or issue prevalence from a few public reports."
+  ]
+}

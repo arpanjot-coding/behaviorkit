@@ -1,0 +1,29 @@
+{
+  "case": "concealment",
+  "model": "rtmdet-tiny",
+  "provider": "cuda",
+  "status": "executed",
+  "sampled_frames": 125,
+  "events": 9,
+  "count_min": 0,
+  "count_max": 11,
+  "track_ids_seen": 42,
+  "reset_records": 97,
+  "p50_detector_ms": 13.289599970448762,
+  "spot_checks": {
+    "checks": [],
+    "scored": 0,
+    "exact": 0,
+    "mean_absolute_error": null,
+    "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+  },
+  "complex_behavior": {
+    "supported": false,
+    "library_prediction": null,
+    "human_reference": "fictional concealment scenario; theft classifier absent",
+    "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+  },
+  "replay_verified": true,
+  "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+  "observations_sha256": "2e6bcb37a3a247fd0fe93825097d34fc53f13c08017642f4c7ccc961df28be4b"
+}

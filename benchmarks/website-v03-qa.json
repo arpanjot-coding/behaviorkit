@@ -1,0 +1,75 @@
+{
+  "version": "0.3.0",
+  "checks": {
+    "site": {
+      "localisedPagesChecked": 24,
+      "languages": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "pt",
+        "zh",
+        "ja",
+        "ko",
+        "hi",
+        "ar",
+        "vi",
+        "th"
+      ],
+      "researchGaps": 13,
+      "repositoryLinks": 4,
+      "commandTabs": "passed",
+      "keyboardTabs": "passed",
+      "localeNavigation": "passed",
+      "arabicRTL": "passed",
+      "researchFilters": "passed",
+      "mobileMenu": "passed",
+      "responsiveChecks": 64,
+      "javascriptErrors": []
+    },
+    "commands": {
+      "locales": 12,
+      "translatedCopyFeedback": "passed",
+      "copyPayloadUnchanged": "passed",
+      "arabicCommandOverlap": false,
+      "separateRuntimeChoices": "passed",
+      "repeatedCopyReset": "passed",
+      "tabletDocsLayout": "passed"
+    },
+    "video": {
+      "modelCaseCombinations": 12,
+      "countsAndOverlayParity": "passed",
+      "eventSeek": "passed",
+      "videoPlayback": "passed",
+      "downloads": "passed",
+      "mobileCases": 4,
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "httpErrors": []
+    },
+    "loading": {
+      "reportRetry": "passed",
+      "modelRetry": "passed",
+      "staleResultsCleared": "passed",
+      "staleDownloadsDisabled": "passed",
+      "lateCaseResponseIgnored": "passed",
+      "rapidModelSwitch": "passed",
+      "javascriptErrors": []
+    },
+    "content": {
+      "languages": 12,
+      "leaf_keys_per_locale": 128,
+      "pages": 38,
+      "em_dash_scan": "passed",
+      "research_gaps": 13,
+      "unique_evidence_links": 39,
+      "locale_parity": "passed"
+    },
+    "links": {
+      "pages": 38,
+      "localReferences": 1373,
+      "missing": []
+    }
+  }
+}

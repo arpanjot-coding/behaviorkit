@@ -1,0 +1,29 @@
+{
+  "case": "concealment",
+  "model": "d-fine-n",
+  "provider": "cuda",
+  "status": "executed",
+  "sampled_frames": 125,
+  "events": 16,
+  "count_min": 0,
+  "count_max": 17,
+  "track_ids_seen": 105,
+  "reset_records": 223,
+  "p50_detector_ms": 13.966400001663715,
+  "spot_checks": {
+    "checks": [],
+    "scored": 0,
+    "exact": 0,
+    "mean_absolute_error": null,
+    "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+  },
+  "complex_behavior": {
+    "supported": false,
+    "library_prediction": null,
+    "human_reference": "fictional concealment scenario; theft classifier absent",
+    "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+  },
+  "replay_verified": true,
+  "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+  "observations_sha256": "d6e557d62ef4e5a885afc4a148a5fb9f0bab3462446b4379ea93015bf82ff8cb"
+}

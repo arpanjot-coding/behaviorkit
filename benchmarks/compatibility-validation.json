@@ -1,0 +1,93 @@
+{
+  "version": "0.2.0",
+  "kind": "compatibility_validation",
+  "scope": "Fixed-camera visible counting and continuous observed dwell; offline local-video feasibility prototype.",
+  "test_suites": [
+    {
+      "artifact": "validation/cpu-tests.xml",
+      "passed": 61,
+      "tests": 62,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    {
+      "artifact": "validation/cuda-environment-tests.xml",
+      "passed": 61,
+      "tests": 62,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    }
+  ],
+  "actual_host": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.2.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel",
+    "test_exit_code": 0,
+    "status": "passed",
+    "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification."
+  },
+  "platforms": [
+    {
+      "platform": "Intel x86-64 Windows CPU",
+      "status": "verified",
+      "evidence": [
+        "validation/cpu-tests.xml",
+        "positive-cpu-validation.json",
+        "cpu-model-benchmark.json"
+      ]
+    },
+    {
+      "platform": "NVIDIA RTX 5060 Ti Windows CUDA",
+      "status": "verified",
+      "evidence": [
+        "validation/cuda-environment-tests.xml",
+        "positive-cuda-validation.json",
+        "cuda-v02-benchmark.json"
+      ]
+    },
+    {
+      "platform": "AMD x86-64 CPU",
+      "status": "implemented_physical_test_pending",
+      "evidence": []
+    },
+    {
+      "platform": "Apple M1 arm64 macOS CPU",
+      "status": "implemented_dependency_resolution_only",
+      "evidence": [
+        "apple-arm64-dependencies.json"
+      ]
+    },
+    {
+      "platform": "Apple CoreML / TensorRT",
+      "status": "experimental_hardware_execution_pending",
+      "evidence": []
+    }
+  ],
+  "engine_evidence": [
+    "engine-v02-benchmark.json",
+    "soak-v02.json"
+  ],
+  "ci": "Windows/Linux/macOS arm64 workflow configured; not executed on GitHub for this release.",
+  "limitations": [
+    "Positive learned-model regression repeats a still image before blank frames; not motion, occlusion or surveillance accuracy.",
+    "Latency reports use synthetic RGB on a shared desktop, exclude decode/tracking/rules, and do not establish idle-device rankings.",
+    "State soak traces Python allocations only, not sustained decoded-video RSS/VRAM.",
+    "Actual AMD and M1 hardware tests, real model CoreML compatibility, labeled-camera accuracy and multi-hour deployment remain pending."
+  ],
+  "runtime_network": "No ongoing LLM calls, API keys or automatic model downloads.",
+  "video_lab": {
+    "report": "/lab/report.json",
+    "sources": 3,
+    "excerpts": 4,
+    "model_runs": 12,
+    "action_classifier": false,
+    "note": "Exploratory video test; sparse single-reviewer count annotations, not event accuracy certification."
+  }
+}

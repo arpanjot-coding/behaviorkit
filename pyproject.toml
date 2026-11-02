@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "behaviorkit-prototype"
+version = "0.3.0"
+description = "Local counting and dwell detection with portable CPU, NVIDIA CUDA, and optional Apple CoreML execution"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{name = "BehaviorKit contributors"}]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/arpanjot-coding/behaviorkit"
+Documentation = "https://github.com/arpanjot-coding/behaviorkit/tree/main/docs"
+Issues = "https://github.com/arpanjot-coding/behaviorkit/issues"
+Changelog = "https://github.com/arpanjot-coding/behaviorkit/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+vision = ["numpy>=1.26,<3", "opencv-python-headless>=4.10,<6", "av>=14,<20"]
+cuda = ["onnxruntime-gpu[cuda,cudnn]>=1.22,<2"]
+cpu = ["onnxruntime>=1.22,<2"]
+apple = ["onnxruntime>=1.22,<2"]
+dev = ["pytest>=8,<10", "build>=1.2", "markdown-it-py>=3,<5", "onnx>=1.17,<2"]
+
+[project.scripts]
+behaviorkit = "behaviorkit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

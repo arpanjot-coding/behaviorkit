@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "behaviorkit": "0.3.0",
+  "status": "ok",
+  "kind": "replay",
+  "batches": 42,
+  "events": 0,
+  "count_samples": 42,
+  "final_dwell_states": 1,
+  "config_sha256": "811ebb1e83f04d3f14dcb0ecc37ed14c4dfb20adce64c641d63c558dc5d376ab",
+  "config_fingerprint": "5b5af5c113a8ac08489444273ef80c0a7d098fb5dbac21b16645ae15ee9fb13f",
+  "config_snapshot_sha256": "811ebb1e83f04d3f14dcb0ecc37ed14c4dfb20adce64c641d63c558dc5d376ab",
+  "observations_sha256": "3730c2ac606cc1b42eb4edc763ba0cd350733d960ea0e80b50a02109c31e674b",
+  "trace_enabled": false,
+  "transition_records": 0,
+  "diagnostic_records": 0,
+  "output": "C:\\Users\\sarpa\\Documents\\Codex\\2026-11-02\\files-mentioned-by-the-user-behaviorkit\\outputs\\behaviorkit-prototype\\examples\\video-lab\\results\\data\\basket\\d-fine-n\\replay"
+}

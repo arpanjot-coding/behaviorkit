@@ -1,0 +1,125 @@
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 0.0, "count": 0, "status": "observed", "track_ids": []}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 0.2, "count": 13, "status": "observed", "track_ids": ["1", "2", "6", "4", "5", "3", "7", "10", "15", "14", "9", "13", "8"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 0.4, "count": 14, "status": "observed", "track_ids": ["1", "4", "2", "3", "5", "7", "6", "10", "16", "14", "12", "15", "8", "20"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 0.6, "count": 14, "status": "observed", "track_ids": ["1", "19", "2", "3", "7", "5", "10", "4", "12", "15", "9", "11", "6", "18"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 0.8, "count": 13, "status": "observed", "track_ids": ["19", "1", "7", "5", "2", "6", "3", "10", "4", "21", "15", "18", "11"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 1.0, "count": 12, "status": "observed", "track_ids": ["1", "19", "2", "5", "7", "4", "6", "10", "15", "21", "9", "24"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 1.2, "count": 14, "status": "observed", "track_ids": ["1", "19", "7", "2", "6", "5", "15", "10", "4", "29", "9", "16", "8", "24"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 1.4, "count": 10, "status": "observed", "track_ids": ["1", "19", "8", "2", "5", "4", "23", "29", "15", "22"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 1.6, "count": 10, "status": "observed", "track_ids": ["1", "8", "30", "19", "4", "15", "23", "26", "5", "29"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 1.8, "count": 7, "status": "observed", "track_ids": ["1", "8", "4", "30", "31", "6", "15"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 2.0, "count": 7, "status": "observed", "track_ids": ["1", "8", "31", "4", "2", "15", "23"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 2.2, "count": 10, "status": "observed", "track_ids": ["1", "31", "8", "4", "15", "2", "16", "10", "7", "6"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 2.4, "count": 10, "status": "observed", "track_ids": ["1", "31", "7", "16", "29", "2", "5", "15", "4", "6"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 2.6, "count": 9, "status": "observed", "track_ids": ["6", "16", "29", "31", "7", "30", "2", "15", "1"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 2.8, "count": 12, "status": "observed", "track_ids": ["4", "29", "15", "8", "30", "5", "1", "23", "7", "16", "6", "2"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 3.0, "count": 11, "status": "observed", "track_ids": ["4", "29", "15", "8", "30", "1", "23", "6", "16", "7", "33"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 3.2, "count": 7, "status": "observed", "track_ids": ["4", "29", "1", "15", "38", "7", "30"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 3.4, "count": 11, "status": "observed", "track_ids": ["4", "29", "36", "15", "2", "31", "7", "38", "30", "5", "33"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 3.6, "count": 12, "status": "observed", "track_ids": ["4", "29", "7", "36", "30", "6", "41", "34", "35", "31", "37", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 3.8, "count": 8, "status": "observed", "track_ids": ["29", "36", "4", "38", "7", "2", "41", "31"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 4.0, "count": 7, "status": "observed", "track_ids": ["4", "29", "7", "1", "38", "30", "23"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 4.2, "count": 15, "status": "observed", "track_ids": ["4", "29", "7", "6", "38", "40", "36", "30", "2", "37", "1", "42", "33", "5", "23"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 4.4, "count": 7, "status": "observed", "track_ids": ["4", "29", "7", "36", "37", "40", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 4.6, "count": 8, "status": "observed", "track_ids": ["4", "29", "36", "37", "7", "34", "40", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 4.8, "count": 10, "status": "observed", "track_ids": ["4", "29", "7", "36", "37", "34", "30", "38", "40", "6"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 5.0, "count": 6, "status": "observed", "track_ids": ["4", "29", "36", "7", "6", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 5.2, "count": 6, "status": "observed", "track_ids": ["29", "4", "36", "6", "7", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 5.4, "count": 6, "status": "observed", "track_ids": ["29", "49", "36", "7", "6", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 5.6, "count": 10, "status": "observed", "track_ids": ["29", "36", "49", "7", "6", "34", "38", "30", "43", "46"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 5.8, "count": 9, "status": "observed", "track_ids": ["29", "49", "36", "6", "7", "34", "30", "38", "48"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 6.0, "count": 7, "status": "observed", "track_ids": ["29", "7", "49", "36", "6", "34", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 6.2, "count": 7, "status": "observed", "track_ids": ["29", "49", "7", "36", "6", "46", "50"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 6.4, "count": 12, "status": "observed", "track_ids": ["29", "7", "49", "36", "6", "46", "43", "53", "50", "38", "52", "34"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 6.6, "count": 11, "status": "observed", "track_ids": ["49", "29", "6", "7", "58", "34", "57", "36", "53", "43", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 6.8, "count": 9, "status": "observed", "track_ids": ["49", "29", "6", "7", "36", "57", "34", "53", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 7.0, "count": 14, "status": "observed", "track_ids": ["29", "6", "49", "7", "57", "53", "52", "34", "56", "36", "61", "50", "59", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 7.2, "count": 11, "status": "observed", "track_ids": ["29", "49", "6", "54", "7", "57", "53", "56", "52", "36", "46"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 7.4, "count": 16, "status": "observed", "track_ids": ["49", "7", "6", "29", "54", "57", "52", "34", "53", "64", "59", "56", "43", "36", "46", "61"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 7.6, "count": 17, "status": "observed", "track_ids": ["56", "66", "6", "54", "7", "57", "34", "36", "68", "43", "38", "67", "61", "53", "59", "63", "46"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 7.8, "count": 12, "status": "observed", "track_ids": ["56", "66", "54", "6", "57", "34", "7", "38", "43", "59", "36", "46"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 8.0, "count": 11, "status": "observed", "track_ids": ["56", "54", "6", "7", "66", "36", "34", "57", "53", "63", "52"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 8.2, "count": 9, "status": "observed", "track_ids": ["7", "66", "6", "49", "57", "54", "52", "53", "59"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 8.4, "count": 11, "status": "observed", "track_ids": ["56", "66", "6", "57", "7", "54", "59", "52", "46", "38", "53"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 8.6, "count": 8, "status": "observed", "track_ids": ["56", "66", "7", "6", "54", "57", "70", "59"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 8.8, "count": 8, "status": "observed", "track_ids": ["56", "66", "7", "6", "57", "54", "59", "70"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 9.0, "count": 14, "status": "observed", "track_ids": ["7", "54", "49", "66", "57", "6", "70", "53", "63", "46", "36", "52", "38", "59"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 9.2, "count": 14, "status": "observed", "track_ids": ["71", "54", "7", "49", "6", "57", "70", "53", "38", "52", "63", "46", "36", "59"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 9.4, "count": 14, "status": "observed", "track_ids": ["71", "56", "6", "54", "57", "7", "72", "70", "52", "38", "53", "63", "59", "66"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 9.6, "count": 12, "status": "observed", "track_ids": ["56", "7", "71", "6", "54", "57", "72", "70", "36", "38", "59", "46"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 9.8, "count": 15, "status": "observed", "track_ids": ["7", "71", "6", "54", "49", "75", "57", "46", "72", "53", "38", "74", "63", "36", "59"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 10.0, "count": 14, "status": "observed", "track_ids": ["49", "7", "54", "71", "6", "75", "57", "36", "59", "63", "46", "79", "53", "38"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 10.2, "count": 15, "status": "observed", "track_ids": ["71", "54", "6", "7", "56", "75", "36", "72", "59", "57", "82", "78", "38", "70", "63"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 10.4, "count": 10, "status": "observed", "track_ids": ["49", "54", "71", "7", "6", "75", "57", "72", "59", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 10.6, "count": 10, "status": "observed", "track_ids": ["49", "6", "54", "75", "7", "71", "57", "36", "59", "53"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 10.8, "count": 10, "status": "observed", "track_ids": ["75", "49", "54", "71", "7", "57", "6", "46", "36", "59"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 11.0, "count": 12, "status": "observed", "track_ids": ["75", "49", "6", "57", "54", "7", "71", "46", "53", "59", "36", "79"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 11.2, "count": 11, "status": "observed", "track_ids": ["49", "75", "6", "54", "57", "71", "7", "38", "59", "53", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 11.4, "count": 9, "status": "observed", "track_ids": ["49", "54", "6", "75", "71", "7", "57", "38", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 11.6, "count": 12, "status": "observed", "track_ids": ["54", "49", "6", "71", "7", "36", "75", "57", "38", "59", "46", "79"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 11.8, "count": 10, "status": "observed", "track_ids": ["49", "59", "54", "71", "6", "36", "57", "46", "38", "7"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 12.0, "count": 9, "status": "observed", "track_ids": ["49", "54", "6", "59", "57", "71", "36", "7", "87"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 12.2, "count": 10, "status": "observed", "track_ids": ["49", "59", "54", "6", "57", "88", "36", "75", "71", "87"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 12.4, "count": 11, "status": "observed", "track_ids": ["49", "88", "6", "54", "57", "59", "75", "89", "84", "36", "7"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 12.6, "count": 10, "status": "observed", "track_ids": ["49", "6", "59", "54", "88", "57", "84", "36", "7", "75"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 12.8, "count": 10, "status": "observed", "track_ids": ["49", "59", "6", "71", "54", "57", "36", "7", "75", "88"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 13.0, "count": 9, "status": "observed", "track_ids": ["6", "49", "59", "57", "88", "36", "54", "7", "90"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 13.2, "count": 10, "status": "observed", "track_ids": ["90", "6", "59", "88", "54", "36", "57", "84", "7", "89"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 13.4, "count": 10, "status": "observed", "track_ids": ["90", "6", "54", "59", "71", "36", "57", "7", "88", "75"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 13.6, "count": 10, "status": "observed", "track_ids": ["90", "6", "88", "54", "59", "57", "36", "7", "84", "75"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 13.8, "count": 7, "status": "observed", "track_ids": ["90", "6", "88", "54", "57", "59", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 14.0, "count": 7, "status": "observed", "track_ids": ["90", "54", "6", "59", "88", "36", "57"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 14.2, "count": 8, "status": "observed", "track_ids": ["90", "6", "88", "54", "59", "57", "36", "93"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 14.4, "count": 10, "status": "observed", "track_ids": ["90", "6", "54", "88", "57", "59", "36", "71", "93", "7"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 14.6, "count": 8, "status": "observed", "track_ids": ["90", "6", "54", "57", "59", "88", "36", "71"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 14.8, "count": 7, "status": "observed", "track_ids": ["90", "6", "57", "54", "59", "88", "95"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 15.0, "count": 9, "status": "observed", "track_ids": ["90", "54", "6", "59", "57", "88", "95", "96", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 15.2, "count": 9, "status": "observed", "track_ids": ["90", "59", "54", "6", "71", "57", "36", "96", "95"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 15.4, "count": 8, "status": "observed", "track_ids": ["90", "6", "71", "59", "54", "57", "98", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 15.6, "count": 9, "status": "observed", "track_ids": ["59", "6", "54", "88", "57", "90", "98", "36", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 15.8, "count": 8, "status": "observed", "track_ids": ["101", "59", "88", "6", "54", "57", "36", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 16.0, "count": 8, "status": "observed", "track_ids": ["101", "59", "6", "54", "88", "36", "57", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 16.2, "count": 9, "status": "observed", "track_ids": ["101", "59", "6", "88", "54", "36", "57", "98", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 16.4, "count": 8, "status": "observed", "track_ids": ["101", "6", "59", "88", "54", "36", "57", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 16.6, "count": 9, "status": "observed", "track_ids": ["101", "88", "59", "6", "54", "57", "36", "96", "102"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 16.8, "count": 9, "status": "observed", "track_ids": ["59", "6", "88", "101", "54", "57", "36", "98", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 17.0, "count": 7, "status": "observed", "track_ids": ["101", "59", "54", "88", "57", "6", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 17.2, "count": 7, "status": "observed", "track_ids": ["101", "59", "88", "6", "54", "57", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 17.4, "count": 9, "status": "observed", "track_ids": ["101", "59", "88", "6", "54", "57", "36", "103", "96"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 17.6, "count": 9, "status": "observed", "track_ids": ["101", "54", "59", "88", "6", "57", "105", "104", "98"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 17.8, "count": 11, "status": "observed", "track_ids": ["59", "6", "101", "54", "88", "57", "104", "98", "36", "106", "105"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 18.0, "count": 7, "status": "observed", "track_ids": ["101", "59", "6", "54", "88", "57", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 18.2, "count": 9, "status": "observed", "track_ids": ["101", "54", "59", "6", "88", "57", "110", "36", "106"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 18.4, "count": 7, "status": "observed", "track_ids": ["101", "59", "54", "6", "88", "36", "57"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 18.6, "count": 7, "status": "observed", "track_ids": ["101", "59", "54", "88", "6", "57", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 18.8, "count": 8, "status": "observed", "track_ids": ["101", "59", "54", "88", "6", "57", "36", "111"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 19.0, "count": 7, "status": "observed", "track_ids": ["101", "59", "54", "88", "6", "57", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 19.2, "count": 8, "status": "observed", "track_ids": ["101", "59", "88", "54", "6", "57", "36", "106"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 19.4, "count": 10, "status": "observed", "track_ids": ["101", "59", "88", "6", "54", "57", "36", "106", "112", "113"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 19.6, "count": 9, "status": "observed", "track_ids": ["101", "88", "6", "54", "59", "57", "36", "106", "113"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 19.8, "count": 12, "status": "observed", "track_ids": ["101", "88", "6", "54", "118", "57", "111", "113", "36", "106", "59", "119"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 20.0, "count": 14, "status": "observed", "track_ids": ["101", "111", "54", "118", "88", "57", "120", "113", "117", "36", "119", "106", "114", "112"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 20.2, "count": 8, "status": "observed", "track_ids": ["101", "54", "88", "106", "111", "57", "113", "119"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 20.4, "count": 10, "status": "observed", "track_ids": ["101", "106", "111", "54", "88", "113", "57", "36", "114", "121"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 20.6, "count": 9, "status": "observed", "track_ids": ["101", "106", "88", "111", "54", "57", "113", "36", "122"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 20.8, "count": 9, "status": "observed", "track_ids": ["101", "111", "88", "106", "54", "57", "120", "122", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 21.0, "count": 10, "status": "observed", "track_ids": ["101", "111", "88", "106", "54", "57", "120", "121", "36", "122"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 21.2, "count": 11, "status": "observed", "track_ids": ["101", "111", "54", "106", "88", "57", "36", "122", "124", "121", "120"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 21.4, "count": 7, "status": "observed", "track_ids": ["101", "54", "111", "57", "106", "88", "122"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 21.6, "count": 7, "status": "observed", "track_ids": ["101", "88", "111", "54", "106", "57", "122"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 21.8, "count": 7, "status": "observed", "track_ids": ["101", "54", "111", "88", "106", "57", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 22.0, "count": 10, "status": "observed", "track_ids": ["101", "88", "106", "54", "111", "129", "57", "36", "122", "126"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 22.2, "count": 9, "status": "observed", "track_ids": ["101", "129", "54", "111", "88", "106", "57", "36", "122"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 22.4, "count": 13, "status": "observed", "track_ids": ["101", "129", "111", "54", "106", "88", "57", "126", "36", "130", "127", "128", "122"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 22.6, "count": 12, "status": "observed", "track_ids": ["101", "111", "106", "54", "88", "57", "126", "129", "122", "36", "130", "127"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 22.8, "count": 9, "status": "observed", "track_ids": ["101", "111", "106", "54", "88", "57", "122", "130", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 23.0, "count": 8, "status": "observed", "track_ids": ["101", "54", "111", "88", "106", "57", "122", "130"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 23.2, "count": 11, "status": "observed", "track_ids": ["54", "111", "101", "88", "106", "57", "130", "122", "136", "135", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 23.4, "count": 14, "status": "observed", "track_ids": ["54", "111", "101", "122", "57", "88", "137", "130", "128", "106", "143", "141", "139", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 23.6, "count": 11, "status": "observed", "track_ids": ["101", "111", "54", "88", "57", "137", "122", "142", "135", "106", "36"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 23.8, "count": 10, "status": "observed", "track_ids": ["101", "111", "88", "54", "122", "57", "135", "137", "106", "144"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 24.0, "count": 14, "status": "observed", "track_ids": ["101", "88", "54", "111", "122", "57", "106", "36", "135", "144", "142", "137", "128", "136"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 24.2, "count": 13, "status": "observed", "track_ids": ["88", "101", "54", "111", "57", "122", "144", "146", "106", "142", "128", "143", "139"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 24.4, "count": 12, "status": "observed", "track_ids": ["101", "88", "54", "111", "57", "122", "147", "142", "144", "128", "148", "137"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 24.6, "count": 10, "status": "observed", "track_ids": ["101", "54", "111", "57", "122", "88", "135", "128", "144", "147"]}
+{"rule": "visible_people", "source": "concealment", "epoch": "0", "timestamp": 24.8, "count": 11, "status": "observed", "track_ids": ["101", "54", "57", "135", "88", "147", "111", "142", "106", "122", "136"]}

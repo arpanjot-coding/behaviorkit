@@ -1,0 +1,85 @@
+{
+  "kind": "controlled_single_person_regression",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.3.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel"
+  },
+  "provider": "cpu",
+  "image_sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "image_source": "NASA public-domain astronaut image via scikit-image v0.25.2",
+  "conditions": "One still person repeated for 4.2 seconds, followed by blank frames; 5 Hz processing. Not real motion, occlusion or general camera accuracy.",
+  "models": [
+    {
+      "model": "rtmdet-tiny",
+      "static_image": [
+        {
+          "confidence": 0.7425411343574524,
+          "box": [
+            0.017064189538359642,
+            0.02712249755859375,
+            0.7157608270645142,
+            0.9942181706428528
+          ]
+        }
+      ],
+      "status": "passed",
+      "sampled_frames": 26,
+      "events": 1,
+      "dwell_timestamp": 3.2,
+      "selected_provider": "cpu",
+      "exact_replay": true,
+      "config_fingerprint": "0b6eea3973b7fdecb75e0181c9f9f2d2b281a945fdfaa45e1844f8953dafc862",
+      "trace_records": 3
+    },
+    {
+      "model": "d-fine-n",
+      "static_image": [
+        {
+          "confidence": 0.9218133687973022,
+          "box": [
+            0.0193634033203125,
+            0.02892780303955078,
+            0.7147494554519653,
+            0.996139407157898
+          ]
+        }
+      ],
+      "status": "passed",
+      "sampled_frames": 26,
+      "events": 1,
+      "dwell_timestamp": 3.2,
+      "selected_provider": "cpu",
+      "exact_replay": true,
+      "config_fingerprint": "0b6eea3973b7fdecb75e0181c9f9f2d2b281a945fdfaa45e1844f8953dafc862",
+      "trace_records": 3
+    },
+    {
+      "model": "rf-detr-nano",
+      "static_image": [
+        {
+          "confidence": 0.9739678502082825,
+          "box": [
+            0.03224349021911621,
+            0.030521631240844727,
+            0.7115737199783325,
+            0.9912221431732178
+          ]
+        }
+      ],
+      "status": "passed",
+      "sampled_frames": 26,
+      "events": 1,
+      "dwell_timestamp": 3.2,
+      "selected_provider": "cpu",
+      "exact_replay": true,
+      "config_fingerprint": "0b6eea3973b7fdecb75e0181c9f9f2d2b281a945fdfaa45e1844f8953dafc862",
+      "trace_records": 3
+    }
+  ]
+}

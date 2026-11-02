@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "kind": "engine_only",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.1.0",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14"
+  },
+  "workload": {
+    "tracks": 100,
+    "rules": 20,
+    "batches": 5000,
+    "warmup_batches": 100,
+    "sampling_hz": 5
+  },
+  "evaluation_ms": {
+    "mean": 0.36320962018799036,
+    "p50": 0.30270000570453703,
+    "p95": 0.6102000450482595,
+    "p99": 1.070110999280587,
+    "min": 0.2508999896235764,
+    "max": 3.3014999935403466
+  },
+  "final_dwell_states": 1000,
+  "emitted_events": 1000,
+  "limits": "Excludes model inference, decoding, input construction, serialization and tracking; synthetic identical-box observations."
+}

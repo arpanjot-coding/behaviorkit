@@ -1,0 +1,22 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "system": "Windows",
+  "architecture": "AMD64",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "behaviorkit": "0.3.0",
+  "logical_cpus": 24,
+  "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+  "cpu_vendor": "Intel",
+  "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+  "gpu_point_sample": "99 %, 8454 MiB, 141.72 W",
+  "onnxruntime": "1.31.1",
+  "available_providers": [
+    "TensorrtExecutionProvider",
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "provider_requested": "cuda",
+  "provider_selected": "cuda",
+  "selection_note": "Explicit provider request; initialization failure is an error.",
+  "note": "Availability only; benchmark or runtime validation must verify actual execution. CoreML events establish delegation, not which Apple compute unit was used."
+}

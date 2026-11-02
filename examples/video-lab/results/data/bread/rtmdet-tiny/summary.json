@@ -1,0 +1,78 @@
+{
+  "case": "bread",
+  "model": "rtmdet-tiny",
+  "provider": "cuda",
+  "status": "executed",
+  "sampled_frames": 80,
+  "events": 0,
+  "count_min": 0,
+  "count_max": 3,
+  "track_ids_seen": 6,
+  "reset_records": 8,
+  "p50_detector_ms": 12.904100003652275,
+  "spot_checks": {
+    "checks": [
+      {
+        "t": 1,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 1.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 3,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 3.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 5,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 5.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 7,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 7.0,
+        "observed": 0,
+        "absolute_error": 1
+      },
+      {
+        "t": 10,
+        "count": 2,
+        "status": "scored",
+        "sample_timestamp": 10.0,
+        "observed": 0,
+        "absolute_error": 2
+      },
+      {
+        "t": 13,
+        "count": 2,
+        "status": "scored",
+        "sample_timestamp": 13.0,
+        "observed": 3,
+        "absolute_error": 1
+      }
+    ],
+    "scored": 6,
+    "exact": 3,
+    "mean_absolute_error": 0.6666666666666666,
+    "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+  },
+  "complex_behavior": {
+    "supported": false,
+    "library_prediction": null,
+    "human_reference": "fictional theft scenario; theft classifier absent",
+    "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+  },
+  "replay_verified": true,
+  "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+  "observations_sha256": "493d504899cb2ff1cee1e1ecea778ac1fac52eadd277a2aba785e04a803508fc"
+}

@@ -1,0 +1,310 @@
+{
+  "schema_version": "0.1",
+  "kind": "model_latency_synthetic",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.3.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel"
+  },
+  "input": {
+    "kind": "seeded synthetic RGB image",
+    "seed": 2026,
+    "width": 1280,
+    "height": 720,
+    "warning": "Latency only. No detection or event accuracy measured; excludes video decode and tracking."
+  },
+  "profiling_enabled": false,
+  "profiling_note": "Timed session has profiling disabled. A separate session verifies the selected execution provider. session.run timings include transfers and wait for CPU outputs.",
+  "system_conditions": "Shared host; background workloads were not controlled. Point samples are context only, not idle-system performance or a definitive model ranking.",
+  "threads_requested": 4,
+  "opencv_threads": 1,
+  "iterations": 50,
+  "warmup": 10,
+  "requested_provider": "cpu",
+  "models": [
+    {
+      "name": "rtmdet-tiny",
+      "session_create_seconds": 0.11533740005688742,
+      "status": "ok",
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "rtmdet-tiny",
+        "contract": "rtmdet_decoded",
+        "sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+        "checkpoint_sha256": "78e30dcce0c6f594eaff0d6977b84b4103688b4aff0ad1aa16008a8cc854a7fb",
+        "checkpoint_url": "https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_tiny_8xb32-300e_coco/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth",
+        "license_basis": "Apache-2.0 code; verify checkpoint provenance",
+        "source": "https://github.com/open-mmlab/mmdetection",
+        "export": {
+          "mmdet": "3.3.0",
+          "prior_offset": 0.0
+        },
+        "parity": {
+          "status": "passed",
+          "sample": "one seeded random tensor; tensor parity, not accuracy",
+          "alignment": "tensor order",
+          "max_absolute_error": {
+            "boxes": 0.00213623046875,
+            "scores": 1.0095536708831787e-06
+          }
+        },
+        "inputs": [
+          "images"
+        ],
+        "outputs": [
+          "boxes",
+          "scores"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "selected_provider": "cpu",
+      "provider_note": "Explicit provider request; initialization failure is an error.",
+      "intra_op_threads": 4,
+      "session_providers": [
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 8.71261200052686,
+          "p50": 8.548300014808774,
+          "p95": 9.556129985139705,
+          "p99": 10.772766975569537,
+          "min": 8.235000015702099,
+          "max": 11.20969996554777
+        },
+        "inference_transfer_ms": {
+          "mean": 32.01186000020243,
+          "p50": 32.055849995231256,
+          "p95": 32.873574999393895,
+          "p99": 33.014942012378015,
+          "min": 30.92549997381866,
+          "max": 33.080700028222054
+        },
+        "postprocess_ms": {
+          "mean": 0.35878599737770855,
+          "p50": 0.35054999170824885,
+          "p95": 0.37870497326366603,
+          "p99": 0.5522990290774028,
+          "min": 0.332099967636168,
+          "max": 0.6478000432252884
+        },
+        "total_ms": {
+          "mean": 41.083257998107,
+          "p50": 40.959049976663664,
+          "p95": 42.29886998364236,
+          "p99": 43.38307799771428,
+          "min": 39.820500009227544,
+          "max": 43.847499997355044
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\benchmarks\\profiles\\ort-profile_2026-11-02_14-46-22_345.json",
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 222
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      }
+    },
+    {
+      "name": "d-fine-n",
+      "session_create_seconds": 0.16516249999403954,
+      "status": "ok",
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "d-fine-n",
+        "contract": "dfine_deploy",
+        "sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+        "checkpoint_sha256": "41973938d2784d38a9836990d805b8392855ebf611aba55f0f7add90e110744c",
+        "checkpoint_url": "https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
+        "license_basis": "Apache-2.0; use COCO-only checkpoint, review upstream terms",
+        "source": "https://github.com/Peterande/D-FINE",
+        "export": {
+          "upstream_commit": "956d1709314c2c6a4df6f34de232054578a7449f"
+        },
+        "parity": {
+          "status": "passed",
+          "sample": "one seeded random tensor; tensor parity, not accuracy",
+          "alignment": "same-label box/score bipartite alignment for D-FINE top-K tie permutations",
+          "max_absolute_error": {
+            "labels": 0.0,
+            "boxes": 0.00390625,
+            "scores": 1.9352883100509644e-06
+          }
+        },
+        "inputs": [
+          "images",
+          "orig_target_sizes"
+        ],
+        "outputs": [
+          "labels",
+          "boxes",
+          "scores"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "selected_provider": "cpu",
+      "provider_note": "Explicit provider request; initialization failure is an error.",
+      "intra_op_threads": 4,
+      "session_providers": [
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 4.318573999917135,
+          "p50": 3.931800019927323,
+          "p95": 5.726020009024066,
+          "p99": 7.814335976145224,
+          "min": 3.521100035868585,
+          "max": 9.369399980641901
+        },
+        "inference_transfer_ms": {
+          "mean": 41.06630800291896,
+          "p50": 43.61789999529719,
+          "p95": 49.56826000416186,
+          "p99": 53.14380199939478,
+          "min": 28.15080003347248,
+          "max": 53.354599978774786
+        },
+        "postprocess_ms": {
+          "mean": 0.16569800209254026,
+          "p50": 0.17344998195767403,
+          "p95": 0.22045999066904184,
+          "p99": 0.2495070052100345,
+          "min": 0.12720003724098206,
+          "max": 0.26699999580159783
+        },
+        "total_ms": {
+          "mean": 45.550580004928634,
+          "p50": 47.44419999769889,
+          "p95": 54.340319987386465,
+          "p99": 59.966409992193796,
+          "min": 32.772500009741634,
+          "max": 62.475699989590794
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\benchmarks\\profiles\\ort-profile_2026-11-02_14-46-25_297.json",
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 788
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      }
+    },
+    {
+      "name": "rf-detr-nano",
+      "session_create_seconds": 0.41124470002250746,
+      "status": "ok",
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "manifest": {
+        "schema_version": "0.1",
+        "name": "rf-detr-nano",
+        "contract": "rfdetr_raw",
+        "sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+        "checkpoint_sha256": "d8d6b9ee57d4d0ed2b1f305163624712a0532cb7bce0c747317984fc5457440d",
+        "checkpoint_url": "https://repo.roboflow.com/rfdetr/nano_coco/checkpoint_best_regular.pth",
+        "license_basis": "Apache-2.0 Nano weights; other family sizes can differ",
+        "source": "https://github.com/roboflow/rf-detr",
+        "export": {
+          "rfdetr": "1.11.2"
+        },
+        "parity": {
+          "status": "upstream_export",
+          "note": "Upstream RF-DETR exporter; no independent PyTorch/ONNX parity check performed by this script."
+        },
+        "inputs": [
+          "input"
+        ],
+        "outputs": [
+          "dets",
+          "labels"
+        ],
+        "precision": "FP32",
+        "batch": 1,
+        "external_data": []
+      },
+      "onnxruntime": "1.31.1",
+      "selected_provider": "cpu",
+      "provider_note": "Explicit provider request; initialization failure is an error.",
+      "intra_op_threads": 4,
+      "session_providers": [
+        "CPUExecutionProvider"
+      ],
+      "timings_ms": {
+        "preprocess_ms": {
+          "mean": 3.259544000029564,
+          "p50": 3.197249985532835,
+          "p95": 3.5445149696897715,
+          "p99": 3.7122059898683797,
+          "min": 3.02539998665452,
+          "max": 3.8252000231295824
+        },
+        "inference_transfer_ms": {
+          "mean": 74.36430200119503,
+          "p50": 73.98370001465082,
+          "p95": 77.03309502685443,
+          "p99": 79.36886001261882,
+          "min": 72.51249998807907,
+          "max": 79.55800002673641
+        },
+        "postprocess_ms": {
+          "mean": 1.683523996034637,
+          "p50": 1.661149988649413,
+          "p95": 1.8307350284885615,
+          "p99": 1.9277499761665238,
+          "min": 1.6355000552721322,
+          "max": 1.9595999619923532
+        },
+        "total_ms": {
+          "mean": 79.30736999725923,
+          "p50": 78.88824999099597,
+          "p95": 82.3002000048291,
+          "p99": 84.4867669721134,
+          "min": 77.30860001174733,
+          "max": 84.74729995941743
+        }
+      },
+      "profile": {
+        "file": "outputs\\behaviorkit-prototype\\benchmarks\\profiles\\ort-profile_2026-11-02_14-46-31_272.json",
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 715
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      }
+    }
+  ],
+  "environment_after": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.3.0",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel"
+  }
+}

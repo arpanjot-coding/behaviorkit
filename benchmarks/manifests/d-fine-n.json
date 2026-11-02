@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "name": "d-fine-n",
+  "contract": "dfine_deploy",
+  "sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+  "checkpoint_sha256": "41973938d2784d38a9836990d805b8392855ebf611aba55f0f7add90e110744c",
+  "checkpoint_url": "https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
+  "license_basis": "Apache-2.0; use COCO-only checkpoint, review upstream terms",
+  "source": "https://github.com/Peterande/D-FINE",
+  "export": {
+    "upstream_commit": "956d1709314c2c6a4df6f34de232054578a7449f"
+  },
+  "parity": {
+    "status": "passed",
+    "sample": "one seeded random tensor; tensor parity, not accuracy",
+    "alignment": "same-label box/score bipartite alignment for D-FINE top-K tie permutations",
+    "max_absolute_error": {
+      "labels": 0.0,
+      "boxes": 0.00390625,
+      "scores": 1.9352883100509644e-06
+    }
+  },
+  "inputs": [
+    "images",
+    "orig_target_sizes"
+  ],
+  "outputs": [
+    "labels",
+    "boxes",
+    "scores"
+  ],
+  "precision": "FP32",
+  "batch": 1,
+  "external_data": []
+}

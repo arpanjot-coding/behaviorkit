@@ -1,0 +1,4184 @@
+{
+  "summary": {
+    "case": "shelf",
+    "model": "rf-detr-nano",
+    "provider": "cuda",
+    "status": "executed",
+    "sampled_frames": 70,
+    "events": 1,
+    "count_min": 0,
+    "count_max": 1,
+    "track_ids_seen": 1,
+    "reset_records": 0,
+    "p50_detector_ms": 11.241050000535324,
+    "spot_checks": {
+      "checks": [
+        {
+          "t": 1,
+          "count": 1,
+          "status": "scored",
+          "sample_timestamp": 1.0,
+          "observed": 1,
+          "absolute_error": 0
+        },
+        {
+          "t": 3,
+          "count": 1,
+          "status": "scored",
+          "sample_timestamp": 3.0,
+          "observed": 1,
+          "absolute_error": 0
+        },
+        {
+          "t": 5,
+          "count": 1,
+          "status": "scored",
+          "sample_timestamp": 5.0,
+          "observed": 1,
+          "absolute_error": 0
+        },
+        {
+          "t": 7,
+          "count": 1,
+          "status": "scored",
+          "sample_timestamp": 7.0,
+          "observed": 1,
+          "absolute_error": 0
+        },
+        {
+          "t": 10,
+          "count": 1,
+          "status": "scored",
+          "sample_timestamp": 10.0,
+          "observed": 1,
+          "absolute_error": 0
+        },
+        {
+          "t": 13,
+          "count": 1,
+          "status": "scored",
+          "sample_timestamp": 13.0,
+          "observed": 1,
+          "absolute_error": 0
+        }
+      ],
+      "scored": 6,
+      "exact": 6,
+      "mean_absolute_error": 0,
+      "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+    },
+    "complex_behavior": {
+      "supported": false,
+      "library_prediction": null,
+      "human_reference": "normal product handling; action recognition unsupported",
+      "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+    },
+    "replay_verified": true,
+    "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+    "observations_sha256": "ec2a33f790b7ccc4b63e2a354e59a826853433ff854002fe2707556ae64b9a81"
+  },
+  "frames": [
+    {
+      "timestamp": 0.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9506278038024902,
+          "box": [
+            0.3190667152404785,
+            0.009069353562814218,
+            0.8949317296346029,
+            0.9909377486617477
+          ]
+        }
+      ],
+      "tracks": [],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 0.0,
+        "count": 0,
+        "status": "observed",
+        "track_ids": []
+      },
+      "dwell": [],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.4998999908566475,
+        "inference_transfer_ms": 343.77500001573935,
+        "postprocess_ms": 1.878199982456863,
+        "total_ms": 349.15309998905286
+      }
+    },
+    {
+      "timestamp": 0.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9482083916664124,
+          "box": [
+            0.32679271697998047,
+            0.00869959548667625,
+            0.8933455785115559,
+            0.9908387360749421
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9482083916664124,
+          "box": [
+            0.32679271697998047,
+            0.00869959548667625,
+            0.8933455785115559,
+            0.9908387360749421
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 0.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 0.2,
+          "duration": 0.0,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0054000089876354,
+        "inference_transfer_ms": 6.847699987702072,
+        "postprocess_ms": 1.6937999753281474,
+        "total_ms": 11.546899972017854
+      }
+    },
+    {
+      "timestamp": 0.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9522028565406799,
+          "box": [
+            0.32915401458740234,
+            0.008449554443359375,
+            0.8915847778320313,
+            0.9919648347077547
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9522028565406799,
+          "box": [
+            0.32915401458740234,
+            0.008449554443359375,
+            0.8915847778320313,
+            0.9919648347077547
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 0.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 0.4,
+          "duration": 0.2,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.009400039445609,
+        "inference_transfer_ms": 6.543700001202524,
+        "postprocess_ms": 1.6526999534107745,
+        "total_ms": 11.205799994058907
+      }
+    },
+    {
+      "timestamp": 0.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9507649540901184,
+          "box": [
+            0.3234126408894857,
+            0.009164780157583732,
+            0.8894678115844726,
+            0.9907842565465856
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9507649540901184,
+          "box": [
+            0.3234126408894857,
+            0.009164780157583732,
+            0.8894678115844726,
+            0.9907842565465856
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 0.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 0.6,
+          "duration": 0.39999999999999997,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.950599999167025,
+        "inference_transfer_ms": 6.513900007121265,
+        "postprocess_ms": 1.622700016014278,
+        "total_ms": 11.087200022302568
+      }
+    },
+    {
+      "timestamp": 0.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9314749240875244,
+          "box": [
+            0.37795324325561525,
+            0.008194684982299805,
+            0.8877040863037109,
+            0.9901714183666088
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9314749240875244,
+          "box": [
+            0.37795324325561525,
+            0.008194684982299805,
+            0.8877040863037109,
+            0.9901714183666088
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 0.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 0.8,
+          "duration": 0.6000000000000001,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.028900013305247,
+        "inference_transfer_ms": 6.986399996094406,
+        "postprocess_ms": 1.7026999848894775,
+        "total_ms": 11.71799999428913
+      }
+    },
+    {
+      "timestamp": 1.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.924691379070282,
+          "box": [
+            0.4903330167134603,
+            0.008785486221313477,
+            0.8858657201131185,
+            0.9901023582175926
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.924691379070282,
+          "box": [
+            0.4903330167134603,
+            0.008785486221313477,
+            0.8858657201131185,
+            0.9901023582175926
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 1.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 1.0,
+          "duration": 0.8,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.016200033016503,
+        "inference_transfer_ms": 6.451199995353818,
+        "postprocess_ms": 1.7154999659396708,
+        "total_ms": 11.182899994309992
+      }
+    },
+    {
+      "timestamp": 1.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9427735805511475,
+          "box": [
+            0.5130261739095052,
+            0.008621871029889141,
+            0.8856128056844076,
+            0.9896546540436921
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9427735805511475,
+          "box": [
+            0.5130261739095052,
+            0.008621871029889141,
+            0.8856128056844076,
+            0.9896546540436921
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 1.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 1.2,
+          "duration": 1.0,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.089900012128055,
+        "inference_transfer_ms": 6.438600015826523,
+        "postprocess_ms": 1.6978999483399093,
+        "total_ms": 11.226399976294488
+      }
+    },
+    {
+      "timestamp": 1.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9248149394989014,
+          "box": [
+            0.5362075169881185,
+            0.008949339831316913,
+            0.8845043818155924,
+            0.9897023518880208
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9248149394989014,
+          "box": [
+            0.5362075169881185,
+            0.008949339831316913,
+            0.8845043818155924,
+            0.9897023518880208
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 1.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 1.4,
+          "duration": 1.2,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0119000002741814,
+        "inference_transfer_ms": 6.651500007137656,
+        "postprocess_ms": 1.672999991569668,
+        "total_ms": 11.336399998981506
+      }
+    },
+    {
+      "timestamp": 1.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9347196817398071,
+          "box": [
+            0.5334504445393881,
+            0.008891016465646249,
+            0.8842760721842448,
+            0.9897186279296875
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9347196817398071,
+          "box": [
+            0.5334504445393881,
+            0.008891016465646249,
+            0.8842760721842448,
+            0.9897186279296875
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 1.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 1.6,
+          "duration": 1.4000000000000001,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.249800007324666,
+        "inference_transfer_ms": 6.593100028112531,
+        "postprocess_ms": 1.668799959588796,
+        "total_ms": 11.511699995025992
+      }
+    },
+    {
+      "timestamp": 1.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.943088710308075,
+          "box": [
+            0.5280339241027832,
+            0.0076487064361572266,
+            0.8845823287963868,
+            0.9905628345630787
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.943088710308075,
+          "box": [
+            0.5280339241027832,
+            0.0076487064361572266,
+            0.8845823287963868,
+            0.9905628345630787
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 1.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 1.8,
+          "duration": 1.6,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0525000183843076,
+        "inference_transfer_ms": 7.314299989957362,
+        "postprocess_ms": 1.8921000300906599,
+        "total_ms": 12.25890003843233
+      }
+    },
+    {
+      "timestamp": 2.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9442960023880005,
+          "box": [
+            0.5308411280314128,
+            0.008925884741323966,
+            0.8851538976033528,
+            0.9910608362268518
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9442960023880005,
+          "box": [
+            0.5308411280314128,
+            0.008925884741323966,
+            0.8851538976033528,
+            0.9910608362268518
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 2.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 2.0,
+          "duration": 1.8,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0530999647453427,
+        "inference_transfer_ms": 6.775900023058057,
+        "postprocess_ms": 1.6693000216037035,
+        "total_ms": 11.498300009407103
+      }
+    },
+    {
+      "timestamp": 2.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9455342888832092,
+          "box": [
+            0.5428288141886394,
+            0.008364111405831796,
+            0.8853178024291992,
+            0.9895413999204282
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9455342888832092,
+          "box": [
+            0.5428288141886394,
+            0.008364111405831796,
+            0.8853178024291992,
+            0.9895413999204282
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 2.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 2.2,
+          "duration": 2.0,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0128000071272254,
+        "inference_transfer_ms": 6.412799993995577,
+        "postprocess_ms": 1.7137000104412436,
+        "total_ms": 11.139300011564046
+      }
+    },
+    {
+      "timestamp": 2.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9429164528846741,
+          "box": [
+            0.5475077311197917,
+            0.008058041113394279,
+            0.8852509180704753,
+            0.9896874321831597
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9429164528846741,
+          "box": [
+            0.5475077311197917,
+            0.008058041113394279,
+            0.8852509180704753,
+            0.9896874321831597
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 2.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 2.4,
+          "duration": 2.1999999999999997,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.180300001986325,
+        "inference_transfer_ms": 6.652200012467802,
+        "postprocess_ms": 1.6607000143267214,
+        "total_ms": 11.493200028780848
+      }
+    },
+    {
+      "timestamp": 2.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.937660813331604,
+          "box": [
+            0.5511122385660807,
+            0.008921235579031486,
+            0.8864391326904297,
+            0.9893783004195602
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.937660813331604,
+          "box": [
+            0.5511122385660807,
+            0.008921235579031486,
+            0.8864391326904297,
+            0.9893783004195602
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 2.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 2.6,
+          "duration": 2.4,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.96920002438128,
+        "inference_transfer_ms": 6.547299970407039,
+        "postprocess_ms": 1.6420999891124666,
+        "total_ms": 11.158599983900785
+      }
+    },
+    {
+      "timestamp": 2.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9256057739257812,
+          "box": [
+            0.5486684163411458,
+            0.008755683898925781,
+            0.88675963083903,
+            0.990614488389757
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9256057739257812,
+          "box": [
+            0.5486684163411458,
+            0.008755683898925781,
+            0.88675963083903,
+            0.990614488389757
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 2.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 2.8,
+          "duration": 2.5999999999999996,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9575999942608178,
+        "inference_transfer_ms": 6.928799964953214,
+        "postprocess_ms": 1.6908000106923282,
+        "total_ms": 11.57719996990636
+      }
+    },
+    {
+      "timestamp": 3.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9240652322769165,
+          "box": [
+            0.5658732732137044,
+            0.009252578240853768,
+            0.8870691935221354,
+            0.9902069091796875
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9240652322769165,
+          "box": [
+            0.5658732732137044,
+            0.009252578240853768,
+            0.8870691935221354,
+            0.9902069091796875
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 3.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 3.0,
+          "duration": 2.8,
+          "emitted": false
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.886399975977838,
+        "inference_transfer_ms": 6.611099990550429,
+        "postprocess_ms": 1.658799999859184,
+        "total_ms": 11.15629996638745
+      }
+    },
+    {
+      "timestamp": 3.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9062715172767639,
+          "box": [
+            0.5642506917317708,
+            0.009358495253103751,
+            0.8879011789957683,
+            0.9894161648220486
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9062715172767639,
+          "box": [
+            0.5642506917317708,
+            0.009358495253103751,
+            0.8879011789957683,
+            0.9894161648220486
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 3.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 3.2,
+          "duration": 3.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [
+        {
+          "id": "1bdb5a65b1047e30dfa586404dffd0ad9235e54167b19a61edc39adb7be0caf8",
+          "identity_version": 2,
+          "config_fingerprint": "5b5af5c113a8ac08489444273ef80c0a7d098fb5dbac21b16645ae15ee9fb13f",
+          "kind": "person_dwell",
+          "rule": "observed_dwell",
+          "source": "shelf",
+          "epoch": "0",
+          "track_id": "1",
+          "zone": "view",
+          "start": 0.2,
+          "timestamp": 3.2,
+          "duration_seconds": 3.0,
+          "status": "confirmed_by_rule",
+          "evidence": {
+            "anchor": "bottom_center",
+            "confidence": 0.9062715172767639,
+            "box": [
+              0.5642506917317708,
+              0.009358495253103751,
+              0.8879011789957683,
+              0.9894161648220486
+            ],
+            "max_gap_seconds": 0.5,
+            "unknown_policy": "reset",
+            "interpretation": "sampled zone membership; no intent inferred"
+          }
+        }
+      ],
+      "timings_ms": {
+        "preprocess_ms": 3.015000023879111,
+        "inference_transfer_ms": 6.262300012167543,
+        "postprocess_ms": 1.615599961951375,
+        "total_ms": 10.892899997998029
+      }
+    },
+    {
+      "timestamp": 3.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9157036542892456,
+          "box": [
+            0.5495047251383464,
+            0.009594052809256095,
+            0.8908902486165364,
+            0.9909094916449652
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9157036542892456,
+          "box": [
+            0.5495047251383464,
+            0.009594052809256095,
+            0.8908902486165364,
+            0.9909094916449652
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 3.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 3.4,
+          "duration": 3.1999999999999997,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9690999654121697,
+        "inference_transfer_ms": 7.115699991118163,
+        "postprocess_ms": 1.7139000119641423,
+        "total_ms": 11.798699968494475
+      }
+    },
+    {
+      "timestamp": 3.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9226751327514648,
+          "box": [
+            0.5567771275838216,
+            0.009218185919302482,
+            0.8909189860026042,
+            0.9898940474898726
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9226751327514648,
+          "box": [
+            0.5567771275838216,
+            0.009218185919302482,
+            0.8909189860026042,
+            0.9898940474898726
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 3.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 3.6,
+          "duration": 3.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.1589000136591494,
+        "inference_transfer_ms": 6.5793999820016325,
+        "postprocess_ms": 1.698700012639165,
+        "total_ms": 11.437000008299947
+      }
+    },
+    {
+      "timestamp": 3.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.923723042011261,
+          "box": [
+            0.5736529032389323,
+            0.007786572421038592,
+            0.8902973810831706,
+            0.988913415979456
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.923723042011261,
+          "box": [
+            0.5736529032389323,
+            0.007786572421038592,
+            0.8902973810831706,
+            0.988913415979456
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 3.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 3.8,
+          "duration": 3.5999999999999996,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.879300038330257,
+        "inference_transfer_ms": 6.555299973115325,
+        "postprocess_ms": 1.7098000389523804,
+        "total_ms": 11.144400050397962
+      }
+    },
+    {
+      "timestamp": 4.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9213224053382874,
+          "box": [
+            0.5588130950927734,
+            0.007807433163678205,
+            0.8896697998046875,
+            0.9892025417751736
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9213224053382874,
+          "box": [
+            0.5588130950927734,
+            0.007807433163678205,
+            0.8896697998046875,
+            0.9892025417751736
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 4.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 4.0,
+          "duration": 3.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.153699974063784,
+        "inference_transfer_ms": 6.5614000195637345,
+        "postprocess_ms": 1.636900007724762,
+        "total_ms": 11.35200000135228
+      }
+    },
+    {
+      "timestamp": 4.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.919564425945282,
+          "box": [
+            0.5557210922241211,
+            0.007465094107168692,
+            0.8903504053751627,
+            0.9884668420862268
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.919564425945282,
+          "box": [
+            0.5557210922241211,
+            0.007465094107168692,
+            0.8903504053751627,
+            0.9884668420862268
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 4.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 4.2,
+          "duration": 4.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0067000188864768,
+        "inference_transfer_ms": 6.5747000044211745,
+        "postprocess_ms": 1.6288000042550266,
+        "total_ms": 11.210200027562678
+      }
+    },
+    {
+      "timestamp": 4.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.923441469669342,
+          "box": [
+            0.5328659375508626,
+            0.007566243630868418,
+            0.8930631001790365,
+            0.9907376889829282
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.923441469669342,
+          "box": [
+            0.5328659375508626,
+            0.007566243630868418,
+            0.8930631001790365,
+            0.9907376889829282
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 4.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 4.4,
+          "duration": 4.2,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9852999723516405,
+        "inference_transfer_ms": 7.0121000171639025,
+        "postprocess_ms": 1.7547999741509557,
+        "total_ms": 11.752199963666499
+      }
+    },
+    {
+      "timestamp": 4.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.954174280166626,
+          "box": [
+            0.49919420878092446,
+            0.008232771908795391,
+            0.893652598063151,
+            0.9894553855613426
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.954174280166626,
+          "box": [
+            0.49919420878092446,
+            0.008232771908795391,
+            0.893652598063151,
+            0.9894553855613426
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 4.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 4.6,
+          "duration": 4.3999999999999995,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9631999786943197,
+        "inference_transfer_ms": 6.899000029079616,
+        "postprocess_ms": 1.6431999974884093,
+        "total_ms": 11.505400005262345
+      }
+    },
+    {
+      "timestamp": 4.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9552640318870544,
+          "box": [
+            0.44764506022135414,
+            0.0071467461409392185,
+            0.8922629038492839,
+            0.9916476779513889
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9552640318870544,
+          "box": [
+            0.44764506022135414,
+            0.0071467461409392185,
+            0.8922629038492839,
+            0.9916476779513889
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 4.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 4.8,
+          "duration": 4.6,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0073000234551728,
+        "inference_transfer_ms": 6.285099952947348,
+        "postprocess_ms": 1.640500035136938,
+        "total_ms": 10.93290001153946
+      }
+    },
+    {
+      "timestamp": 5.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9641904234886169,
+          "box": [
+            0.3814996083577474,
+            0.0054042039094147854,
+            0.8892910639444987,
+            0.9912500452112268
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9641904234886169,
+          "box": [
+            0.3814996083577474,
+            0.0054042039094147854,
+            0.8892910639444987,
+            0.9912500452112268
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 5.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 5.0,
+          "duration": 4.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.035200003068894,
+        "inference_transfer_ms": 6.897200015373528,
+        "postprocess_ms": 1.6582999960519373,
+        "total_ms": 11.59070001449436
+      }
+    },
+    {
+      "timestamp": 5.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9652494192123413,
+          "box": [
+            0.3397385915120443,
+            0.006098538857919199,
+            0.886801274617513,
+            0.9920404504846644
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9652494192123413,
+          "box": [
+            0.3397385915120443,
+            0.006098538857919199,
+            0.886801274617513,
+            0.9920404504846644
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 5.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 5.2,
+          "duration": 5.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0451000202447176,
+        "inference_transfer_ms": 6.231200008187443,
+        "postprocess_ms": 1.6367999487556517,
+        "total_ms": 10.913099977187812
+      }
+    },
+    {
+      "timestamp": 5.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9603542685508728,
+          "box": [
+            0.268097972869873,
+            0.010237425344961661,
+            0.8708866755167644,
+            0.9931146692346644
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9603542685508728,
+          "box": [
+            0.268097972869873,
+            0.010237425344961661,
+            0.8708866755167644,
+            0.9931146692346644
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 5.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 5.4,
+          "duration": 5.2,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.998999960254878,
+        "inference_transfer_ms": 6.775700021535158,
+        "postprocess_ms": 1.7021999810822308,
+        "total_ms": 11.476899962872267
+      }
+    },
+    {
+      "timestamp": 5.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9623966217041016,
+          "box": [
+            0.200381072362264,
+            0.010062187689322013,
+            0.8540110270182292,
+            0.9864484998914931
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9623966217041016,
+          "box": [
+            0.200381072362264,
+            0.010062187689322013,
+            0.8540110270182292,
+            0.9864484998914931
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 5.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 5.6,
+          "duration": 5.3999999999999995,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0835000216029584,
+        "inference_transfer_ms": 6.407800014130771,
+        "postprocess_ms": 1.707899966277182,
+        "total_ms": 11.199200002010912
+      }
+    },
+    {
+      "timestamp": 5.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9676378965377808,
+          "box": [
+            0.12074315547943115,
+            0.013808220404165763,
+            0.8406134287516276,
+            0.9932039614076967
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9676378965377808,
+          "box": [
+            0.12074315547943115,
+            0.013808220404165763,
+            0.8406134287516276,
+            0.9932039614076967
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 5.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 5.8,
+          "duration": 5.6,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.935800002887845,
+        "inference_transfer_ms": 6.381799990776926,
+        "postprocess_ms": 1.6160000232048333,
+        "total_ms": 10.933600016869605
+      }
+    },
+    {
+      "timestamp": 6.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.945622444152832,
+          "box": [
+            0.10170578956604004,
+            0.011569976806640625,
+            0.8325962066650391,
+            0.9904361300998263
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.945622444152832,
+          "box": [
+            0.10170578956604004,
+            0.011569976806640625,
+            0.8325962066650391,
+            0.9904361300998263
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 6.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 6.0,
+          "duration": 5.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.999100019223988,
+        "inference_transfer_ms": 7.015699986368418,
+        "postprocess_ms": 1.6872999840416014,
+        "total_ms": 11.702099989634007
+      }
+    },
+    {
+      "timestamp": 6.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9776827692985535,
+          "box": [
+            0.07123872439066568,
+            0.009905606729012948,
+            0.8218321482340495,
+            0.9901182951750579
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9776827692985535,
+          "box": [
+            0.07123872439066568,
+            0.009905606729012948,
+            0.8218321482340495,
+            0.9901182951750579
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 6.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 6.2,
+          "duration": 6.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9202000005170703,
+        "inference_transfer_ms": 7.445299997925758,
+        "postprocess_ms": 1.677699969150126,
+        "total_ms": 12.043199967592955
+      }
+    },
+    {
+      "timestamp": 6.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9752559065818787,
+          "box": [
+            0.05939406156539917,
+            0.00694903709270336,
+            0.8116813659667969,
+            0.9921836570457175
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9752559065818787,
+          "box": [
+            0.05939406156539917,
+            0.00694903709270336,
+            0.8116813659667969,
+            0.9921836570457175
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 6.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 6.4,
+          "duration": 6.2,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.967699954751879,
+        "inference_transfer_ms": 6.368500005919486,
+        "postprocess_ms": 1.7217000131495297,
+        "total_ms": 11.057899973820895
+      }
+    },
+    {
+      "timestamp": 6.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9762322902679443,
+          "box": [
+            0.05113869905471802,
+            0.0056906046690764255,
+            0.8046698888142904,
+            0.9912850839120371
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9762322902679443,
+          "box": [
+            0.05113869905471802,
+            0.0056906046690764255,
+            0.8046698888142904,
+            0.9912850839120371
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 6.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 6.6,
+          "duration": 6.3999999999999995,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9676000121980906,
+        "inference_transfer_ms": 6.529000005684793,
+        "postprocess_ms": 1.610899984370917,
+        "total_ms": 11.1075000022538
+      }
+    },
+    {
+      "timestamp": 6.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9744112491607666,
+          "box": [
+            0.04994034767150879,
+            0.005842238885385019,
+            0.7978724161783854,
+            0.9916337754991319
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9744112491607666,
+          "box": [
+            0.04994034767150879,
+            0.005842238885385019,
+            0.7978724161783854,
+            0.9916337754991319
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 6.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 6.8,
+          "duration": 6.6,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9548000311478972,
+        "inference_transfer_ms": 6.377599958796054,
+        "postprocess_ms": 1.6636000364087522,
+        "total_ms": 10.996000026352704
+      }
+    },
+    {
+      "timestamp": 7.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9736039638519287,
+          "box": [
+            0.05014723539352417,
+            0.004775285720825195,
+            0.7920421600341797,
+            0.9931987621166088
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9736039638519287,
+          "box": [
+            0.05014723539352417,
+            0.004775285720825195,
+            0.7920421600341797,
+            0.9931987621166088
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 7.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 7.0,
+          "duration": 6.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.8842000174336135,
+        "inference_transfer_ms": 6.927100010216236,
+        "postprocess_ms": 1.7852999735623598,
+        "total_ms": 11.59660000121221
+      }
+    },
+    {
+      "timestamp": 7.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9684970378875732,
+          "box": [
+            0.05218839645385742,
+            0.00598165370799877,
+            0.7889844258626302,
+            0.9925323486328125
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9684970378875732,
+          "box": [
+            0.05218839645385742,
+            0.00598165370799877,
+            0.7889844258626302,
+            0.9925323486328125
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 7.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 7.2,
+          "duration": 7.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.01360001321882,
+        "inference_transfer_ms": 6.756399990990758,
+        "postprocess_ms": 1.7084000282920897,
+        "total_ms": 11.478400032501668
+      }
+    },
+    {
+      "timestamp": 7.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9718604683876038,
+          "box": [
+            0.046228679021199544,
+            0.005531251430511475,
+            0.7837734222412109,
+            0.9930841516565394
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9718604683876038,
+          "box": [
+            0.046228679021199544,
+            0.005531251430511475,
+            0.7837734222412109,
+            0.9930841516565394
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 7.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 7.4,
+          "duration": 7.2,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9797000461257994,
+        "inference_transfer_ms": 6.529199949000031,
+        "postprocess_ms": 1.6753000090830028,
+        "total_ms": 11.184200004208833
+      }
+    },
+    {
+      "timestamp": 7.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9719308614730835,
+          "box": [
+            0.04299890995025635,
+            0.006096065044403076,
+            0.7804068247477214,
+            0.9915040192780671
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9719308614730835,
+          "box": [
+            0.04299890995025635,
+            0.006096065044403076,
+            0.7804068247477214,
+            0.9915040192780671
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 7.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 7.6,
+          "duration": 7.3999999999999995,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0459999688901007,
+        "inference_transfer_ms": 6.596399995032698,
+        "postprocess_ms": 1.657599990721792,
+        "total_ms": 11.29999995464459
+      }
+    },
+    {
+      "timestamp": 7.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.972984790802002,
+          "box": [
+            0.04176577726999919,
+            0.005790084379690664,
+            0.7788675944010417,
+            0.9901241726345487
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.972984790802002,
+          "box": [
+            0.04176577726999919,
+            0.005790084379690664,
+            0.7788675944010417,
+            0.9901241726345487
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 7.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 7.8,
+          "duration": 7.6,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.8792000375688076,
+        "inference_transfer_ms": 6.543600000441074,
+        "postprocess_ms": 1.6279999981634319,
+        "total_ms": 11.050800036173314
+      }
+    },
+    {
+      "timestamp": 8.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9758118987083435,
+          "box": [
+            0.06680548191070557,
+            0.004891067964059336,
+            0.7787275314331055,
+            0.9906756365740741
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9758118987083435,
+          "box": [
+            0.06680548191070557,
+            0.004891067964059336,
+            0.7787275314331055,
+            0.9906756365740741
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 8.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 8.0,
+          "duration": 7.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.952700015157461,
+        "inference_transfer_ms": 6.594399979803711,
+        "postprocess_ms": 1.684500020928681,
+        "total_ms": 11.231600015889853
+      }
+    },
+    {
+      "timestamp": 8.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9757807850837708,
+          "box": [
+            0.11064562002817789,
+            0.003218322992324829,
+            0.7761330922444661,
+            0.9891126844618056
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9757807850837708,
+          "box": [
+            0.11064562002817789,
+            0.003218322992324829,
+            0.7761330922444661,
+            0.9891126844618056
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 8.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 8.2,
+          "duration": 7.999999999999999,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.933999989181757,
+        "inference_transfer_ms": 6.604499998502433,
+        "postprocess_ms": 1.720000000204891,
+        "total_ms": 11.258499987889081
+      }
+    },
+    {
+      "timestamp": 8.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9644361734390259,
+          "box": [
+            0.2006707827250163,
+            1.1444091796875e-05,
+            0.7727833429972331,
+            0.9914368806061922
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9644361734390259,
+          "box": [
+            0.2006707827250163,
+            1.1444091796875e-05,
+            0.7727833429972331,
+            0.9914368806061922
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 8.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 8.4,
+          "duration": 8.200000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9328999808058143,
+        "inference_transfer_ms": 6.42130000051111,
+        "postprocess_ms": 1.5888999914750457,
+        "total_ms": 10.94309997279197
+      }
+    },
+    {
+      "timestamp": 8.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9483224153518677,
+          "box": [
+            0.3509700775146484,
+            5.65648078918457e-05,
+            0.7701101938883463,
+            0.991774156358507
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9483224153518677,
+          "box": [
+            0.3509700775146484,
+            5.65648078918457e-05,
+            0.7701101938883463,
+            0.991774156358507
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 8.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 8.6,
+          "duration": 8.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9263999895192683,
+        "inference_transfer_ms": 7.058000017423183,
+        "postprocess_ms": 1.6713999793864787,
+        "total_ms": 11.65579998632893
+      }
+    },
+    {
+      "timestamp": 8.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9504882097244263,
+          "box": [
+            0.3679560979207357,
+            0.0019139349460601807,
+            0.7712427775065104,
+            0.9923716227213542
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9504882097244263,
+          "box": [
+            0.3679560979207357,
+            0.0019139349460601807,
+            0.7712427775065104,
+            0.9923716227213542
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 8.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 8.8,
+          "duration": 8.600000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9784999787807465,
+        "inference_transfer_ms": 7.480000029318035,
+        "postprocess_ms": 1.671799982432276,
+        "total_ms": 12.130299990531057
+      }
+    },
+    {
+      "timestamp": 9.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9531538486480713,
+          "box": [
+            0.3646876653035482,
+            0.001002579927444458,
+            0.7737243016560872,
+            0.9923832646122686
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9531538486480713,
+          "box": [
+            0.3646876653035482,
+            0.001002579927444458,
+            0.7737243016560872,
+            0.9923832646122686
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 9.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 9.0,
+          "duration": 8.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9195999959483743,
+        "inference_transfer_ms": 6.31460000295192,
+        "postprocess_ms": 1.6568999853916466,
+        "total_ms": 10.891099984291941
+      }
+    },
+    {
+      "timestamp": 9.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9292743802070618,
+          "box": [
+            0.4104204813639323,
+            0.0009826123714447021,
+            0.7775906880696615,
+            0.9898213704427083
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9292743802070618,
+          "box": [
+            0.4104204813639323,
+            0.0009826123714447021,
+            0.7775906880696615,
+            0.9898213704427083
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 9.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 9.2,
+          "duration": 9.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9987000161781907,
+        "inference_transfer_ms": 6.398500001523644,
+        "postprocess_ms": 1.6322999726980925,
+        "total_ms": 11.029499990399927
+      }
+    },
+    {
+      "timestamp": 9.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.951299786567688,
+          "box": [
+            0.38392937978108727,
+            0.0010017156600952148,
+            0.783456548055013,
+            0.9911616572627315
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.951299786567688,
+          "box": [
+            0.38392937978108727,
+            0.0010017156600952148,
+            0.783456548055013,
+            0.9911616572627315
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 9.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 9.4,
+          "duration": 9.200000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.1786999898031354,
+        "inference_transfer_ms": 6.26999995438382,
+        "postprocess_ms": 1.6092000296339393,
+        "total_ms": 11.057899973820895
+      }
+    },
+    {
+      "timestamp": 9.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9573872685432434,
+          "box": [
+            0.4006402015686035,
+            0.0010561048984527588,
+            0.7879932403564454,
+            0.9907175699869791
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9573872685432434,
+          "box": [
+            0.4006402015686035,
+            0.0010561048984527588,
+            0.7879932403564454,
+            0.9907175699869791
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 9.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 9.6,
+          "duration": 9.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0384999699890614,
+        "inference_transfer_ms": 7.04660004703328,
+        "postprocess_ms": 1.7124000005424023,
+        "total_ms": 11.797500017564744
+      }
+    },
+    {
+      "timestamp": 9.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9596598148345947,
+          "box": [
+            0.4151585261027018,
+            0.0009214878082275391,
+            0.7921657562255859,
+            0.9899883128978588
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9596598148345947,
+          "box": [
+            0.4151585261027018,
+            0.0009214878082275391,
+            0.7921657562255859,
+            0.9899883128978588
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 9.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 9.8,
+          "duration": 9.600000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.951399947050959,
+        "inference_transfer_ms": 6.576600018888712,
+        "postprocess_ms": 1.62240001372993,
+        "total_ms": 11.1503999796696
+      }
+    },
+    {
+      "timestamp": 10.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9583612680435181,
+          "box": [
+            0.4134679794311523,
+            0.0008816719055175781,
+            0.7962352116902669,
+            0.9901870162398727
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9583612680435181,
+          "box": [
+            0.4134679794311523,
+            0.0008816719055175781,
+            0.7962352116902669,
+            0.9901870162398727
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 10.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 10.0,
+          "duration": 9.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.101400041487068,
+        "inference_transfer_ms": 6.3372000004164875,
+        "postprocess_ms": 1.6230999608524144,
+        "total_ms": 11.06170000275597
+      }
+    },
+    {
+      "timestamp": 10.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9460362195968628,
+          "box": [
+            0.41715501149495443,
+            0.0009126961231231689,
+            0.7962504704793294,
+            0.9903319182219329
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9460362195968628,
+          "box": [
+            0.41715501149495443,
+            0.0009126961231231689,
+            0.7962504704793294,
+            0.9903319182219329
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 10.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 10.2,
+          "duration": 10.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.131499979645014,
+        "inference_transfer_ms": 6.814599968492985,
+        "postprocess_ms": 1.6496000462211668,
+        "total_ms": 11.595699994359165
+      }
+    },
+    {
+      "timestamp": 10.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9559873938560486,
+          "box": [
+            0.4128958384195964,
+            0.0012901127338409424,
+            0.7937913258870443,
+            0.9903485333478009
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9559873938560486,
+          "box": [
+            0.4128958384195964,
+            0.0012901127338409424,
+            0.7937913258870443,
+            0.9903485333478009
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 10.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 10.4,
+          "duration": 10.200000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0697000329382718,
+        "inference_transfer_ms": 6.318399973679334,
+        "postprocess_ms": 1.6207000007852912,
+        "total_ms": 11.008800007402897
+      }
+    },
+    {
+      "timestamp": 10.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9253780245780945,
+          "box": [
+            0.4544742266337077,
+            0.000759124755859375,
+            0.7904750188191731,
+            0.9894205729166666
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9253780245780945,
+          "box": [
+            0.4544742266337077,
+            0.000759124755859375,
+            0.7904750188191731,
+            0.9894205729166666
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 10.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 10.6,
+          "duration": 10.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.865099988412112,
+        "inference_transfer_ms": 6.479400035459548,
+        "postprocess_ms": 1.6445000073872507,
+        "total_ms": 10.989000031258911
+      }
+    },
+    {
+      "timestamp": 10.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9405364394187927,
+          "box": [
+            0.43930123647054037,
+            0.0012538135051727295,
+            0.7857308705647786,
+            0.9893616852936922
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9405364394187927,
+          "box": [
+            0.43930123647054037,
+            0.0012538135051727295,
+            0.7857308705647786,
+            0.9893616852936922
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 10.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 10.8,
+          "duration": 10.600000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.998200012370944,
+        "inference_transfer_ms": 6.569099961780012,
+        "postprocess_ms": 1.6084000235423446,
+        "total_ms": 11.1756999976933
+      }
+    },
+    {
+      "timestamp": 11.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9349442720413208,
+          "box": [
+            0.4137859026590983,
+            0.0020165741443634033,
+            0.7807626724243164,
+            0.990030359338831
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9349442720413208,
+          "box": [
+            0.4137859026590983,
+            0.0020165741443634033,
+            0.7807626724243164,
+            0.990030359338831
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 11.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 11.0,
+          "duration": 10.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.085399977862835,
+        "inference_transfer_ms": 6.426699983421713,
+        "postprocess_ms": 1.7384000238962471,
+        "total_ms": 11.250499985180795
+      }
+    },
+    {
+      "timestamp": 11.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9492861032485962,
+          "box": [
+            0.3717768669128418,
+            0.00230252742767334,
+            0.7785565058390299,
+            0.9898335774739583
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9492861032485962,
+          "box": [
+            0.3717768669128418,
+            0.00230252742767334,
+            0.7785565058390299,
+            0.9898335774739583
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 11.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 11.2,
+          "duration": 11.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0057000112719834,
+        "inference_transfer_ms": 6.483100005425513,
+        "postprocess_ms": 1.6611000173725188,
+        "total_ms": 11.149900034070015
+      }
+    },
+    {
+      "timestamp": 11.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.956210732460022,
+          "box": [
+            0.3207756360371908,
+            0.001320481300354004,
+            0.7757059097290039,
+            0.9891385678891782
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.956210732460022,
+          "box": [
+            0.3207756360371908,
+            0.001320481300354004,
+            0.7757059097290039,
+            0.9891385678891782
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 11.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 11.4,
+          "duration": 11.200000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.073300002142787,
+        "inference_transfer_ms": 6.912600016221404,
+        "postprocess_ms": 1.699900021776557,
+        "total_ms": 11.685800040140748
+      }
+    },
+    {
+      "timestamp": 11.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9614848494529724,
+          "box": [
+            0.2832963307698568,
+            0.0024205446243286133,
+            0.7720671971638997,
+            0.9891204833984375
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9614848494529724,
+          "box": [
+            0.2832963307698568,
+            0.0024205446243286133,
+            0.7720671971638997,
+            0.9891204833984375
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 11.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 11.6,
+          "duration": 11.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0832000193186104,
+        "inference_transfer_ms": 6.548799981828779,
+        "postprocess_ms": 1.757299993187189,
+        "total_ms": 11.389299994334579
+      }
+    },
+    {
+      "timestamp": 11.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9677672982215881,
+          "box": [
+            0.26589959462483725,
+            0.002284616231918335,
+            0.7733346939086914,
+            0.9895132559317129
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9677672982215881,
+          "box": [
+            0.26589959462483725,
+            0.002284616231918335,
+            0.7733346939086914,
+            0.9895132559317129
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 11.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 11.8,
+          "duration": 11.600000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.97960004536435,
+        "inference_transfer_ms": 6.8014999851584435,
+        "postprocess_ms": 1.669999968726188,
+        "total_ms": 11.451099999248981
+      }
+    },
+    {
+      "timestamp": 12.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.960212230682373,
+          "box": [
+            0.17014780044555664,
+            0.002530008554458618,
+            0.7788741429646809,
+            0.9907505741825811
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.960212230682373,
+          "box": [
+            0.17014780044555664,
+            0.002530008554458618,
+            0.7788741429646809,
+            0.9907505741825811
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 12.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 12.0,
+          "duration": 11.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.126900002826005,
+        "inference_transfer_ms": 6.331199954729527,
+        "postprocess_ms": 1.645500015001744,
+        "total_ms": 11.103599972557276
+      }
+    },
+    {
+      "timestamp": 12.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9680942296981812,
+          "box": [
+            0.10610544681549072,
+            0.0023374557495117188,
+            0.7856812795003255,
+            0.9886312979239005
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9680942296981812,
+          "box": [
+            0.10610544681549072,
+            0.0023374557495117188,
+            0.7856812795003255,
+            0.9886312979239005
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 12.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 12.2,
+          "duration": 12.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.07740003336221,
+        "inference_transfer_ms": 8.317200001329184,
+        "postprocess_ms": 1.6931999707594514,
+        "total_ms": 13.087800005450845
+      }
+    },
+    {
+      "timestamp": 12.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.978195309638977,
+          "box": [
+            0.07504719098409017,
+            0.0013479888439178467,
+            0.7913128534952799,
+            0.9896938747829861
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.978195309638977,
+          "box": [
+            0.07504719098409017,
+            0.0013479888439178467,
+            0.7913128534952799,
+            0.9896938747829861
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 12.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 12.4,
+          "duration": 12.200000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.037499962374568,
+        "inference_transfer_ms": 6.6803000518120825,
+        "postprocess_ms": 1.683599955867976,
+        "total_ms": 11.401399970054626
+      }
+    },
+    {
+      "timestamp": 12.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9769741892814636,
+          "box": [
+            0.05541869799296061,
+            0.0005593597888946533,
+            0.7936167399088542,
+            0.9907619900173611
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9769741892814636,
+          "box": [
+            0.05541869799296061,
+            0.0005593597888946533,
+            0.7936167399088542,
+            0.9907619900173611
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 12.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 12.6,
+          "duration": 12.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9173000366427004,
+        "inference_transfer_ms": 6.347699963953346,
+        "postprocess_ms": 1.6039000474847853,
+        "total_ms": 10.868900048080832
+      }
+    },
+    {
+      "timestamp": 12.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9768840670585632,
+          "box": [
+            0.04519367218017578,
+            0.000978320837020874,
+            0.7941826502482097,
+            0.9912437156394676
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9768840670585632,
+          "box": [
+            0.04519367218017578,
+            0.000978320837020874,
+            0.7941826502482097,
+            0.9912437156394676
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 12.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 12.8,
+          "duration": 12.600000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.250999958254397,
+        "inference_transfer_ms": 6.592700025066733,
+        "postprocess_ms": 1.6438000020571053,
+        "total_ms": 11.487499985378236
+      }
+    },
+    {
+      "timestamp": 13.0,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9767374396324158,
+          "box": [
+            0.04293644428253174,
+            0.0009768903255462646,
+            0.7924462000528971,
+            0.9915718361183449
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9767374396324158,
+          "box": [
+            0.04293644428253174,
+            0.0009768903255462646,
+            0.7924462000528971,
+            0.9915718361183449
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 13.0,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 13.0,
+          "duration": 12.8,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 3.0341999954544008,
+        "inference_transfer_ms": 6.458999996539205,
+        "postprocess_ms": 1.62540003657341,
+        "total_ms": 11.118600028567016
+      }
+    },
+    {
+      "timestamp": 13.2,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9729294180870056,
+          "box": [
+            0.04458340803782145,
+            0.001453101634979248,
+            0.7914953231811523,
+            0.9919765896267361
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9729294180870056,
+          "box": [
+            0.04458340803782145,
+            0.001453101634979248,
+            0.7914953231811523,
+            0.9919765896267361
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 13.2,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 13.2,
+          "duration": 13.0,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9129000031389296,
+        "inference_transfer_ms": 6.6641999874264,
+        "postprocess_ms": 1.6759000136516988,
+        "total_ms": 11.253000004217029
+      }
+    },
+    {
+      "timestamp": 13.4,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9704391360282898,
+          "box": [
+            0.0367702841758728,
+            2.3633241653442383e-05,
+            0.7925477981567383,
+            0.9908484564887152
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9704391360282898,
+          "box": [
+            0.0367702841758728,
+            2.3633241653442383e-05,
+            0.7925477981567383,
+            0.9908484564887152
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 13.4,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 13.4,
+          "duration": 13.200000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9412000440061092,
+        "inference_transfer_ms": 6.264599971473217,
+        "postprocess_ms": 1.7605000175535679,
+        "total_ms": 10.966300033032894
+      }
+    },
+    {
+      "timestamp": 13.6,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9668486714363098,
+          "box": [
+            0.0333234965801239,
+            0.0,
+            0.7954760869344075,
+            0.991929456922743
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9668486714363098,
+          "box": [
+            0.0333234965801239,
+            0.0,
+            0.7954760869344075,
+            0.991929456922743
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 13.6,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 13.6,
+          "duration": 13.4,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9328999808058143,
+        "inference_transfer_ms": 6.602000037673861,
+        "postprocess_ms": 1.6134000034071505,
+        "total_ms": 11.148300021886826
+      }
+    },
+    {
+      "timestamp": 13.8,
+      "raw": [
+        {
+          "track_id": "detection-0",
+          "label": "person",
+          "confidence": 0.9661616683006287,
+          "box": [
+            0.025805890560150146,
+            0.0,
+            0.7979566574096679,
+            0.9923198558666088
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "1",
+          "label": "person",
+          "confidence": 0.9661616683006287,
+          "box": [
+            0.025805890560150146,
+            0.0,
+            0.7979566574096679,
+            0.9923198558666088
+          ]
+        }
+      ],
+      "count": {
+        "rule": "visible_people",
+        "source": "shelf",
+        "epoch": "0",
+        "timestamp": 13.8,
+        "count": 1,
+        "status": "observed",
+        "track_ids": [
+          "1"
+        ]
+      },
+      "dwell": [
+        {
+          "track_id": "1",
+          "start": 0.2,
+          "last": 13.8,
+          "duration": 13.600000000000001,
+          "emitted": true
+        }
+      ],
+      "resets": [],
+      "events": [],
+      "timings_ms": {
+        "preprocess_ms": 2.9613999649882317,
+        "inference_transfer_ms": 7.024399994406849,
+        "postprocess_ms": 1.6856000293046236,
+        "total_ms": 11.671399988699704
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "1bdb5a65b1047e30dfa586404dffd0ad9235e54167b19a61edc39adb7be0caf8",
+      "identity_version": 2,
+      "config_fingerprint": "5b5af5c113a8ac08489444273ef80c0a7d098fb5dbac21b16645ae15ee9fb13f",
+      "kind": "person_dwell",
+      "rule": "observed_dwell",
+      "source": "shelf",
+      "epoch": "0",
+      "track_id": "1",
+      "zone": "view",
+      "start": 0.2,
+      "timestamp": 3.2,
+      "duration_seconds": 3.0,
+      "status": "confirmed_by_rule",
+      "evidence": {
+        "anchor": "bottom_center",
+        "confidence": 0.9062715172767639,
+        "box": [
+          0.5642506917317708,
+          0.009358495253103751,
+          0.8879011789957683,
+          0.9894161648220486
+        ],
+        "max_gap_seconds": 0.5,
+        "unknown_policy": "reset",
+        "interpretation": "sampled zone membership; no intent inferred"
+      }
+    }
+  ],
+  "config": {
+    "schema_version": "0.1",
+    "zones": {
+      "view": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "rules": [
+      {
+        "id": "visible_people",
+        "kind": "count",
+        "zone": "view",
+        "confidence": 0.3
+      },
+      {
+        "id": "observed_dwell",
+        "kind": "dwell",
+        "zone": "view",
+        "confidence": 0.3,
+        "seconds": 3,
+        "max_gap_seconds": 0.5
+      }
+    ]
+  },
+  "human_annotations": {
+    "checks": [
+      {
+        "t": 1,
+        "count": 1
+      },
+      {
+        "t": 3,
+        "count": 1
+      },
+      {
+        "t": 5,
+        "count": 1
+      },
+      {
+        "t": 7,
+        "count": 1
+      },
+      {
+        "t": 10,
+        "count": 1
+      },
+      {
+        "t": 13,
+        "count": 1
+      }
+    ],
+    "human_notes": [
+      {
+        "start": 0,
+        "end": 14,
+        "text": "Normal product handling. One visible person stays in view; handling goods is not a theft label."
+      }
+    ],
+    "complex_label": "normal product handling; action recognition unsupported"
+  }
+}

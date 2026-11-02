@@ -1,0 +1,9 @@
+{
+  "reportRetry": "passed",
+  "modelRetry": "passed",
+  "staleResultsCleared": "passed",
+  "staleDownloadsDisabled": "passed",
+  "lateCaseResponseIgnored": "passed",
+  "rapidModelSwitch": "passed",
+  "javascriptErrors": []
+}

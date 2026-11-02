@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "name": "rtmdet-tiny",
+  "contract": "rtmdet_decoded",
+  "sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+  "checkpoint_sha256": "78e30dcce0c6f594eaff0d6977b84b4103688b4aff0ad1aa16008a8cc854a7fb",
+  "checkpoint_url": "https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_tiny_8xb32-300e_coco/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth",
+  "license_basis": "Apache-2.0 code; verify checkpoint provenance",
+  "source": "https://github.com/open-mmlab/mmdetection",
+  "export": {
+    "mmdet": "3.3.0",
+    "prior_offset": 0.0
+  },
+  "parity": {
+    "status": "passed",
+    "sample": "one seeded random tensor; tensor parity, not accuracy",
+    "alignment": "tensor order",
+    "max_absolute_error": {
+      "boxes": 0.00213623046875,
+      "scores": 1.0095536708831787e-06
+    }
+  },
+  "inputs": [
+    "images"
+  ],
+  "outputs": [
+    "boxes",
+    "scores"
+  ],
+  "precision": "FP32",
+  "batch": 1,
+  "external_data": []
+}

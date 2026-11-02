@@ -1,0 +1,8 @@
+{
+  "schema_version":"0.1",
+  "zones":{"view":[[0,0],[1,0],[1,1],[0,1]]},
+  "rules":[
+    {"id":"visible_people","kind":"count","zone":"view","confidence":0.3},
+    {"id":"observed_dwell","kind":"dwell","zone":"view","confidence":0.3,"seconds":3,"max_gap_seconds":0.5}
+  ]
+}

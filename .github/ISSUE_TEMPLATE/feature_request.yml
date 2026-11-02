@@ -1,0 +1,41 @@
+name: Feature request
+description: Describe an observable behavior or developer workflow that is missing.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Developer problem and current workaround
+      description: Who encounters this, what are they trying to do, and where is time or cost lost?
+    validations:
+      required: true
+  - type: textarea
+    id: event
+    attributes:
+      label: Observable event and normal lookalikes
+      description: Define start, confirmation and end conditions, and activities that must not trigger it.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Source, models and deployment constraints
+      description: Camera/file type, resolution/FPS, detector/tracker, OS, CPU/GPU and offline constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Measurable acceptance criteria
+      description: Precision/recall, false alerts per camera-hour, delay, resource budget and a reproducible test scenario.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Available evaluation evidence
+      description: Describe representative labels or observation fixtures you can legally share. Do not post private footage, credentials or weights.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Existing tools or alternatives considered

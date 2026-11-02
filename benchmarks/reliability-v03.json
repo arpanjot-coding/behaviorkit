@@ -1,0 +1,235 @@
+{
+  "version": "0.3.0",
+  "audited_on": "2026-11-02",
+  "status": "passed_with_documented_limits",
+  "scope": "Counting and strict sampled dwell hardening; local-file processing. Not a surveillance accuracy certification.",
+  "test_suites": [
+    {
+      "artifact": "validation/v03-cpu-tests.xml",
+      "tests": 81,
+      "passed": 80,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "artifact": "validation/v03-cuda-environment-tests.xml",
+      "tests": 81,
+      "passed": 80,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "learned_model_qualification": [
+    {
+      "provider": "cpu",
+      "positive_regression": "positive-cpu-v03.json",
+      "latency_profile": "cpu-v03-benchmark.json",
+      "models_passed": 3,
+      "exact_count_event_trace_replay": true
+    },
+    {
+      "provider": "cuda",
+      "positive_regression": "positive-cuda-v03.json",
+      "latency_profile": "cuda-v03-benchmark.json",
+      "models_passed": 3,
+      "exact_count_event_trace_replay": true
+    }
+  ],
+  "fixed_cases": [
+    "Frozen run configuration despite original-file edits",
+    "Events flushed before end of file",
+    "Config-scoped event identities and fresh default run epochs",
+    "Maximum-cardinality feasible IoU matching checked against exhaustive small assignments",
+    "Bounded unmatched-track retirement with diagnostics and atomic strict rejection",
+    "Public source cleanup and copied state inspection",
+    "Optional reset/start/confirmation traces without event changes",
+    "Tensor shape/alignment/finite-value/probability validation",
+    "Exact saved observation replay"
+  ],
+  "video_lab": {
+    "sources": 3,
+    "excerpts": 4,
+    "runs": 12,
+    "exact_replay": true,
+    "comparison_v02": [
+      {
+        "model": "rtmdet-tiny",
+        "case": "shelf",
+        "old_ids": 1,
+        "new_ids": 1,
+        "old_dwell_events": 1,
+        "new_dwell_events": 1,
+        "old_exact_count_spot_checks": 6,
+        "new_exact_count_spot_checks": 6,
+        "scored": 6
+      },
+      {
+        "model": "rtmdet-tiny",
+        "case": "basket",
+        "old_ids": 6,
+        "new_ids": 6,
+        "old_dwell_events": 0,
+        "new_dwell_events": 0,
+        "old_exact_count_spot_checks": 2,
+        "new_exact_count_spot_checks": 2,
+        "scored": 2
+      },
+      {
+        "model": "rtmdet-tiny",
+        "case": "bread",
+        "old_ids": 6,
+        "new_ids": 6,
+        "old_dwell_events": 0,
+        "new_dwell_events": 0,
+        "old_exact_count_spot_checks": 3,
+        "new_exact_count_spot_checks": 3,
+        "scored": 6
+      },
+      {
+        "model": "rtmdet-tiny",
+        "case": "concealment",
+        "old_ids": 44,
+        "new_ids": 42,
+        "old_dwell_events": 9,
+        "new_dwell_events": 9,
+        "old_exact_count_spot_checks": 0,
+        "new_exact_count_spot_checks": 0,
+        "scored": 0
+      },
+      {
+        "model": "d-fine-n",
+        "case": "shelf",
+        "old_ids": 1,
+        "new_ids": 1,
+        "old_dwell_events": 1,
+        "new_dwell_events": 1,
+        "old_exact_count_spot_checks": 6,
+        "new_exact_count_spot_checks": 6,
+        "scored": 6
+      },
+      {
+        "model": "d-fine-n",
+        "case": "basket",
+        "old_ids": 17,
+        "new_ids": 14,
+        "old_dwell_events": 0,
+        "new_dwell_events": 0,
+        "old_exact_count_spot_checks": 2,
+        "new_exact_count_spot_checks": 2,
+        "scored": 2
+      },
+      {
+        "model": "d-fine-n",
+        "case": "bread",
+        "old_ids": 20,
+        "new_ids": 20,
+        "old_dwell_events": 1,
+        "new_dwell_events": 1,
+        "old_exact_count_spot_checks": 2,
+        "new_exact_count_spot_checks": 2,
+        "scored": 6
+      },
+      {
+        "model": "d-fine-n",
+        "case": "concealment",
+        "old_ids": 109,
+        "new_ids": 105,
+        "old_dwell_events": 15,
+        "new_dwell_events": 16,
+        "old_exact_count_spot_checks": 0,
+        "new_exact_count_spot_checks": 0,
+        "scored": 0
+      },
+      {
+        "model": "rf-detr-nano",
+        "case": "shelf",
+        "old_ids": 1,
+        "new_ids": 1,
+        "old_dwell_events": 1,
+        "new_dwell_events": 1,
+        "old_exact_count_spot_checks": 6,
+        "new_exact_count_spot_checks": 6,
+        "scored": 6
+      },
+      {
+        "model": "rf-detr-nano",
+        "case": "basket",
+        "old_ids": 5,
+        "new_ids": 5,
+        "old_dwell_events": 0,
+        "new_dwell_events": 0,
+        "old_exact_count_spot_checks": 2,
+        "new_exact_count_spot_checks": 2,
+        "scored": 2
+      },
+      {
+        "model": "rf-detr-nano",
+        "case": "bread",
+        "old_ids": 6,
+        "new_ids": 6,
+        "old_dwell_events": 1,
+        "new_dwell_events": 1,
+        "old_exact_count_spot_checks": 2,
+        "new_exact_count_spot_checks": 2,
+        "scored": 6
+      },
+      {
+        "model": "rf-detr-nano",
+        "case": "concealment",
+        "old_ids": 34,
+        "new_ids": 35,
+        "old_dwell_events": 9,
+        "new_dwell_events": 9,
+        "old_exact_count_spot_checks": 0,
+        "new_exact_count_spot_checks": 0,
+        "scored": 0
+      }
+    ],
+    "interpretation": "Count spot-check scores are unchanged. Changed IDs/event totals are diagnostics, not demonstrated accuracy improvements. No exhaustive identity/event truth exists."
+  },
+  "state_soak": {
+    "artifact": "soak-v03.json",
+    "batches": 20000,
+    "max_dwell_states": 10,
+    "retained_growth_bytes": 5088
+  },
+  "engine_benchmark": "engine-v03-benchmark.json",
+  "wheel": {
+    "filename": "behaviorkit_prototype-0.3.0-py3-none-any.whl",
+    "sha256": "34f09c7efbbc826f2e21e4dc110771d6d1a771bc3c0bb31a670e786f5625e0d1"
+  },
+  "source_sha256": {
+    "__init__.py": "520ed42838efa4a32443c553dd5f1a100b5d22eeff886aea51431855905d7b2c",
+    "__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+    "benchmark.py": "1d4e545563967ecee8e7ecc810626521492389b5ec24edc85af34367362bcbed",
+    "cli.py": "3c90eca124465c7980c899012596afadcb85605adfbffc9c6930778f96c6c406",
+    "core.py": "4c66d7350f7f7675cb5f42d982463dc73b6be8aed6624a4893f698a159ca0320",
+    "providers.py": "39e8e1f1c966a6624b08b98a9154f7a7273d5c2ceb07bdfda700b77cd905ac24",
+    "storage.py": "49c132f831935b70d9ab15854d5c636d67c641b9d7f6b230d5fc2e646546b583",
+    "tracking.py": "b6932c202cda63a4eba32ded8ecaa05e8cffc09b22d58dd28f269421c12a7d25",
+    "vision.py": "c341528d0da45a70141e39f83dba9f3d751f31b4baa22d012a35324e9880b327"
+  },
+  "remaining_limits": [
+    "Physical AMD CPU and Apple M1/CoreML qualification pending",
+    "No live RTSP recovery or durable delivery",
+    "No motion/appearance tracker or boundary hysteresis; strict missing-observation resets remain",
+    "No theft/action classifier or held-out event accuracy claim",
+    "No multi-hour decoded-video RSS/VRAM soak; Python allocation soak only"
+  ],
+  "runtime_llm_calls": 0,
+  "commercial_design": "Original code Apache-2.0, no new runtime dependency. Exact weights, runtime binaries and media retain separate terms.",
+  "website_qa": "website-v03-qa.json",
+  "packaging": {
+    "wheel_metadata": "passed",
+    "no_bundled_model_weights": true,
+    "python_310_syntax": "passed; execution tested on Python 3.12",
+    "installed_wheel_cli_demo": "passed",
+    "installed_wheel_doctor": [
+      "cpu",
+      "cuda"
+    ]
+  },
+  "package_revision": "GitHub README, project URLs and contributor documentation added; runtime source hashes unchanged."
+}

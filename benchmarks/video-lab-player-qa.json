@@ -1,0 +1,26 @@
+{
+  "modelCaseJumpAndStepChecks": 12,
+  "customJumpSeconds": [
+    0.1,
+    2.5,
+    60
+  ],
+  "boundaryClamping": "passed",
+  "jumpsPreservePlayback": "passed",
+  "sampleStepsPause": "passed",
+  "speedOptions": 5,
+  "invalidInputChecks": 4,
+  "keyboard": "passed",
+  "trackEvidence": "passed",
+  "eventAndResetMarkers": "passed",
+  "modelComparisonKeepsTime": "passed",
+  "scene03": "passed",
+  "loopPlayback": "passed",
+  "responsiveWidths": [
+    320,
+    390,
+    768,
+    1024
+  ],
+  "javascriptErrors": []
+}

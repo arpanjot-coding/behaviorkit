@@ -1,0 +1,13 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "system": "Windows",
+  "architecture": "AMD64",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "behaviorkit": "0.2.0",
+  "logical_cpus": 24,
+  "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+  "cpu_vendor": "Intel",
+  "test_exit_code": 0,
+  "status": "passed",
+  "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification."
+}

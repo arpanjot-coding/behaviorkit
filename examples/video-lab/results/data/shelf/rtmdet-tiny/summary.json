@@ -1,0 +1,78 @@
+{
+  "case": "shelf",
+  "model": "rtmdet-tiny",
+  "provider": "cuda",
+  "status": "executed",
+  "sampled_frames": 70,
+  "events": 1,
+  "count_min": 0,
+  "count_max": 1,
+  "track_ids_seen": 1,
+  "reset_records": 0,
+  "p50_detector_ms": 14.1973499848973,
+  "spot_checks": {
+    "checks": [
+      {
+        "t": 1,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 1.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 3,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 3.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 5,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 5.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 7,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 7.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 10,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 10.0,
+        "observed": 1,
+        "absolute_error": 0
+      },
+      {
+        "t": 13,
+        "count": 1,
+        "status": "scored",
+        "sample_timestamp": 13.0,
+        "observed": 1,
+        "absolute_error": 0
+      }
+    ],
+    "scored": 6,
+    "exact": 6,
+    "mean_absolute_error": 0,
+    "note": "Sparse exploratory count snapshots, not clip-wide accuracy or event precision/recall."
+  },
+  "complex_behavior": {
+    "supported": false,
+    "library_prediction": null,
+    "human_reference": "normal product handling; action recognition unsupported",
+    "note": "Count/dwell outputs do not predict theft, concealment, payment, ownership or intent."
+  },
+  "replay_verified": true,
+  "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+  "observations_sha256": "6221410d080d8fdeef097455ab949cce6020af0c5f533631babc794275cbd08a"
+}

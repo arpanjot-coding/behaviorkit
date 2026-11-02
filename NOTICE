@@ -1,0 +1,17 @@
+BehaviorKit feasibility prototype
+Copyright 2026 BehaviorKit contributors
+
+Original library, tests and documentation are licensed under Apache-2.0.
+This source distribution does not bundle model checkpoints or third-party model source.
+
+Model export integrations reference:
+- MMDetection / RTMDet: https://github.com/open-mmlab/mmdetection (Apache-2.0)
+- D-FINE: https://github.com/Peterande/D-FINE (Apache-2.0; review checkpoint provenance)
+- RF-DETR Nano: https://github.com/roboflow/rf-detr (Apache-2.0 Nano; other sizes differ)
+
+Export-time upstream code and runtime binary packages retain their own notices.
+ONNX conversion does not remove source artifact terms. NVIDIA and FFmpeg binary
+redistribution must follow the terms for the exact packages distributed.
+
+BehaviorKit is a working title. The unrelated IUB-RHouse/BehaviorKit robotics
+project is not affiliated with this prototype.

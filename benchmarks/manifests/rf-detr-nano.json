@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "name": "rf-detr-nano",
+  "contract": "rfdetr_raw",
+  "sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+  "checkpoint_sha256": "d8d6b9ee57d4d0ed2b1f305163624712a0532cb7bce0c747317984fc5457440d",
+  "checkpoint_url": "https://repo.roboflow.com/rfdetr/nano_coco/checkpoint_best_regular.pth",
+  "license_basis": "Apache-2.0 Nano weights; other family sizes can differ",
+  "source": "https://github.com/roboflow/rf-detr",
+  "export": {
+    "rfdetr": "1.11.2"
+  },
+  "parity": {
+    "status": "upstream_export",
+    "note": "Upstream RF-DETR exporter; no independent PyTorch/ONNX parity check performed by this script."
+  },
+  "inputs": [
+    "input"
+  ],
+  "outputs": [
+    "dets",
+    "labels"
+  ],
+  "precision": "FP32",
+  "batch": 1,
+  "external_data": []
+}

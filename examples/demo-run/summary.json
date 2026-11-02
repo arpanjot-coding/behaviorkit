@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "kind": "replay",
+  "batches": 41,
+  "events": 1,
+  "count_samples": 41,
+  "final_dwell_states": 0,
+  "config_sha256": "a982262fd5a6e0f4c20214704f243114f8ec6b27f68c650138265bb05c7f42a1",
+  "observations_sha256": "eacaedc9fe741b02d98c957e431a6b5f3fccd4975d6d50bdafc9461c1b09c09f",
+  "output": "examples/demo-run"
+}

@@ -1,0 +1,42 @@
+{"timestamp": 0.0, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 0.2, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9796642065048218, "box": [0.1750694751739502, 0.0024220049381256104, 0.9923572540283203, 0.9889950222439237]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 0.4, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9824063777923584, "box": [0.17111668586730958, 0.0018622279167175293, 0.9998366673787434, 0.9874706127025463]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 0.6, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9838832020759583, "box": [0.1843237241109212, 0.0015828609466552734, 0.998405647277832, 0.9907624421296296]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 0.8, "detections": [{"track_id": "1", "label": "person", "confidence": 0.979217529296875, "box": [0.215382448832194, 0.0003573298454284668, 0.9985865275065104, 0.9976951316550926]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 1.0, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9790616631507874, "box": [0.2774151484171549, 0.0008722543716430664, 0.9986882527669271, 0.9921124493634259]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 1.2, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9794883131980896, "box": [0.33237187067667645, 0.0015685558319091797, 0.999525769551595, 0.9899386935763889]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 1.4, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9786078333854675, "box": [0.36743942896525067, 0.0010070204734802246, 1.0, 0.9888433385778357]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 1.6, "detections": [{"track_id": "1", "label": "person", "confidence": 0.9695619344711304, "box": [0.4342474619547526, 0.00033283233642578125, 0.9997392654418945, 0.991761158130787]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 1.8, "detections": [{"track_id": "1", "label": "person", "confidence": 0.963390052318573, "box": [0.5100513776143392, 0.0021642446517944336, 1.0, 0.989649341724537]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 2.0, "detections": [{"track_id": "1", "label": "person", "confidence": 0.8418658971786499, "box": [0.7524987538655599, 0.0, 0.9999413808186849, 0.9978901050708912]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 2.2, "detections": [{"track_id": "1", "label": "person", "confidence": 0.8697280287742615, "box": [0.7564678192138672, 0.0, 0.9993602116902669, 0.9992688214337384]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 2.4, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 2.6, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 2.8, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 3.0, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 3.2, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 3.4, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 3.6, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 3.8, "detections": [{"track_id": "3", "label": "person", "confidence": 0.9396264553070068, "box": [0.28994518915812173, 0.0, 1.0, 0.8924999095775463]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 4.0, "detections": [{"track_id": "3", "label": "person", "confidence": 0.9469921588897705, "box": [0.26912209192911785, 0.0, 1.0, 0.8680910463686342]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 4.2, "detections": [{"track_id": "3", "label": "person", "confidence": 0.44562768936157227, "box": [0.42466665903727213, 0.0011560767889022827, 0.9995057423909505, 0.4635213498716001]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 4.4, "detections": [{"track_id": "3", "label": "person", "confidence": 0.31680428981781006, "box": [0.6019508997599284, 0.0013081729412078857, 1.0, 0.8491568671332466]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 4.6, "detections": [{"track_id": "3", "label": "person", "confidence": 0.6087391376495361, "box": [0.8434803644816081, 0.0003139376640319824, 1.0, 0.8557655051902489]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 4.8, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 5.0, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 5.2, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 5.4, "detections": [], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 5.6, "detections": [{"track_id": "6", "label": "person", "confidence": 0.9377486705780029, "box": [0.33781312306722006, 0.0017796158790588379, 0.8299603780110677, 0.8341554994936342]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 5.8, "detections": [{"track_id": "6", "label": "person", "confidence": 0.7156714200973511, "box": [0.539617411295573, 0.0010105669498443604, 0.9980193456013997, 0.7972447713216145]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 6.0, "detections": [{"track_id": "6", "label": "person", "confidence": 0.4022303521633148, "box": [0.7073797225952149, 8.0108642578125e-05, 0.9998325347900391, 0.840265796802662]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 6.2, "detections": [{"track_id": "5", "label": "person", "confidence": 0.40516096353530884, "box": [0.3139381726582845, 0.24696683530454283, 0.5441875457763672, 0.5059842145001446]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 6.4, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9071658253669739, "box": [0.27343247731526693, 0.0, 0.9061555862426758, 0.9947741473162616]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 6.6, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9619452357292175, "box": [0.24457770983378094, 0.0009203255176544189, 1.0, 0.9891989248770254]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 6.8, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9730642437934875, "box": [0.2641051451365153, 0.00039696693420410156, 0.9998708089192708, 0.9898759629991319]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 7.0, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9667073488235474, "box": [0.300157356262207, 0.0, 1.0, 0.9948012740523727]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 7.2, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9631563425064087, "box": [0.3325016975402832, 0.0014943182468414307, 1.0, 0.9871240686487268]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 7.4, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9740384221076965, "box": [0.3462675412495931, 0.0008450448513031006, 1.0, 0.9915261727792245]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 7.6, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9749197363853455, "box": [0.33750505447387696, 0.0007700622081756592, 1.0, 0.9879000063295718]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 7.8, "detections": [{"track_id": "7", "label": "person", "confidence": 0.97050940990448, "box": [0.3117093086242676, 0.0, 0.9995561599731445, 0.9894926848234954]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 8.0, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9770916104316711, "box": [0.26962582270304364, 0.0, 0.998965835571289, 0.993867775245949]}], "source": "basket", "epoch": "0", "covered": true}
+{"timestamp": 8.2, "detections": [{"track_id": "7", "label": "person", "confidence": 0.9697297215461731, "box": [0.21709858576456706, 0.0, 1.0, 0.9984180591724537]}], "source": "basket", "epoch": "0", "covered": true}

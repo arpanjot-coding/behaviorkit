@@ -1,0 +1,27 @@
+{
+  "localisedPagesChecked": 24,
+  "languages": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "pt",
+    "zh",
+    "ja",
+    "ko",
+    "hi",
+    "ar",
+    "vi",
+    "th"
+  ],
+  "researchGaps": 13,
+  "repositoryLinks": 4,
+  "commandTabs": "passed",
+  "keyboardTabs": "passed",
+  "localeNavigation": "passed",
+  "arabicRTL": "passed",
+  "researchFilters": "passed",
+  "mobileMenu": "passed",
+  "responsiveChecks": 64,
+  "javascriptErrors": []
+}

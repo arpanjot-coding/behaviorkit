@@ -1,0 +1,9 @@
+{
+  "locales": 12,
+  "translatedCopyFeedback": "passed",
+  "copyPayloadUnchanged": "passed",
+  "arabicCommandOverlap": false,
+  "separateRuntimeChoices": "passed",
+  "repeatedCopyReset": "passed",
+  "tabletDocsLayout": "passed"
+}
