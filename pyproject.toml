@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "behaviorkit-prototype"
-version = "0.3.0"
-description = "Local counting and dwell detection with portable CPU, NVIDIA CUDA, and optional Apple CoreML execution"
+version = "0.4.0a1"
+description = "Local visual behavior rules, layered replay, event evaluation and bounded video pipelines"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
@@ -23,13 +23,19 @@ vision = ["numpy>=1.26,<3", "opencv-python-headless>=4.10,<6", "av>=14,<20"]
 cuda = ["onnxruntime-gpu[cuda,cudnn]>=1.22,<2"]
 cpu = ["onnxruntime>=1.22,<2"]
 apple = ["onnxruntime>=1.22,<2"]
-dev = ["pytest>=8,<10", "build>=1.2", "markdown-it-py>=3,<5", "onnx>=1.17,<2"]
+tracking = ["trackers==2.6.0"]
+resources = ["psutil>=6,<8"]
+custom = ["onnx>=1.17,<2"]
+dev = ["pytest>=8,<10", "build>=1.2", "markdown-it-py>=3,<5", "onnx>=1.17,<2", "jsonschema>=4,<5"]
 
 [project.scripts]
 behaviorkit = "behaviorkit.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+behaviorkit = ["wizard.html", "schemas/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

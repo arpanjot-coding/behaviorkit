@@ -1,5 +1,7 @@
 # Counting and dwell
 
+This page specifies the legacy strict schema 0.1 behavior. Schema 0.2 operators and observed debouncing are documented in the [system guide](system-guide.md). They are explicit opt-ins and retain unknown/reset semantics.
+
 These rules describe observable evidence. They do not infer intentions, identities across cameras, or physical occupancy behind occlusions.
 
 ## Zone coordinates

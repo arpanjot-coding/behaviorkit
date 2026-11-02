@@ -17,6 +17,9 @@ import sys
 import types
 import urllib.request
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
+from behaviorkit.artifacts import APPROVED, verify_checkpoint
+
 URLS = {
  "rtmdet-tiny":"https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_tiny_8xb32-300e_coco/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth",
  "d-fine-n":"https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
@@ -32,16 +35,23 @@ def digest(path):
 
 
 def download(url,path):
- if path.exists():return
+ name=next((name for name,item in APPROVED.items() if item['url']==url),None)
+ if name is None:raise ValueError('download URL is not approved')
+ if path.exists():
+  verify_checkpoint(name,path);return
  path.parent.mkdir(parents=True,exist_ok=True)
  request=urllib.request.Request(url,headers={'User-Agent':'BehaviorKit-feasibility/0.1'})
  temporary=path.with_suffix('.download')
  with urllib.request.urlopen(request,timeout=120) as response,temporary.open('wb') as target:
   shutil.copyfileobj(response,target)
- temporary.replace(path)
+ try:
+  verify_checkpoint(name,temporary)
+  temporary.replace(path)
+ finally:temporary.unlink(missing_ok=True)
 
 
 def prepare_rtmdet(folder,checkpoint):
+ verify_checkpoint('rtmdet-tiny',checkpoint)
  import torch
  # Import-only placeholder: this network export uses no compiled MMCV operators.
  # Any accidentally invoked extension fails, never returns fabricated output.
@@ -81,9 +91,15 @@ def prepare_rtmdet(folder,checkpoint):
 
 
 def prepare_dfine(folder,checkpoint,source):
+ verify_checkpoint('d-fine-n',checkpoint)
  import torch
  if source is None or not (source/'src/core').exists():
   raise ValueError('--dfine-source must point to the official D-FINE checkout')
+ revision=subprocess.check_output(['git','-c',f'safe.directory={source.resolve().as_posix()}','-C',str(source),'rev-parse','HEAD'],text=True).strip()
+ if revision!=APPROVED['d-fine-n']['source_revision']:
+  raise ValueError('D-FINE source revision is not the approved export recipe')
+ dirty=subprocess.check_output(['git','-c',f'safe.directory={source.resolve().as_posix()}','-C',str(source),'status','--porcelain','--untracked-files=normal'],text=True).strip()
+ if dirty:raise ValueError('D-FINE export source has local changes; use a clean approved checkout')
  sys.path.insert(0,str(source.resolve()))
  from src.core import YAMLConfig
  cfg=YAMLConfig(str(source/'configs/dfine/dfine_hgnetv2_n_coco.yml'),resume=str(checkpoint))
@@ -96,8 +112,6 @@ def prepare_dfine(folder,checkpoint,source):
   def forward(self,images,orig_target_sizes):return self.post(self.model(images),orig_target_sizes)
  model=Export().eval();sample=(torch.rand(1,3,640,640),torch.tensor([[1280,720]],dtype=torch.int64))
  torch.onnx.export(model,sample,str(folder/'model.onnx'),input_names=['images','orig_target_sizes'],output_names=['labels','boxes','scores'],opset_version=17,dynamo=False)
- try:revision=subprocess.check_output(['git','-c',f'safe.directory={source.resolve().as_posix()}','-C',str(source),'rev-parse','HEAD'],text=True).strip()
- except subprocess.SubprocessError:revision='not recorded'
  return model,sample,['labels','boxes','scores'],{'upstream_commit':revision}
 
 
@@ -114,7 +128,9 @@ def main():
  for name in a.models:
   folder=(a.models_dir/name).resolve();folder.mkdir(parents=True,exist_ok=True)
   checkpoint=folder/'publisher-checkpoint.pth';download(URLS[name],checkpoint)
+  verify_checkpoint(name,checkpoint)
   if name=='rf-detr-nano':
+   if importlib.metadata.version('rfdetr')!='1.11.2':raise ValueError('RF-DETR export recipe requires rfdetr==1.11.2')
    from rfdetr import RFDETRNano
    import rfdetr
    model=RFDETRNano(device='cpu',pretrain_weights=str(checkpoint))

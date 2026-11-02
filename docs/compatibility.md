@@ -1,6 +1,8 @@
 # Compatibility and test evidence
 
-Version **0.3.0** hardens configuration, event identity, tracking, source cleanup, explanations and incremental file evaluation. There are no ongoing LLM calls, cloud inference services or runtime model downloads. This remains feasibility software.
+Version **0.4.0a1** adds experimental layered replay, evaluation, temporal operators, setup, archive/retention and live delivery. Read [current implementation status](implementation-status.md) and the [system guide](system-guide.md). There are no ongoing LLM calls, cloud inference services or runtime model downloads. This remains feasibility software.
+
+The historical v0.3 platform baseline below is retained as version-specific evidence. Current validation reports are linked from implementation status. A previously passed platform suite does not automatically validate new APIs or every learned model.
 
 ## What was actually tested
 

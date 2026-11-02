@@ -1,0 +1,87 @@
+{
+  "schema_version": "reliability/1",
+  "version": "0.4.0a1",
+  "date": "2026-11-02",
+  "test_suites": [
+    {
+      "environment": "local Intel CPU with optional tracking/resources/schema deps",
+      "passed": 124,
+      "skipped": 1,
+      "failed": 0,
+      "seconds": 7.629,
+      "skips": [
+        {
+          "test": "test_coreml_real_delegation",
+          "reason": "requires actual Apple Silicon hardware"
+        }
+      ]
+    },
+    {
+      "environment": "local NVIDIA runtime environment",
+      "passed": 122,
+      "skipped": 3,
+      "failed": 0,
+      "seconds": 7.035,
+      "skips": [
+        {
+          "test": "test_real_bytetrack_outputs_only_observed_confirmed_boxes",
+          "reason": "could not import 'trackers': No module named 'trackers'"
+        },
+        {
+          "test": "test_coreml_real_delegation",
+          "reason": "requires actual Apple Silicon hardware"
+        },
+        {
+          "test": "test_packaged_structural_schemas_and_generated_recording",
+          "reason": "could not import 'jsonschema': No module named 'jsonschema'"
+        }
+      ]
+    }
+  ],
+  "learned_model_reports": [
+    "system-v04-cpu.json",
+    "system-v04-cuda.json"
+  ],
+  "native_resources": "native-soak-v04.json",
+  "known_failures": "known-failures-v04.json",
+  "wizard_browser_qa": {
+    "polygon_drawing": true,
+    "validation": true,
+    "scene_geometry_downloads": 2,
+    "mobile_overflow": false,
+    "page_errors": 0
+  },
+  "synthetic_operator_demo": {
+    "count_samples": 126,
+    "events": 12,
+    "event_kinds": [
+      "cross",
+      "dwell",
+      "enter",
+      "exit",
+      "occupancy",
+      "sequence"
+    ]
+  },
+  "qualification_limits": [
+    "Held-out camera event quality and targets pending.",
+    "AMD/M1 all-learned-model qualification pending.",
+    "RTSP camera and multi-hour deployment qualification pending.",
+    "Learned-model precision variants unqualified."
+  ],
+  "package_checks": {
+    "wheel_install": "clean venv, no dependencies",
+    "core_import": "no numpy/torch/cv2/onnxruntime/av imports",
+    "legacy_demo": {
+      "events": 1,
+      "count_samples": 41
+    },
+    "operator_demo": {
+      "events": 12,
+      "count_samples": 126
+    },
+    "sdist": "includes documented configs, scripts and golden fixtures"
+  },
+  "ci_workflow": "https://github.com/arpanjot-coding/behaviorkit/actions/workflows/tests.yml?query=branch%3Afeat%2Fsystem-foundations",
+  "github_actions_evidence": "github-actions-v04.json"
+}

@@ -1,0 +1,15 @@
+include LICENSE NOTICE README.md CHANGELOG.md ROADMAP.md CONTRIBUTING.md
+recursive-include docs *.md *.json
+recursive-include configs *.json
+recursive-include constraints *.txt
+recursive-include scripts *.py
+recursive-include tests *.py *.json *.jsonl *.md
+recursive-include examples *.py *.json *.jsonl
+recursive-include benchmarks *.json *.json.gz
+recursive-include website *.js *.css *.html *.json
+prune website/.git
+prune website/.openai
+prune website/.sites-local
+prune website/dist
+prune examples/video-lab/media
+global-exclude *.onnx *.pth *.pt *.engine *.mp4 *.whl *.zip *.log *.pyc

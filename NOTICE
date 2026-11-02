@@ -10,6 +10,9 @@ Model export integrations reference:
 - RF-DETR Nano: https://github.com/roboflow/rf-detr (Apache-2.0 Nano; other sizes differ)
 
 Export-time upstream code and runtime binary packages retain their own notices.
+Optional motion tracking uses the Apache-2.0 Trackers package:
+https://github.com/roboflow/trackers (tested API version 2.6.0).
+It and its dependencies are installed separately and retain their own licenses.
 ONNX conversion does not remove source artifact terms. NVIDIA and FFmpeg binary
 redistribution must follow the terms for the exact packages distributed.
 

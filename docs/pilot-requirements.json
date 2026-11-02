@@ -1,0 +1,11 @@
+{
+  "schema_version": "pilot-register/1",
+  "status": "awaiting_representative_camera_data_and_owner_budgets",
+  "workflows": [
+    {"id":"visible_count", "contract":"count confirmed observed eligible tracks at annotated source timestamps", "normal_lookalikes":["posters","reflections","partial objects","background clutter"], "conditions":["empty","busy","occluded","low light","compression","source gaps"], "dataset_groups":[], "held_out_groups":[], "hardware_recipe":null, "budgets":{"count_mae":null,"unknown_fraction":null,"p95_pipeline_ms":null,"rss_bytes":null}, "status":"controlled_fixture_compatibility_only"},
+    {"id":"observed_dwell", "contract":"one sampled-supported episode after the configured threshold, with unknown resetting continuity", "normal_lookalikes":["brief entry","boundary jitter","different identity replaces prior track","missing track returns"], "conditions":["stationary","moving","ID fragmentation","occlusion","variable sampling","disconnect"], "dataset_groups":[], "held_out_groups":[], "hardware_recipe":null, "budgets":{"precision":null,"recall":null,"false_alerts_per_camera_hour":null,"max_delay_seconds":null,"unknown_fraction":null,"p95_pipeline_ms":null,"rss_bytes":null}, "status":"controlled_fixture_compatibility_only"},
+    {"id":"entry_exit_cross_occupancy_sequence", "contract":"scene 0.2 operator contracts in docs/system-guide.md", "normal_lookalikes":["reversal","short entry","zone overlap","crowd occlusion","ID reuse"], "dataset_groups":[], "held_out_groups":[], "hardware_recipe":null, "budgets":{"precision":null,"recall":null,"false_alerts_per_camera_hour":null,"max_delay_seconds":null}, "status":"generated_fixture_contract_tests_only"}
+  ],
+  "claim_levels": ["core_correctness", "generated_video_integration", "learned_model_compatibility", "held_out_camera_event_quality", "sustained_deployment"],
+  "rules": ["Do not treat null budgets as passing targets.", "Freeze thresholds on tuning data before evaluating held-out camera/day groups.", "Record media permissions, annotations, normal negatives, clock/coverage and hardware provenance.", "A passed lower claim level does not imply a higher one."]
+}
