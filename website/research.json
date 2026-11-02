@@ -106,7 +106,7 @@
       "pain": "A provider can be advertised while graph nodes execute elsewhere. Package versions, CUDA/cuDNN combinations, shape support and export contracts can change between installations.",
       "existing": "ONNX Runtime already exposes graph-provider partitioning, profiling and DLL preloading. Its current CUDA documentation says default GPU packages changed to CUDA 13 starting with ORT 1.27. Broad dependency ranges are not equivalent to tested deployment recipes.",
       "opportunity": "Ship versioned environment recipes and an actual-model qualification command: requested/selected provider, kernel assignments, model hash, numerical reference tolerances and end-to-end smoke results. Validate class IDs, coordinate inversion and preprocessing with golden inputs.",
-      "prototype": "Partial. Manifests, hashes, tensor metadata/runtime-output checks, explicit-provider initialization checks and separate provider profiles exist. A tested Windows NVIDIA snapshot exists, but maintained per-target recipes, physical AMD/M1 qualification and independent RF-DETR tensor parity remain pending.",
+      "prototype": "Partial. Hashes, tensor checks, provider profiles and actual Windows CPU/CUDA learned-model evidence exist. Generated-fixture CI passed on AMD Windows/Linux and an Apple M1 virtual runner, including a tiny CoreML delegation test. All-three-learned-model qualification on AMD/M1, maintained per-target recipes and independent RF-DETR tensor parity remain pending.",
       "acceptance": [
         "Each advertised target has a clean-environment installation recipe and a real-model report.",
         "Unavailable explicit providers fail; permitted fallback is visible, and partial GPU execution is not called GPU-only.",
@@ -412,8 +412,8 @@
       "title": "Setup and artifact trust are adoption work, not just documentation work.",
       "pain": "Developers must reproduce model preparation, distinguish code/weight/media terms and install a compatible runtime. A source archive without a public issue/release channel leaves collaboration and discovery harder.",
       "existing": "Upstream repos provide models, exporters and licenses. BehaviorKit should preserve their provenance and provide a small reproducible distribution rather than bundle an entire export environment.",
-      "opportunity": "Resolve the working title/distribution identity, publish a maintained project repository and reviewed package release, add tested constraints/recipes, and make model artifact acquisition explicit with hashes and terms. Separate runtime installation from export tooling.",
-      "prototype": "Partial. Original code is Apache-2.0; source ZIP, local wheel and manifests exist. No public project GitHub repository or PyPI release is published. The website source repository is private hosting infrastructure, not a public library repo.",
+      "opportunity": "Maintain the public repository and reviewed package releases, resolve the working distribution identity, and add tested per-target constraints/recipes. Make model acquisition explicit with hashes and terms; keep runtime installation separate from export tooling.",
+      "prototype": "Partial. Original code is Apache-2.0. A public GitHub library repository, detailed README, contributor guide, roadmap, issue forms, source ZIP, wheel and manifests exist. PyPI publication and physical AMD/M1 learned-model qualification remain pending. The visual hosting service retains its separate access policy.",
       "acceptance": [
         "A fresh developer can follow a clean supported recipe without guessing class maps or mixing CPU/GPU runtime distributions.",
         "Published release artifacts have a version, provenance, supported platform matrix and reproducible smoke command.",
@@ -443,7 +443,7 @@
     {
       "phase": "0",
       "title": "Make the current prototype easy to reproduce",
-      "text": "Resolve release identity, public collaboration channels, tested environment recipes and actual-model qualification. Finish physical AMD and M1 checks before claiming those targets verified."
+      "text": "Maintain release provenance, developer feedback channels, tested environment recipes and actual-model qualification. Finish physical AMD and M1 learned-model checks before claiming those targets verified."
     },
     {
       "phase": "1",

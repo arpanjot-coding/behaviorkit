@@ -1,0 +1,86 @@
+{
+  "kind": "github_actions_fixture_and_package_validation",
+  "run_url": "https://github.com/arpanjot-coding/behaviorkit/actions/runs/41470644743",
+  "source_commit": "966f55c1bab60585c207b8c91613fac763959825",
+  "status": "passed",
+  "jobs": [
+    {
+      "name": "package",
+      "conclusion": "success"
+    },
+    {
+      "name": "vision-contracts (windows-2025)",
+      "conclusion": "success"
+    },
+    {
+      "name": "replay (3.10)",
+      "conclusion": "success"
+    },
+    {
+      "name": "vision-contracts (macos-14)",
+      "conclusion": "success"
+    },
+    {
+      "name": "replay (3.12)",
+      "conclusion": "success"
+    },
+    {
+      "name": "vision-contracts (ubuntu-24.04)",
+      "conclusion": "success"
+    }
+  ],
+  "platforms": [
+    {
+      "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "system": "Darwin",
+      "architecture": "arm64",
+      "platform": "macOS-14.8.9-arm64-arm-64bit",
+      "behaviorkit": "0.3.0",
+      "logical_cpus": 3,
+      "cpu_name": "Apple M1 (Virtual)",
+      "cpu_vendor": "Apple",
+      "test_exit_code": 0,
+      "status": "passed",
+      "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification.",
+      "tests": 81,
+      "passed": 81,
+      "skipped": 0,
+      "coreml_fixture_delegation_passed": true
+    },
+    {
+      "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]",
+      "system": "Linux",
+      "architecture": "x86_64",
+      "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "behaviorkit": "0.3.0",
+      "logical_cpus": 4,
+      "cpu_name": "AMD EPYC 7763 64-Core Processor",
+      "cpu_vendor": "AMD",
+      "test_exit_code": 0,
+      "status": "passed",
+      "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification.",
+      "tests": 81,
+      "passed": 80,
+      "skipped": 1,
+      "coreml_fixture_delegation_passed": false
+    },
+    {
+      "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "system": "Windows",
+      "architecture": "AMD64",
+      "platform": "Windows-2025Server-10.0.26100-SP0",
+      "behaviorkit": "0.3.0",
+      "logical_cpus": 4,
+      "cpu_name": "AMD EPYC 7763 64-Core Processor                ",
+      "cpu_vendor": "AMD",
+      "test_exit_code": 0,
+      "status": "passed",
+      "note": "Actual host recorded. A skipped CoreML test is not a CoreML hardware verification.",
+      "tests": 81,
+      "passed": 80,
+      "skipped": 1,
+      "coreml_fixture_delegation_passed": false
+    }
+  ],
+  "limits": "Generated ONNX fixture integration and package checks. Does not qualify all three learned models on AMD or Apple Silicon."
+}

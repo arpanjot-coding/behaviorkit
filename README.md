@@ -1,5 +1,7 @@
 # BehaviorKit
 
+[![Tests](https://github.com/arpanjot-coding/behaviorkit/actions/workflows/tests.yml/badge.svg)](https://github.com/arpanjot-coding/behaviorkit/actions/workflows/tests.yml)
+
 **Local video observations, explainable behavior rules, reproducible events.**
 
 BehaviorKit is a Python library for fixed-camera visible-object counting and observed dwell detection. Use the small rule engine with your own detector and tracker, or run the supplied ONNX video pipeline on CPU or NVIDIA CUDA.
@@ -223,6 +225,8 @@ Recorded v0.3 Intel Windows evidence includes:
 - Twelve exploratory model/video runs on four excerpts from three sources, with exact replay.
 - A 20,000-batch allocation/state test with bounded active dwell state.
 - Separate provider profiles for model latency measurements.
+
+GitHub Actions additionally passed all six initial jobs: Python 3.10/3.12 core tests, package build/install, and fixture integration on AMD EPYC Windows/Linux runners and an Apple M1 virtual macOS runner. The M1 run passed the tiny CoreML delegation test. See [recorded CI evidence](benchmarks/github-actions-v03.json); all-three-learned-model qualification on AMD/M1 remains pending.
 
 Read [reliability-v03.json](benchmarks/reliability-v03.json), [compatibility](docs/compatibility.md) and the [video protocol](docs/video-lab.md). Recorded local evidence is separate from current GitHub Actions status. A passed fixture does not qualify every model or camera on that hardware.
 

@@ -198,7 +198,7 @@
   "engine_benchmark": "engine-v03-benchmark.json",
   "wheel": {
     "filename": "behaviorkit_prototype-0.3.0-py3-none-any.whl",
-    "sha256": "34f09c7efbbc826f2e21e4dc110771d6d1a771bc3c0bb31a670e786f5625e0d1"
+    "sha256": "3b61a878ceda615057bfe2c2166c86924d1940895368b89d3d8c209e077dfee8"
   },
   "source_sha256": {
     "__init__.py": "520ed42838efa4a32443c553dd5f1a100b5d22eeff886aea51431855905d7b2c",
@@ -212,7 +212,7 @@
     "vision.py": "c341528d0da45a70141e39f83dba9f3d751f31b4baa22d012a35324e9880b327"
   },
   "remaining_limits": [
-    "Physical AMD CPU and Apple M1/CoreML qualification pending",
+    "All-three-learned-model qualification on AMD and Apple M1/CoreML remains pending; generated-fixture CI passed on AMD and an M1 virtual runner.",
     "No live RTSP recovery or durable delivery",
     "No motion/appearance tracker or boundary hysteresis; strict missing-observation resets remain",
     "No theft/action classifier or held-out event accuracy claim",
@@ -231,5 +231,6 @@
       "cuda"
     ]
   },
-  "package_revision": "GitHub README, project URLs and contributor documentation added; runtime source hashes unchanged."
+  "package_revision": "GitHub README, project URLs and contributor documentation added; runtime source hashes unchanged.",
+  "github_actions": "github-actions-v03.json"
 }
