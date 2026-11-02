@@ -1,0 +1,14 @@
+# Observed Windows Intel Python 3.12 recipe, 2 November 2026.
+# This is a constrained compatibility recipe, not cross-platform qualification.
+numpy==2.3.5
+onnxruntime==1.31.1
+onnx==1.23.2
+av==19.0.2
+opencv-python-headless==5.0.0.93
+psutil==7.2.2
+pytest==9.2.0
+# Optional ByteTrack comparison. Its dependencies include desktop OpenCV.
+trackers==2.6.0
+supervision==0.31.3
+scipy==1.18.1
+opencv-python==5.0.0.93

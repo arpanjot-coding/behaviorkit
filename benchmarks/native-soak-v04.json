@@ -1,0 +1,59 @@
+{
+  "schema_version": "system-validation/1",
+  "behaviorkit": "0.4.0a1",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.4.0a1",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel"
+  },
+  "provider": "cpu",
+  "image_sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "video_sha256": "cbd9129a6cd82f8fc7eb35e660404871b59ecfedfcd20cea60127375d94d6133",
+  "cases": [
+    {
+      "model": "d-fine-n",
+      "status": "passed",
+      "inference_calls": 1001,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 1001,
+      "max_count": 1,
+      "dwell_events": 65,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 65,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 36.45446580002317,
+      "provider_profile": {
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 1576
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used."
+      },
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "resources": {
+        "samples": 33,
+        "peak_rss_bytes": 218259456,
+        "first_rss_bytes": 135880704,
+        "last_rss_bytes": 213348352,
+        "peak_native_threads": 84,
+        "peak_vram_bytes": null,
+        "warm_rss_bytes": 212881408,
+        "last_10_min_rss_bytes": 213180416,
+        "last_10_max_rss_bytes": 218259456
+      }
+    }
+  ],
+  "scope": "controlled learned-model positive/negative pipeline and exact replay; not surveillance accuracy",
+  "status": "passed",
+  "qualification": "short native-resource regression, not multi-hour deployment",
+  "revision_scope": "Earlier 0.4 development snapshot; this short soak is not a production or final-wheel endurance qualification."
+}

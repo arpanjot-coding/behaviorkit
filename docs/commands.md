@@ -46,7 +46,7 @@ behaviorkit run --video sample.mp4 --model d-fine-n --models-dir models --config
 
 `auto` prefers advertised CUDA, otherwise CPU; it records any CUDA initialization fallback. CoreML is opt-in. Explicit provider initialization failure is an error. Summaries record requested and selected providers.
 
-The decoder requires presentation timestamps. A dwell rule's maximum gap must be at least the requested sample period. Actual source gaps can still reset the timer. There is no automatic RTSP reconnect or camera-motion detection in this prototype.
+The decoder requires presentation timestamps. A dwell rule's maximum gap must be at least the requested sample period. Actual source gaps can still reset the timer. This legacy local-file command does not ingest RTSP; the separate experimental `live` command has explicit source health/retry contracts.
 
 Rules are evaluated as sampled frames are processed, and count/event records are flushed during the run. The runner reads the configuration once, preserves it in `config.snapshot.json`, and uses that in-memory scene throughout the job. Editing the original configuration does not change an active run. Summaries include the original config hash, effective config fingerprint, saved snapshot hash, video hash, source epoch and observation-stream hash.
 
@@ -75,5 +75,11 @@ The engine benchmark excludes perception. The model benchmark uses seeded synthe
 ## Exit codes
 
 - `0`: command completed; selected benchmark models passed execution checks.
-- `1`: one or more model benchmark entries failed.
+- `1`: failed model benchmark, partial/failed live or batch run, or canceled archive job.
 - `2`: invalid configuration, missing artifacts/dependencies, input or runtime error.
+
+## Versioned system commands (0.4 alpha)
+
+The [system guide](system-guide.md) contains runnable examples and the evidence/identity contracts for `capture`, `recording-info`, `track`, `apply`, `evaluate`, `inspect`, `config-diff`, `compare`, `setup`, `batch`, `store`, `live`, `outbox` and `plan-budget`.
+
+Use `behaviorkit COMMAND --help` for all arguments. New stage directories and report outputs must not already exist. Legacy `run`/`replay` keep their existing output behavior. Legacy configurations remain schema 0.1; opt into schema 0.2 for new behavior operators. A complete recording manifest means artifact integrity/completion; check `run_status` and per-source health for live success.

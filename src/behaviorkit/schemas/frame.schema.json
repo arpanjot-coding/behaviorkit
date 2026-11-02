@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:behaviorkit:frame:1",
+  "title": "BehaviorKit retained frame/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "observation", "width", "height"],
+  "properties": {
+    "schema_version": {"const": "frame/1"},
+    "width": {"type": "integer", "minimum": 1, "maximum": 32768},
+    "height": {"type": "integer", "minimum": 1, "maximum": 32768},
+    "geometry_revision": {"$ref": "#/$defs/text"},
+    "clock": {"enum": ["video_pts", "monotonic"]},
+    "observed_utc": {"type": ["number", "null"], "minimum": 0},
+    "statuses": {"type": "object", "additionalProperties": {"enum": ["observed", "tentative", "predicted"]}},
+    "observation": {
+      "type": "object", "additionalProperties": false, "required": ["timestamp"],
+      "properties": {
+        "timestamp": {"type": "number", "minimum": 0},
+        "source": {"$ref": "#/$defs/text"}, "epoch": {"$ref": "#/$defs/text"},
+        "covered": {"type": "boolean"},
+        "detections": {"type": "array", "maxItems": 10000, "items": {
+          "type": "object", "additionalProperties": false, "required": ["track_id", "label", "confidence", "box"],
+          "properties": {
+            "track_id": {"$ref": "#/$defs/text"}, "label": {"$ref": "#/$defs/text"},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+            "box": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number", "minimum": 0, "maximum": 1}}
+          }
+        }}
+      }
+    }
+  },
+  "$defs": {"text": {"type": "string", "minLength": 1, "maxLength": 200}}
+}

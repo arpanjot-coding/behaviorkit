@@ -29,7 +29,8 @@ def load_config_snapshot(path):
     with Path(path).open('rb') as source:raw=source.read(1024*1024+1)
     if len(raw)>1024*1024:raise ValueError("configuration exceeds 1 MiB")
     value=json.loads(raw)
-    return SceneConfig.from_dict(value),hashlib.sha256(raw).hexdigest(),value
+    from .advanced import parse_scene
+    return parse_scene(value),hashlib.sha256(raw).hexdigest(),value
 
 
 RESULT_FILES=('events','counts','transitions','diagnostics')
@@ -58,7 +59,8 @@ def replay(observations, config, output, *, trace=False):
     digest=hashlib.sha256()
     try:
         scene,config_hash,snapshot=load_config_snapshot(config)
-        engine=BehaviorEngine(scene,trace=trace)
+        from .advanced import make_engine
+        engine=make_engine(scene,trace=trace)
         write_json(output/'config.snapshot.json',snapshot)
         with ExitStack() as stack:
             source=stack.enter_context(Path(observations).open('rb'));streams=open_results(stack,output)
@@ -125,7 +127,8 @@ def run_video(args):
         config,config_hash,snapshot=load_config_snapshot(args.config)
         if any(r.kind=='dwell' and r.max_gap_seconds+1e-9<1/args.sample_fps for r in config.rules):raise ValueError('dwell max_gap_seconds is shorter than the requested sample period')
         write_json(out/'config.snapshot.json',snapshot)
-        engine=BehaviorEngine(config,trace=trace)
+        from .advanced import make_engine
+        engine=make_engine(config,trace=trace)
         video_stat=video.stat();video_hash=sha256(video)
         detector=OnnxDetector(args.model,args.models_dir,args.provider,labels={r.label for r in config.rules},confidence=min(r.confidence for r in config.rules),threads=getattr(args,'threads',0))
         tracker=IoUTracker(max_tracks=config.max_tracks)
@@ -195,6 +198,8 @@ def parser():
     bs=bench.add_subparsers(dest="benchmark_kind",required=True)
     en=bs.add_parser("engine");en.add_argument("--batches",type=int,default=5000);en.add_argument("--tracks",type=int,default=100);en.add_argument("--output",default="runs/engine-benchmark.json")
     mo=bs.add_parser("models");mo.add_argument("--models",nargs="+",default=["rtmdet-tiny","d-fine-n","rf-detr-nano"]);mo.add_argument("--models-dir",default="models");mo.add_argument("--provider",choices=CHOICES,default="auto");mo.add_argument("--threads",type=int,default=0);mo.add_argument("--iterations",type=int,default=50);mo.add_argument("--warmup",type=int,default=10);mo.add_argument("--output",default="runs/model-benchmark.json")
+    from .commands import register
+    register(sub)
     return root
 
 
@@ -202,10 +207,12 @@ def main(argv=None):
     args=parser().parse_args(argv)
     try:
         exit_code=0
+        from .commands import COMMANDS, dispatch
         if args.command=="demo":result=demo(args.output)
         elif args.command=="validate":
             config=load_config(args.config);result={"valid":True,"rules":len(config.rules),"zones":list(config.zones)}
         elif args.command=="replay":result=replay(args.observations,args.config,args.output,trace=args.trace)
+        elif args.command in COMMANDS:result=dispatch(args)
         elif args.command=="models":
             from .vision import PRESETS
             result=PRESETS
@@ -225,6 +232,7 @@ def main(argv=None):
             from .benchmark import model_benchmark
             result=model_benchmark(args.models,args.models_dir,args.provider,args.iterations,args.warmup,threads=args.threads,profile_dir=Path(args.output).parent/'profiles');write_json(args.output,result)
             if any(m["status"]!="ok" for m in result["models"]):exit_code=1
+        if isinstance(result,dict) and result.get('run_status',result.get('status')) in {'failed','partial_failure','cancelled'}:exit_code=1
         print(json.dumps(result,indent=2,allow_nan=False));return exit_code
     except (ValueError,KeyError,TypeError,RuntimeError,OSError,ImportError) as e:
         print(f"behaviorkit: {e}",file=sys.stderr);return 2

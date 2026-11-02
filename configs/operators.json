@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.2",
+  "geometry_revision": "1",
+  "zones": {
+    "left": [[0,0],[0.45,0],[0.45,1],[0,1]],
+    "right": [[0.55,0],[1,0],[1,1],[0.55,1]],
+    "all": [[0,0],[1,0],[1,1],[0,1]]
+  },
+  "rules": [
+    {"id":"visible", "kind":"count", "zone":"all"},
+    {"id":"waiting", "kind":"dwell", "zone":"left", "seconds":3, "max_gap_seconds":0.5},
+    {"id":"enter_left", "kind":"enter", "zone":"left", "membership":"debounced", "entry_seconds":0.4, "exit_seconds":0.4},
+    {"id":"exit_left", "kind":"exit", "zone":"left"},
+    {"id":"crossing", "kind":"cross", "zone":"all", "line":[[0.5,0],[0.5,1]], "direction":"both"},
+    {"id":"crowd", "kind":"occupancy", "zone":"all", "threshold":3, "seconds":2},
+    {"id":"left_then_right", "kind":"sequence", "zone":"all", "sequence_zones":["left","right"], "sequence_timeout":10}
+  ]
+}

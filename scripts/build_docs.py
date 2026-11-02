@@ -4,13 +4,17 @@ import html
 import json
 import re
 import shutil
+import os
 
 ROOT=Path(__file__).resolve().parents[1]
+EVIDENCE=Path(os.environ.get('BEHAVIORKIT_EVIDENCE_ROOT',ROOT))
+SOURCE_REF=os.environ.get('BEHAVIORKIT_SOURCE_REF','main')
 OUT=ROOT/'website/dist'
 OUT.mkdir(parents=True,exist_ok=True)
 from markdown_it import MarkdownIt
 md=MarkdownIt('commonmark',{'html':False})
 PAGES=[('quickstart','Quickstart'),('installation','Install on your hardware'),('commands','CLI commands'),('behaviours','Counting & dwell'),('python-api','Python API'),('model-contracts','Model preparation'),('benchmarks','Benchmarks'),('compatibility','Compatibility & tests'),('video-lab','Video lab protocol'),('troubleshooting','Troubleshooting'),('commercial-use','Commercial use')]
+PAGES[3:3]=[('system-guide','Versioned pipelines & operators'),('implementation-status','Implementation & qualification'),('implementation-plan','Detailed milestone plan')]
 
 from site_content import shell as page_shell,home_body,guide_body,research_body,sources_body,LANGUAGES,LOCALES,home_path,start_path
 
@@ -22,6 +26,7 @@ for slug,title in PAGES:
  body=md.render(source)
  body=re.sub(r'href="([\w-]+)\.md([#][^"]*)?"',lambda m:'href="'+m[1]+'.html'+(m[2] or '')+'"',body)
  body=body.replace('href="../benchmarks/','href="/downloads/').replace('href="../examples/video-lab/results/report.json"','href="/lab/report.json"').replace('href="../examples/video-lab/sources.json"','href="/lab/sources.json"').replace('href="../examples/video-lab/annotations.json"','href="/lab/annotations.json"')
+ body=re.sub(r'href="../([^"]+)"',lambda m:'href="https://github.com/arpanjot-coding/behaviorkit/blob/'+SOURCE_REF+'/'+m[1]+'"',body)
  if slug=='benchmarks':
   for filename,measurement_title in [('cpu-v03-benchmark.json','Intel CPU execution'),('cuda-v03-benchmark.json','NVIDIA CUDA execution')]:
    report_path=ROOT/'benchmarks'/filename
@@ -62,7 +67,7 @@ for name in ['style.css','app.js','professional.css','professional.js','video-la
 shutil.copy2(ROOT/'website/research.json',OUT/'assets/research.json')
 # Extract the exact video frame whose actual model evidence is displayed on the home page.
 import av,cv2
-with av.open(str(ROOT/'examples/video-lab/media/shelf.mp4')) as container:
+with av.open(str(EVIDENCE/'examples/video-lab/media/shelf.mp4')) as container:
  for frame in container.decode(video=0):
   if float(frame.time)+1e-8>=3.2:
    if not cv2.imwrite(str(OUT/'assets/home-frame.jpg'),frame.to_ndarray(format='bgr24'),[cv2.IMWRITE_JPEG_QUALITY,90]):raise OSError('home frame could not be written')
@@ -72,6 +77,9 @@ with av.open(str(ROOT/'examples/video-lab/media/shelf.mp4')) as container:
 (OUT/'downloads').mkdir(exist_ok=True)
 for path in (ROOT/'benchmarks').glob('*.json'):
  shutil.copy2(path,OUT/'downloads'/path.name)
+shutil.copy2(ROOT/'docs/pilot-requirements.json',OUT/'docs/pilot-requirements.json')
+profile_folder=ROOT/'benchmarks/profiles-system-v04'
+if profile_folder.exists(): shutil.copytree(profile_folder,OUT/'downloads/profiles-system-v04',dirs_exist_ok=True)
 for path in (ROOT/'dist').glob('*.whl'):
  shutil.copy2(path,OUT/'downloads'/path.name)
 for path in (ROOT/'benchmarks/validation').glob('*'):
@@ -79,16 +87,16 @@ for path in (ROOT/'benchmarks/validation').glob('*'):
  shutil.copy2(path,OUT/'downloads/validation'/path.name)
 archive=ROOT.parent/'behaviorkit-prototype-source.zip'
 if archive.exists():shutil.copy2(archive,OUT/'downloads'/archive.name)
-lab=ROOT/'examples/video-lab/results'
+lab=EVIDENCE/'examples/video-lab/results'
 if (lab/'report.json').exists():
  (OUT/'lab/media').mkdir(parents=True,exist_ok=True)
  shutil.copy2(lab/'report.json',OUT/'lab/report.json')
- shutil.copy2(ROOT/'examples/video-lab/media/manifest.json',OUT/'lab/sources.json')
- shutil.copy2(ROOT/'examples/video-lab/annotations.json',OUT/'lab/annotations.json')
+ shutil.copy2(EVIDENCE/'examples/video-lab/media/manifest.json',OUT/'lab/sources.json')
+ shutil.copy2(EVIDENCE/'examples/video-lab/annotations.json',OUT/'lab/annotations.json')
  report=json.loads((lab/'report.json').read_text(encoding='utf-8'))
  if report.get('status')!='completed_execution_not_accuracy_certification':raise RuntimeError('Video lab export is incomplete or failed; refusing to publish partial evidence')
  for case in report['cases']:
-  for source in [ROOT/'examples/video-lab/media'/f'{case["id"]}.mp4',lab/'media'/f'{case["id"]}.jpg']:
+  for source in [EVIDENCE/'examples/video-lab/media'/f'{case["id"]}.mp4',lab/'media'/f'{case["id"]}.jpg']:
    if not source.exists():raise FileNotFoundError('Prepare demo videos with scripts/prepare_video_demo.py and build_video_demo.py first: '+str(source))
    shutil.copy2(source,OUT/'lab/media'/source.name)
   for model in report['models']:

@@ -1,0 +1,63 @@
+{
+  "schema_version": "known-failures/1",
+  "fixture": "same NASA image, low/default MPEG4 bitrate; repeated still + blank, not a real camera corpus",
+  "image_sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "video_sha256": "aba3ecba6cdc0c5ad5bded7fbb247c4a6da6b400e8173386454f98dfb084f57d",
+  "original_association_floor": 0.1,
+  "cases": [
+    {
+      "model": "rtmdet-tiny",
+      "status": "failed",
+      "max_count": 2,
+      "dwell_events": 1,
+      "exact_replay": true
+    },
+    {
+      "model": "d-fine-n",
+      "status": "failed",
+      "max_count": 1,
+      "dwell_events": 0,
+      "exact_replay": true
+    },
+    {
+      "model": "rf-detr-nano",
+      "status": "passed",
+      "max_count": 1,
+      "dwell_events": 1,
+      "exact_replay": true
+    }
+  ],
+  "one_factor_replay": {
+    "experiment": "same low-bitrate candidate recording, change only IoU association confidence floor from 0.1 to 0.3",
+    "cases": [
+      {
+        "model": "rtmdet-tiny",
+        "max_count": 2,
+        "events": 1,
+        "inference_calls": 0
+      },
+      {
+        "model": "d-fine-n",
+        "max_count": 1,
+        "events": 1,
+        "inference_calls": 0
+      },
+      {
+        "model": "rf-detr-nano",
+        "max_count": 1,
+        "events": 1,
+        "inference_calls": 0
+      }
+    ]
+  },
+  "conclusions": [
+    "Independent IoU floor restores D-FINE dwell using the same saved candidates and no new inference.",
+    "RTMDet extra-person false positive remains on this compressed fixture.",
+    "A separate 2 Mbps fixture passes the controlled check; that does not erase the compressed failure."
+  ],
+  "continuous_profiling_failure": {
+    "sampled_frames": 501,
+    "peak_rss_bytes": 1421828096,
+    "cause": "ORT profiler event history retained across entire run; excluded from normal capture and corrected validation harness"
+  }
+}

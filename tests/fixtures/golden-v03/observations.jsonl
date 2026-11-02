@@ -1,0 +1,41 @@
+{"timestamp": 0.0, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 0.2, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 0.4, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 0.6, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 0.8, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 1.0, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 1.2, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 1.4, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 1.6, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 1.8, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 2.0, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 2.2, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 2.4, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 2.6, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 2.8, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 3.0, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 3.2, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 3.4, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 3.6, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 3.8, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 4.0, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}, {"track_id": "person-2", "label": "person", "confidence": 0.92, "box": [0.6, 0.3, 0.7, 0.7]}]}
+{"timestamp": 4.2, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 4.4, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 4.6, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 4.8, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 5.0, "source": "demo", "epoch": "0", "covered": true, "detections": [{"track_id": "person-1", "label": "person", "confidence": 0.95, "box": [0.3, 0.2, 0.5, 0.8]}]}
+{"timestamp": 5.2, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 5.4, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 5.6, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 5.8, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 6.0, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 6.2, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 6.4, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 6.6, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 6.8, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 7.0, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 7.2, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 7.4, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 7.6, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 7.8, "source": "demo", "epoch": "0", "covered": true, "detections": []}
+{"timestamp": 8.0, "source": "demo", "epoch": "0", "covered": true, "detections": []}

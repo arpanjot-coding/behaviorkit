@@ -1,0 +1,180 @@
+{
+  "schema_version": "system-validation/1",
+  "behaviorkit": "0.4.0a1",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.4.0a1",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel"
+  },
+  "provider": "cpu",
+  "image_sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "video_sha256": "49a5636172bb15960b214df3822fde98f7308c00b1f08736d4f4730ac8c2ab04",
+  "cases": [
+    {
+      "model": "rtmdet-tiny",
+      "status": "passed",
+      "inference_calls": 16,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 16,
+      "max_count": 1,
+      "dwell_events": 1,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 1,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 1.0893854000023566,
+      "provider_profile": {
+        "file": "profiles-system-v04/cpu-rtmdet-tiny.json.gz",
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 444
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used.",
+        "uncompressed_sha256": "f93b095ceea300b549b2af3bf3af5c5312427263ab096b2cbe53d6b82a6b12d9",
+        "compressed_sha256": "498a422e5d646c7a045729fbe4d3acca2e1712b7ec4dfcd13a625068495f7479"
+      },
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "resources": {
+        "samples": 1,
+        "peak_rss_bytes": 137138176,
+        "first_rss_bytes": 137138176,
+        "last_rss_bytes": 137138176,
+        "peak_native_threads": 69,
+        "peak_vram_bytes": null
+      },
+      "stage_provenance": {
+        "candidates": {
+          "manifest_sha256": "5d0d1f6635f8b7817c39f4df14cfb4e6b00eb722839387ef095960c092d16359",
+          "implementation_sha256": "032846089296b97966ebc6361be6fa035e62492bfc4f9a72f573d36bcb2ee20d",
+          "cache_key": "4bffd3e951621a770b8d4db4feed9a6223a45930a371c08a2347f2cea8728166"
+        },
+        "tracks": {
+          "manifest_sha256": "c8327f730ce7b218ff73ca892f511b8c9cb8024310f2138dc2dff42b74d97245",
+          "implementation_sha256": "325834146ec724748b1d2ac8ab3a87104f98051f645ac22767ec7d81a1733647",
+          "cache_key": "c865abe54c7b7abe00a8095d73f09fe0c30cf8f46675c56211f1fcbd28cf601b"
+        },
+        "rules": {
+          "manifest_sha256": "7276c3dfb6ac3fdefd113965103e7fba4f91a9a2be7d9ad3e0f07592245d38bb",
+          "implementation_sha256": "ed524fbe55b585b604c913753c250685db9940f3e326057ae25ab42e4bff3903",
+          "cache_key": "e3c38a30fab0aa23b2171ad304d88ca3190cd9dd7dc4fcedef8df28f06a8a36d"
+        }
+      }
+    },
+    {
+      "model": "d-fine-n",
+      "status": "passed",
+      "inference_calls": 16,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 16,
+      "max_count": 1,
+      "dwell_events": 1,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 1,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 1.184503099997528,
+      "provider_profile": {
+        "file": "profiles-system-v04/cpu-d-fine-n.json.gz",
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 1576
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used.",
+        "uncompressed_sha256": "f6dfd16b4826a3a7151b7e504162a20bdfaa03c2f8ba43e1016154a21be5ade4",
+        "compressed_sha256": "ea9be102acc00cb18ba39b774ffc77e7881b6f70331663e45831e85940d3e38f"
+      },
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "resources": {
+        "samples": 1,
+        "peak_rss_bytes": 145600512,
+        "first_rss_bytes": 145600512,
+        "last_rss_bytes": 145600512,
+        "peak_native_threads": 84,
+        "peak_vram_bytes": null
+      },
+      "stage_provenance": {
+        "candidates": {
+          "manifest_sha256": "cc788e6f5b87dd00875370be75e2e25c9450e782b88af59d4fbf208976df7045",
+          "implementation_sha256": "032846089296b97966ebc6361be6fa035e62492bfc4f9a72f573d36bcb2ee20d",
+          "cache_key": "61008b61ad4c293a6865def2c2276a0547bfc49b7f777012a4879c6dd4874983"
+        },
+        "tracks": {
+          "manifest_sha256": "4030658ea2a95161ff88a51183953ae498476dd63b2015651a44ccfe0f4106a8",
+          "implementation_sha256": "325834146ec724748b1d2ac8ab3a87104f98051f645ac22767ec7d81a1733647",
+          "cache_key": "a3d6934c0edd3890a395292a81b385b58eac95b91b530803f57ab6054690e7e1"
+        },
+        "rules": {
+          "manifest_sha256": "aaac24e4e3fd4479ca072d5232c50926cb3403073aa1d6b86b590b6f2d4f77ac",
+          "implementation_sha256": "ed524fbe55b585b604c913753c250685db9940f3e326057ae25ab42e4bff3903",
+          "cache_key": "9c30dc64131a9502d61efd9f32599beb24e9893e1dec7ffbb7a301daa4ef6bbb"
+        }
+      }
+    },
+    {
+      "model": "rf-detr-nano",
+      "status": "passed",
+      "inference_calls": 16,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 16,
+      "max_count": 1,
+      "dwell_events": 1,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 1,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 2.280614399991464,
+      "provider_profile": {
+        "file": "profiles-system-v04/cpu-rf-detr-nano.json.gz",
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 1430
+        },
+        "requested_provider": "CPUExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": false,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used.",
+        "uncompressed_sha256": "ef00fe0faf801cae6946f75bfc40d5b88f673c64afdb753c5f9a01db66b0e627",
+        "compressed_sha256": "209cce09bba20a3afe6efcc37892da1ef79842eebcd3aced86492160ea161b21"
+      },
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "resources": {
+        "samples": 2,
+        "peak_rss_bytes": 327868416,
+        "first_rss_bytes": 261865472,
+        "last_rss_bytes": 327868416,
+        "peak_native_threads": 84,
+        "peak_vram_bytes": null
+      },
+      "stage_provenance": {
+        "candidates": {
+          "manifest_sha256": "9b0305e0c4a753ccac2fd760f24b5b4fa3613a5b6576cd1202454aeee80f52af",
+          "implementation_sha256": "032846089296b97966ebc6361be6fa035e62492bfc4f9a72f573d36bcb2ee20d",
+          "cache_key": "f779145e97e1b6b6f5db593cd7294e3e0305f8a713a2721bb005a5f941258bac"
+        },
+        "tracks": {
+          "manifest_sha256": "c3b765a4efc2691b1ff5515f5a8b28c17c3ad424f9a9cdfbd33259f097f6b744",
+          "implementation_sha256": "325834146ec724748b1d2ac8ab3a87104f98051f645ac22767ec7d81a1733647",
+          "cache_key": "97c66bd2545ca8b06a2b911c81f04e49a8b995f83d13e38044cdf0a3dfcd3fd1"
+        },
+        "rules": {
+          "manifest_sha256": "3cad36a911acc2ad22a1f3fd20ea42034d2203261e47f626c6b358199b74c22d",
+          "implementation_sha256": "ed524fbe55b585b604c913753c250685db9940f3e326057ae25ab42e4bff3903",
+          "cache_key": "c383705b0197d91355e177bf4106cab4aa1309443910a8c6dec231e7d0e480a0"
+        }
+      }
+    }
+  ],
+  "scope": "controlled learned-model positive/negative pipeline and exact replay; not surveillance accuracy",
+  "status": "passed"
+}

@@ -2,6 +2,10 @@
 
 This is a proposed sequence, not a delivery-date commitment. v0.3 supports counting, strict sampled dwell, replay and diagnostics. Features below are planned unless the README explicitly marks them current.
 
+**0.4 alpha update:** the [implementation status](docs/implementation-status.md) records experimental APIs now implemented across M0-M8. The acceptance criteria below still apply: software implementation does not replace held-out event data, hardware qualification or sustained deployment evidence.
+
+The [implementation plan](docs/implementation-plan.md) expands this roadmap into dependency-ordered milestones, concrete first changes, migration requirements and release gates.
+
 ## How requirements become supported use cases
 
 Every accepted request should describe:

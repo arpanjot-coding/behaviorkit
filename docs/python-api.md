@@ -1,5 +1,7 @@
 # Python API
 
+The original API below remains compatible. New APIs live in `behaviorkit.advanced`, `contracts`, `recording`, `evaluation`, `setup`, `adapters`, `motion`, `pipeline`, `owned_store`, `delivery`, `resources` and `profiles`. Read the [system guide](system-guide.md) for their contracts and optional dependencies.
+
 The core uses Python's standard library. Importing `behaviorkit` does not import NumPy, ONNX Runtime, PyTorch, OpenCV or a decoder.
 
 ```python

@@ -1,0 +1,158 @@
+{
+  "schema_version": "system-validation/1",
+  "behaviorkit": "0.4.0a1",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "system": "Windows",
+    "architecture": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "behaviorkit": "0.4.0a1",
+    "logical_cpus": 24,
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 270K Plus",
+    "cpu_vendor": "Intel",
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 617.14",
+    "gpu_point_sample": "1 %, 1639 MiB, 5.95 W"
+  },
+  "provider": "cuda",
+  "image_sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "video_sha256": "49a5636172bb15960b214df3822fde98f7308c00b1f08736d4f4730ac8c2ab04",
+  "cases": [
+    {
+      "model": "rtmdet-tiny",
+      "status": "passed",
+      "inference_calls": 16,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 16,
+      "max_count": 1,
+      "dwell_events": 1,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 1,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 6.046919400047045,
+      "provider_profile": {
+        "file": "profiles-system-v04/cuda-rtmdet-tiny.json.gz",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 428
+        },
+        "requested_provider": "CUDAExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": true,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used.",
+        "uncompressed_sha256": "a9100e46b460ea955096830509ce3e95f7770fd21fc226d5d26776fbd5c10b66",
+        "compressed_sha256": "2cd2afe40a91fd26c4a23b93eff2c945af035d717ea72467347dca1513d1a917"
+      },
+      "model_sha256": "b012f9a54a748aebb62d6da919f220f747982086877231f4f8bcce631341065f",
+      "stage_provenance": {
+        "candidates": {
+          "manifest_sha256": "cd36163f5a3c94c491c178efd569592ca04de779169e762a8abfbca334582e3a",
+          "implementation_sha256": "032846089296b97966ebc6361be6fa035e62492bfc4f9a72f573d36bcb2ee20d",
+          "cache_key": "425f283fcdecceecca4c98fb78a86cac00cdb2f42a91da2dd8bba929e5d1a54c"
+        },
+        "tracks": {
+          "manifest_sha256": "9740ff0c6f142cbbf889d9e8fa493523e6bd1dccd7019094a665b8b19fd2becd",
+          "implementation_sha256": "325834146ec724748b1d2ac8ab3a87104f98051f645ac22767ec7d81a1733647",
+          "cache_key": "eeadc77dba8195b37b1a11f80b002f8c3edc6b304e3baa0cdfdeec9c95567831"
+        },
+        "rules": {
+          "manifest_sha256": "6246dc13cc2134d2d3f1263f68b3a4924af91482a9012808d5b4b36a21c05ec2",
+          "implementation_sha256": "ed524fbe55b585b604c913753c250685db9940f3e326057ae25ab42e4bff3903",
+          "cache_key": "85fa2858d27f23a73eee753fffed3acca76f8f2a99832e735d6d68d53a8a9fa4"
+        }
+      }
+    },
+    {
+      "model": "d-fine-n",
+      "status": "passed",
+      "inference_calls": 16,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 16,
+      "max_count": 1,
+      "dwell_events": 1,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 1,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 3.6162425999646075,
+      "provider_profile": {
+        "file": "profiles-system-v04/cuda-d-fine-n.json.gz",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 1488
+        },
+        "requested_provider": "CUDAExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": true,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used.",
+        "uncompressed_sha256": "7f2a5f42de06ea0f6e7aca462e614c4259540fe631ed5a543f3a697697a9acd7",
+        "compressed_sha256": "c49d998d6d25fb846f88a16897d73ef62bb1e206028ca216c95cc3dbff09cd09"
+      },
+      "model_sha256": "a9121977e078261ac90fff709ec3658d823a6df83a31b196ce645df6cccab0b8",
+      "stage_provenance": {
+        "candidates": {
+          "manifest_sha256": "7513b142429f5dc81b54fe69862949439fef924ee67a76840b4ef2aecb60832c",
+          "implementation_sha256": "032846089296b97966ebc6361be6fa035e62492bfc4f9a72f573d36bcb2ee20d",
+          "cache_key": "98b5ffd29b31412d4188e8f0734800e0dcdebf9987b5ccb241bd9596bcec7c9c"
+        },
+        "tracks": {
+          "manifest_sha256": "eb9b62932362fed3db6e859deb316b7d672a664e0760d10738869bffe9c6644d",
+          "implementation_sha256": "325834146ec724748b1d2ac8ab3a87104f98051f645ac22767ec7d81a1733647",
+          "cache_key": "88d2c5ac427c16bbc5e54f95eaab9f45408d378fe27b5c6bde01f847c0587837"
+        },
+        "rules": {
+          "manifest_sha256": "5731282340016209b3965470ae6becccc45cdc82589609faaf88c47ee25bb196",
+          "implementation_sha256": "ed524fbe55b585b604c913753c250685db9940f3e326057ae25ab42e4bff3903",
+          "cache_key": "b46d1145ceac95d572f44b97eeb24621c565bff2a96788a29986fa8fe84df7e7"
+        }
+      }
+    },
+    {
+      "model": "rf-detr-nano",
+      "status": "passed",
+      "inference_calls": 16,
+      "replay_inference_calls": 0,
+      "exact_replay": true,
+      "count_samples": 16,
+      "max_count": 1,
+      "dwell_events": 1,
+      "first_confirmation": 1.2,
+      "expected_dwell_events": 1,
+      "provider_profile_scope": "separate two-frame probe; continuous capture profiling disabled",
+      "wall_seconds": 2.0640358000528067,
+      "provider_profile": {
+        "file": "profiles-system-v04/cuda-rf-detr-nano.json.gz",
+        "kernel_events_by_provider": {
+          "CUDAExecutionProvider": 1414
+        },
+        "requested_provider": "CUDAExecutionProvider",
+        "requested_provider_observed": true,
+        "gpu_execution_observed": true,
+        "coreml_delegation_observed": false,
+        "note": "Provider kernel events do not identify which Apple compute unit CoreML used.",
+        "uncompressed_sha256": "7456e3b1388f5ee1d8e3a13aa478a3ccb6cf9f8cf55128bd89eac9330539ae08",
+        "compressed_sha256": "b650a40bc320307efe5782c356a73710bea27c9b17682baa7c916c48bc643273"
+      },
+      "model_sha256": "c7ec9d0d44bf4e62015c031a0c9dfc6ab2d8550f7a6c9ec24f0856f002cec6e9",
+      "stage_provenance": {
+        "candidates": {
+          "manifest_sha256": "e861f508d6417517b6ec02267cdeb914098121ee6482f8e77d74b0b07a7c95cc",
+          "implementation_sha256": "032846089296b97966ebc6361be6fa035e62492bfc4f9a72f573d36bcb2ee20d",
+          "cache_key": "8294439d1db67cf21b206f90ab397c560d80ced083bd0ca867344a61195215aa"
+        },
+        "tracks": {
+          "manifest_sha256": "b039e56875b7451fe7dd4056081233569291e25f2fe3e92488143db9881a1bfb",
+          "implementation_sha256": "325834146ec724748b1d2ac8ab3a87104f98051f645ac22767ec7d81a1733647",
+          "cache_key": "ad3ca15424c8575d63211e6fd5732c449a924aaaaadf7085de217e3537981e6c"
+        },
+        "rules": {
+          "manifest_sha256": "eda7d7e20e15305635b11db1558353faeb4437f34cd8e81015baf8c1cfa3862a",
+          "implementation_sha256": "ed524fbe55b585b604c913753c250685db9940f3e326057ae25ab42e4bff3903",
+          "cache_key": "84558b2fdc96510d025026398f79d0ba09d6baf08075ae04fd7f174037232460"
+        }
+      }
+    }
+  ],
+  "scope": "controlled learned-model positive/negative pipeline and exact replay; not surveillance accuracy",
+  "status": "passed"
+}

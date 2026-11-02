@@ -4,11 +4,11 @@
 
 **Local video observations, explainable behavior rules, reproducible events.**
 
-BehaviorKit is a Python library for fixed-camera visible-object counting and observed dwell detection. Use the small rule engine with your own detector and tracker, or run the supplied ONNX video pipeline on CPU or NVIDIA CUDA.
+BehaviorKit is a Python library for fixed-camera visible-object counting, observed dwell and explicit temporal behavior rules. Use the small rule engine with your own detector and tracker, or run the supplied ONNX video pipeline on CPU or NVIDIA CUDA. Capture candidates once, compare trackers and replay rule changes without repeated inference.
 
 The runtime makes **no LLM calls**, requires no API key, and performs no automatic model downloads. Models, tracking and rules run on your hardware. Importing the core loads only Python's standard library.
 
-**Status: v0.3.0 feasibility prototype.** Counting and strict sampled dwell work today. This is not a production camera service or theft classifier. The distribution is `behaviorkit-prototype` and is **not published to PyPI**. BehaviorKit is a working title; the unrelated [IUB-RHouse/BehaviorKit](https://github.com/IUB-RHouse/BehaviorKit) robotics project is not affiliated with this repository.
+**Status: v0.4.0a1 experimental development.** Legacy counting/dwell remains compatible. New operators, layered recording, evaluation, scene setup, batch jobs, retention and live ingest have explicit contracts and tests. Camera-event accuracy and production availability still require qualification. The distribution is `behaviorkit-prototype` and is **not published to PyPI**. BehaviorKit is a working title; the unrelated [IUB-RHouse/BehaviorKit](https://github.com/IUB-RHouse/BehaviorKit) robotics project is not affiliated with this repository.
 
 [Quickstart](#quickstart) · [Hardware](#choose-a-vision-runtime) · [Python API](#python-api) · [Documentation](#documentation) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [License](LICENSE)
 
@@ -21,6 +21,15 @@ The runtime makes **no LLM calls**, requires no API key, and performs no automat
 - Inspect dwell starts, confirmations and reset reasons through CLI output and a public Python API.
 - Run supported ONNX contracts on CPU or NVIDIA CUDA; verify execution using separate provider profiles.
 - Consume observations from your own perception system without installing vision dependencies.
+- Record versioned candidate boxes, replay tracking/rules separately and reject unavailable replay evidence.
+- Score event precision/recall, false alerts, delay, duplicates, count error and unknown coverage.
+- Opt into zone entry/exit, directional crossing, sustained occupancy, zone sequences and observed membership debouncing.
+- Compare the optional Apache-2.0 ByteTrack adapter; predictions never become confirmed visual evidence.
+- Configure zones locally, route camera-specific geometry and inspect bounded why-not diagnostics.
+- Run restartable archive jobs, manage explicitly owned evidence and persist facts/messages in an SQLite outbox.
+- Experiment with isolated live decoders, bounded queue policies, stale-frame checks and recovery epochs.
+
+See the [detailed system guide](docs/system-guide.md), [implementation status](docs/implementation-status.md) and [pilot acceptance register](docs/pilot-requirements.json). New commands are experimental; field accuracy is not implied by fixture tests.
 
 Examples include visible queue-area counts, waiting-zone dwell, and evaluation of rule changes on recorded video. A tracker ID is an input assumption, not a verified identity across people, clips or cameras.
 
@@ -56,7 +65,7 @@ behaviorkit validate --config configs/people.json
 behaviorkit replay --observations runs/demo/observations.jsonl --config runs/demo/config.json --trace --output runs/replayed
 ```
 
-Expected: version `0.3.0`, **41 count samples**, and **one dwell event at source time 3 seconds**. Check `summary.json` for `status: "ok"`. This synthetic example tests rules, not computer-vision accuracy.
+Expected: version `0.4.0a1`, **41 count samples**, and **one dwell event at source time 3 seconds**. Check `summary.json` for `status: "ok"`. This synthetic example tests rules, not computer-vision accuracy.
 
 Install this checkout or a verified wheel from this repository's releases. There is no `pip install behaviorkit` instruction for this project; similarly named PyPI packages may be unrelated.
 
@@ -255,6 +264,8 @@ Model latency uses seeded synthetic RGB, native preprocessing and synchronized i
 - [Compatibility](docs/compatibility.md) and [video evidence](docs/video-lab.md)
 - [Troubleshooting](docs/troubleshooting.md) and [commercial use](docs/commercial-use.md)
 - [Release notes](CHANGELOG.md)
+- [Layered replay, operators, evaluation, setup and live delivery](docs/system-guide.md)
+- [Implementation gates and known failures](docs/implementation-status.md)
 
 The [hosted visual demo](https://behaviorkit-prototype-docs.auralcouch1.chatgpt.site/) currently has restricted access. Public Markdown documentation is available in this repository. The hosted introduction, navigation and getting-started guide have twelve language variants; detailed references and the lab use English.
 
@@ -267,18 +278,16 @@ python scripts/serve_docs.py --port 8080
 
 ## Planned features and developer needs
 
-Next priorities: event-quality evaluation, a production tracker adapter, zone hysteresis, directional crossing, occupancy thresholds and bounded live sources. Custom adapters, temporal sequences and narrow local action models follow demonstrated use cases.
-
-These are **planned**, not available commands. [ROADMAP.md](ROADMAP.md) defines prerequisites, acceptance criteria and a feedback process. Each advertised use case needs an event contract, representative labeled examples, tested hardware and accuracy/latency/resource budgets. No library can promise to cover every developer need in advance.
+The software foundations for evaluation, layered replay, motion tracking, membership debouncing, crossing, occupancy, sequences, custom boxes and bounded live sources are implemented experimentally. [Implementation status](docs/implementation-status.md) separates those APIs from external acceptance gates. [ROADMAP.md](ROADMAP.md) retains the requirements and qualification process. Each advertised use case still needs representative labeled examples, tested hardware and accuracy/latency/resource budgets. Narrow action/pose models remain separate future work.
 
 [Request a feature](https://github.com/arpanjot-coding/behaviorkit/issues/new?template=feature_request.yml) or [report a bug](https://github.com/arpanjot-coding/behaviorkit/issues/new?template=bug_report.yml). Describe observable events and normal lookalikes, rather than only a label such as suspicious behavior. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Current limits
 
-- No RTSP recovery, multi-camera scheduler, durable delivery or restart-safe outbox.
-- No motion/appearance tracker, re-identification, spatial hysteresis or camera-drift guard.
+- Live ingest is experimental: decoder isolation/retries do not isolate a synchronous native inference hang or establish multi-hour availability.
+- The optional motion tracker has no appearance re-identification. Debouncing is time-based; there is no calibrated spatial hysteresis or camera-drift guard.
 - No pickup, concealment, ownership, payment, intent or theft classifier.
-- No held-out event accuracy certification or multi-hour decoded-video RSS/VRAM qualification.
+- No held-out event accuracy certification or multi-hour decoded-video RSS/VRAM qualification. Short native-resource evidence is recorded separately.
 - Physical AMD and M1 learned-model checks remain pending; CoreML and TensorRT are experimental.
 
 ## License
