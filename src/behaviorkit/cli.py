@@ -1,7 +1,7 @@
 from __future__ import annotations
 import argparse
 from dataclasses import asdict, replace
-from contextlib import ExitStack
+from contextlib import ExitStack, contextmanager
 import hashlib
 import json
 import math
@@ -50,7 +50,7 @@ def write_evaluation(result,observation,streams):
     return {name:len(values) for name,values in rows.items()}
 
 
-def replay(observations, config, output, *, trace=False):
+def replay(observations, config, output, *, trace=False, synthetic_demo=False):
     output=Path(output)
     guard_outputs(output,[observations,config],OUTPUT_NAMES)
     output.mkdir(parents=True,exist_ok=True)
@@ -83,6 +83,9 @@ def replay(observations, config, output, *, trace=False):
         write_json(output/'summary.json',{"schema_version":"0.1","kind":"replay","status":"error","error":f"{type(error).__name__}: {error}","line":line_number,"batches":batches,"events":events,"count_samples":counts,"partial_outputs":True})
         raise
     summary={"schema_version":"0.1","behaviorkit":__version__,"status":"ok","kind":"replay","batches":batches,"events":events,"count_samples":counts,"final_dwell_states":engine.state_size,"config_sha256":config_hash,"config_fingerprint":engine.config_fingerprint,"config_snapshot_sha256":sha256(output/'config.snapshot.json'),"observations_sha256":digest.hexdigest(),"trace_enabled":trace,"transition_records":transitions,"diagnostic_records":diagnostics,"output":str(output.resolve())}
+    if synthetic_demo:
+        summary["synthetic_demo"] = True
+        summary["note"] = "Synthetic observations; person-1 dwells for 3 s, person-2 leaves before threshold. No ML inference."
     write_json(output/"summary.json",summary)
     return summary
 
@@ -97,13 +100,19 @@ def demo(output):
             if i<26:detections.append({"track_id":"person-1","label":"person","confidence":.95,"box":[.3,.2,.5,.8]})
             if 10<=i<21:detections.append({"track_id":"person-2","label":"person","confidence":.92,"box":[.6,.3,.7,.7]})
             f.write(json.dumps({"timestamp":i/5,"source":"demo","epoch":"0","covered":True,"detections":detections})+"\n")
-    result=replay(output/"observations.jsonl",output/"config.json",output)
-    result["note"]="Synthetic observations; person-1 dwells for 3 s, person-2 leaves before threshold. No ML inference."
-    return result
+    return replay(output/"observations.jsonl",output/"config.json",output,synthetic_demo=True)
 
 
-def run_video(args):
+@contextmanager
+def open_local_video(path):
+    """Decode a local file through PyAV without opening nested URLs or files."""
     import av
+    with Path(path).open("rb") as source:
+        with av.open(source, options={"protocol_whitelist": "none"}) as container:
+            yield container
+
+
+def run_video(args, *, on_sample=None):
     from .tracking import IoUTracker
     from .vision import OnnxDetector
     number(args.sample_fps,'sample-fps',0,120)
@@ -133,7 +142,7 @@ def run_video(args):
         detector=OnnxDetector(args.model,args.models_dir,args.provider,labels={r.label for r in config.rules},confidence=min(r.confidence for r in config.rules),threads=getattr(args,'threads',0))
         tracker=IoUTracker(max_tracks=config.max_tracks)
         with ExitStack() as stack:
-            container=stack.enter_context(av.open(str(video)))
+            container=stack.enter_context(open_local_video(video))
             f=stack.enter_context((out/'observations.jsonl').open('wb'))
             timing_file=stack.enter_context((out/'stage_timings.jsonl').open('w',encoding='utf-8',newline='\n'))
             streams=open_results(stack,out);decode_begin=time.perf_counter()
@@ -162,6 +171,8 @@ def run_video(args):
                 timing['sample_pipeline_ms']=(time.perf_counter()-decode_begin)*1000
                 timing_file.write(json.dumps({"timestamp":timestamp,**timing},allow_nan=False)+"\n")
                 sampled+=1
+                if on_sample is not None:
+                    on_sample(sampled)
                 if args.max_frames and sampled>=args.max_frames:break
                 decode_begin=time.perf_counter()
         if not sampled:raise ValueError("video produced no usable timestamped frames")
@@ -188,6 +199,9 @@ def parser():
     d=sub.add_parser("demo",help="Run synthetic observations without ML dependencies");d.add_argument("--output",default="runs/demo")
     v=sub.add_parser("validate",help="Validate a counting/dwell scene config");v.add_argument("--config",required=True)
     r=sub.add_parser("replay",help="Evaluate timestamped observation JSONL");r.add_argument("--observations",required=True);r.add_argument("--config",required=True);r.add_argument("--output",default="runs/replay");r.add_argument('--trace',action='store_true',help='Record dwell starts, confirmations and reset reasons')
+    report = sub.add_parser("report", help="Make an offline HTML report from completed results")
+    report.add_argument("--run-dir", required=True, type=Path, help="Output directory from demo, run, replay or apply")
+    report.add_argument("--output", required=True, type=Path, help="New .html file")
     run=sub.add_parser("run",help="Process a local video through ONNX, tracking and rules")
     run.add_argument("--video",required=True);run.add_argument("--config",required=True);run.add_argument("--model",choices=["rtmdet-tiny","d-fine-n","rf-detr-nano"],required=True);run.add_argument("--models-dir",default="models");run.add_argument("--provider",choices=CHOICES,default="auto");run.add_argument("--threads",type=int,default=0);run.add_argument("--sample-fps",type=float,default=5);run.add_argument("--source",default="camera");run.add_argument("--max-frames",type=int,default=0);run.add_argument("--output",default="runs/video")
     run.add_argument('--epoch',help='Explicit source epoch for reproducible repeated ingestion; defaults to a unique run ID')
@@ -212,6 +226,9 @@ def main(argv=None):
         elif args.command=="validate":
             config=load_config(args.config);result={"valid":True,"rules":len(config.rules),"zones":list(config.zones)}
         elif args.command=="replay":result=replay(args.observations,args.config,args.output,trace=args.trace)
+        elif args.command == "report":
+            from .report import write_report
+            result = write_report(args.run_dir, args.output)
         elif args.command in COMMANDS:result=dispatch(args)
         elif args.command=="models":
             from .vision import PRESETS

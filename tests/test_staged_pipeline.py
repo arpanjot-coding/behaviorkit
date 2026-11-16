@@ -152,3 +152,30 @@ def test_live_command_recording_replays_exact_events(signal_model,tmp_path):
     assert a==b
     apply_rules(args.output,None,tmp_path/'routed-replay')
     assert a==list(read_jsonl(tmp_path/'routed-replay/events.jsonl'))
+
+
+def test_live_cli_sample_fps_defaults_only_unspecified_sources(signal_model, tmp_path):
+    pytest.importorskip('onnxruntime')
+    args = arguments(tmp_path, signal_model)
+    common = {
+        'uri': args.video,
+        'scene': args.config,
+        'geometry': {'revision': '1', 'width': 320, 'height': 240},
+        'policy': 'lossless',
+        'stale_seconds': 20,
+    }
+    sources = tmp_path / 'sources.json'
+    sources.write_text(json.dumps({'sources': [
+        {'id': 'cli-default', **common},
+        {'id': 'source-override', 'sample_fps': 10, **common},
+    ]}), encoding='utf-8')
+
+    assert main([
+        'live', '--sources', str(sources), '--model', args.model,
+        '--models-dir', args.models_dir, '--provider', 'cpu', '--threads', '1',
+        '--sample-fps', '2.5', '--seconds', '10', '--output', args.output,
+    ]) == 0
+
+    frames = list(read_jsonl(Path(args.output) / 'frames.jsonl'))
+    assert sum(frame['observation']['source'] == 'cli-default' for frame in frames) == 8
+    assert sum(frame['observation']['source'] == 'source-override' for frame in frames) == 31

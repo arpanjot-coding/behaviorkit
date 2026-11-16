@@ -10,6 +10,16 @@ behaviorkit demo --output runs/demo
 
 Creates synthetic observations, a scene config, count samples, one dwell event and a summary. No vision dependencies or network access are required.
 
+## report
+
+```sh
+behaviorkit report --run-dir runs/demo --output runs/demo/report.html
+```
+
+Open the single HTML file locally. It shows confirmed events, peak observed counts, observed-zero samples and unknown count samples. It reads completed outputs from `demo`, `run`, `replay` or `apply` without decoding video or running inference.
+
+Choose a new `.html` file. For `apply`, put the file outside the immutable rules stage. Existing reports and inputs are preserved. Count totals cover the entire run. The page shows up to 40 source and rule pairs and 50 events in recorded order. Use the original JSONL for full records.
+
 ## validate
 
 ```sh

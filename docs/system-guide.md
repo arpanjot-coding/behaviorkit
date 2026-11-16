@@ -98,10 +98,14 @@ The report includes TP/FP/FN, precision, recall, false alerts per scored camera-
 ## Set up and bind each camera
 
 ```sh
-behaviorkit setup --port 8765
+behaviorkit setup --open --models-dir models --output runs/local-review
 ```
 
-Use `--port 0` if the host reserves port 8765. Open the printed loopback URL, load a local reference image, draw and save zones, choose an operator/cadence, validate, and download `scene.json` plus `geometry.json`. Media stays in the browser. The wizard creates one initial rule; use the validated schema/Python API to compose more rules. Sequence and directional-line editing remain configuration operations.
+The default screen processes one recorded fixed-camera video at a time. It needs the CPU vision extras and a prepared D-FINE-N artifact. Choose a clip, draw a waiting area on the decoded reference frame, and set a dwell threshold. **Run on CPU** samples five frames per second and keeps the report, the scene and underlying results in a new run folder. The original clip stays on your computer. Keep this command running while you use the page. Press Ctrl+C in the terminal to stop the local server. Use `--port 0` to select a free port.
+
+After analysis, click an event in the timeline to seek to its confirmation. Playback uses your browser's supported video codecs. The counts and events CSVs contain all saved rows, with timestamps in source seconds. A blank count with status `unknown` means no count was available. An observed zero is written as `0`. When an offset clip is rebased, the temporary playback copy is video-only and starts at zero. The CSVs retain the source clock.
+
+To configure a scene for command-line use, follow **Scene editor** on the review screen. Load a local reference image, draw and save zones, choose an operator and sample rate, validate, and download `scene.json` plus `geometry.json`. The reference image stays in the browser. The wizard creates one initial rule. Use the schema or Python API to compose more rules, or to configure sequence and directional-line rules.
 
 `setup.SceneRouter` binds each known source to its own scene and `Geometry`. Unknown sources fail. Reference width/height describe the image after the declared crop/rotation. Resizing with the same aspect is supported; different crop, rotation, aspect or revision requires revalidation. This metadata declares a transform; it does not secretly apply image transforms. Supply already-transformed matching images.
 
@@ -156,7 +160,7 @@ Pinned/protected evidence can prevent a quota from being met; the report says so
 
 `behaviorkit live --sources sources.json --model d-fine-n --provider cuda --seconds 60 --output runs/live --outbox runs/outbox.sqlite3`
 
-A source file has a `sources` list. Each entry contains `id`, `uri`, a scene path relative to the source file, `geometry` reference metadata, optional `sample_fps`, `policy`, queue/timeouts/retry settings and `reconnect_at_eof`. Keep credentials out of Git. Source URIs and decoder exception text are not written to health records.
+A source file has a `sources` list. Each entry contains `id`, `uri`, a scene path relative to the source file, `geometry` reference metadata, optional `sample_fps`, `policy`, queue/timeouts/retry settings and `reconnect_at_eof`. The `--sample-fps` command-line option sets the default rate (5 fps when omitted). A source with its own `sample_fps` uses that rate. Keep credentials out of Git. Source URIs and decoder exception text are not written to health records.
 
 PyAV/FFmpeg decodes in isolated, killable processes. Every connection has a new epoch. Sources are polled fairly; a decoder that stalls cannot monopolize another decoder's queue. The watchdog terminates a persistently stuck decoder; applications can start a new run after terminal failure. Read/open errors get bounded exponential retries. Clean EOF reconnects by default for network sources and ends local files.
 

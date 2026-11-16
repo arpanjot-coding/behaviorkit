@@ -17,7 +17,8 @@ def _detector_options(parser):
     parser.add_argument('--contract'); parser.add_argument('--models-dir',default='models')
     parser.add_argument('--provider',choices=['auto','cpu','cuda','coreml','tensorrt'],default='auto')
     parser.add_argument('--classes',nargs='+',default=['person']); parser.add_argument('--capture-floor',type=float,default=.1)
-    parser.add_argument('--threads',type=int,default=0); parser.add_argument('--sample-fps',type=float,default=5)
+    parser.add_argument('--threads',type=int,default=0)
+    parser.add_argument('--sample-fps',type=float,default=5,help='Sampling rate (5 fps by default). Live sources can set their own rate.')
     parser.add_argument('--monitor-resources',action='store_true',help='Optional psutil RSS/native resource log plus NVIDIA process-memory query')
 
 
@@ -52,7 +53,11 @@ def register(sub):
     live.add_argument('--sources',required=True,help='Source/binding JSON; keep credential-bearing files private')
     live.add_argument('--output',required=True); live.add_argument('--seconds',type=float,default=60); live.add_argument('--outbox'); _detector_options(live)
     live.add_argument('--tracking-floor',type=float,help='Independent IoU association floor; defaults to max(0.3,capture floor)')
-    setup=sub.add_parser('setup',help='Start the loopback-only zone drawing wizard'); setup.add_argument('--port',type=int,default=8765)
+    setup = sub.add_parser('setup', help='Open the local video review and scene editors')
+    setup.add_argument('--port', type=int, default=8765, help='Loopback port (0 selects a free port)')
+    setup.add_argument('--models-dir', default='models', help='Directory with the prepared D-FINE-N model')
+    setup.add_argument('--output', default='runs/local-review', help='Directory for local reports and run results')
+    setup.add_argument('--open', dest='open_browser', action='store_true', help='Open the printed URL in your browser')
     store=sub.add_parser('store',help='Manage only artifacts copied into an owned store')
     store.add_argument('--root',required=True); store.add_argument('--add'); store.add_argument('--kind',choices=['metadata','trace','recording','image'],default='metadata')
     store.add_argument('--retention-seconds',type=float); store.add_argument('--pinned',action='store_true')
@@ -89,7 +94,8 @@ def dispatch(args):
     command=args.command
     if command=='setup':
         from .wizard import serve
-        serve(args.port); return {'status':'stopped'}
+        serve(args.port, models_dir=args.models_dir, output=args.output, open_browser=args.open_browser)
+        return {'status': 'stopped'}
     if command=='capture':
         from .pipeline import capture_video
         return capture_video(args.video,args.output,_adapter(args),sample_fps=args.sample_fps,source=args.source,
@@ -185,6 +191,7 @@ def run_live(args):
         row=dict(row); scene_path=Path(row.pop('scene'))
         if not scene_path.is_absolute(): scene_path=Path(args.sources).parent/scene_path
         scene=parse_scene(read_json(scene_path)); geometry=Geometry(**row.pop('geometry'))
+        row.setdefault('sample_fps', args.sample_fps)
         spec=SourceSpec(**row)
         if spec.id in bindings: raise ValueError('duplicate source binding')
         specs.append(spec); bindings[spec.id]=(scene,geometry)

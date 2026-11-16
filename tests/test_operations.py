@@ -141,7 +141,7 @@ def test_loopback_wizard_validation_and_package_resource():
     server=make_server(0); thread=threading.Thread(target=server.serve_forever,daemon=True); thread.start()
     try:
         url=f'http://127.0.0.1:{server.server_port}'
-        assert 'Define what the camera' in urlopen(url).read().decode()
+        assert 'Define what the camera' in urlopen(url+'/scene').read().decode()
         request=Request(url+'/validate',json.dumps(setup).encode(),{'Content-Type':'application/json','Origin':url})
         assert json.load(urlopen(request))['valid']
         from urllib.error import HTTPError

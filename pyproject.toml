@@ -35,7 +35,7 @@ behaviorkit = "behaviorkit.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-behaviorkit = ["wizard.html", "schemas/*.json"]
+behaviorkit = ["wizard.html", "video_setup.html", "report.html", "schemas/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
