@@ -33,6 +33,17 @@ See the [detailed system guide](docs/system-guide.md), [implementation status](d
 
 Examples include visible queue-area counts, waiting-zone dwell, and evaluation of rule changes on recorded video. A tracker ID is an input assumption, not a verified identity across people, clips or cameras.
 
+## Review a video in your browser
+
+Install the CPU vision extras and prepare the D-FINE-N artifact using the [model preparation guide](docs/model-contracts.md). Then start the local review screen.
+
+```sh
+python -m pip install -e ".[vision,cpu]"
+python -m behaviorkit setup --models-dir models --open
+```
+
+Choose a recorded video from a fixed camera. Draw the waiting area on the reference frame, set the waiting threshold, and select **Run on CPU**. Click a waiting event in **Event timeline** to seek to its confirmation in the player. The page also provides the HTML report and separate counts and events CSV downloads. The clip is processed on this computer and results are stored under `runs/local-review`.
+
 ## Quickstart
 
 Python 3.12 is recommended for vision. The dependency-free core supports Python 3.10+; recorded execution evidence uses Python 3.12.
@@ -61,11 +72,12 @@ Install the core and run an example without a model or camera:
 python -m pip install -e .
 behaviorkit --version
 behaviorkit demo --output runs/demo
+behaviorkit report --run-dir runs/demo --output runs/demo/report.html
 behaviorkit validate --config configs/people.json
 behaviorkit replay --observations runs/demo/observations.jsonl --config runs/demo/config.json --trace --output runs/replayed
 ```
 
-Expected: version `0.4.0a1`, **41 count samples**, and **one dwell event at source time 3 seconds**. Check `summary.json` for `status: "ok"`. This synthetic example tests rules, not computer-vision accuracy.
+Open `runs/demo/report.html` in a browser. The synthetic demo shows **41 count samples** and **one dwell event at source time 3 seconds**. The report also works on completed video and replay results and does not load a model or send data to a server.
 
 Install this checkout or a verified wheel from this repository's releases. There is no `pip install behaviorkit` instruction for this project; similarly named PyPI packages may be unrelated.
 

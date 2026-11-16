@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Queue review · BehaviorKit</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font: 16px/1.55 "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+      color: #17322a;
+      background: #f1f5f3;
+      --ink: #17322a;
+      --muted: #4a645b;
+      --line: #d6e3dc;
+      --action: #17624b;
+      --surface: #fff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    [hidden] { display: none !important; }
+    a { color: var(--action); text-underline-offset: .2em; }
+    button, input { font: inherit; }
+    button, a, input, canvas { outline-offset: 4px; }
+    :focus-visible { outline: 2px solid #238363; }
+    .container { width: min(75rem, calc(100% - 2rem)); margin-inline: auto; }
+    header { background: #12362b; color: #f4fff9; }
+    .brandline {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; padding-block: 1.1rem; border-bottom: 1px solid #ffffff2c;
+    }
+    .brand { font-weight: 750; letter-spacing: -.025em; }
+    header a { color: #d0e9dc; font-size: .92rem; }
+    .heading { padding: clamp(1.25rem, 4vw, 2.65rem) 0; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(2.35rem, 6vw, 3.85rem); line-height: 1.04; letter-spacing: -.05em; }
+    .heading p { margin-top: .65rem; color: #d0e9dc; }
+    main { padding-block: 1.25rem 3rem; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, 21rem); gap: 1rem; align-items: start; }
+    .panel { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; padding: clamp(1rem, 3vw, 1.65rem); }
+    h2 { font-size: 1.28rem; line-height: 1.25; letter-spacing: -.025em; }
+    .help { color: var(--muted); font-size: .9rem; }
+    .file-field { display: block; margin-top: .9rem; }
+    label { font-weight: 650; }
+    input[type="file"] {
+      display: block; width: 100%; min-width: 0; margin-top: .35rem;
+      border: 1px solid var(--line); border-radius: .55rem; color: var(--muted);
+    }
+    input::file-selector-button {
+      font: inherit; font-weight: 650; color: var(--ink); cursor: pointer;
+      border: 0; border-right: 1px solid var(--line); background: #edf5f0;
+      padding: .6rem .8rem; margin-right: .65rem;
+    }
+    input:disabled::file-selector-button { cursor: default; }
+    #drawing-help { margin: 1rem 0 .55rem; }
+    .stage {
+      display: grid; place-items: center; overflow: hidden; border-radius: .7rem;
+      background: #142820; color: #deeee5;
+    }
+    #empty-frame {
+      display: grid; place-items: center; text-align: center; min-height: clamp(11rem, 31vw, 18rem);
+      padding: 1rem; font-size: .95rem;
+    }
+    canvas {
+      display: block; width: 100%; max-width: min(var(--frame-max-width, 100%), var(--frame-viewport-width, 100%)); height: auto;
+      cursor: crosshair; margin: auto;
+    }
+    canvas:focus-visible { outline: .18rem solid #9bf4ba; outline-offset: -.22rem; }
+    canvas[aria-disabled="true"] { cursor: default; }
+    .tools { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
+    button {
+      min-height: 2.65rem; border: 1px solid var(--line); border-radius: .55rem;
+      padding: .45rem .8rem; color: var(--ink); background: var(--surface);
+      cursor: pointer; font-weight: 650;
+    }
+    button:hover:enabled { background: #edf5f0; }
+    button:disabled { color: #697c74; background: #f4f7f5; cursor: default; }
+    #corner-count { margin-left: auto; }
+    .field { display: grid; margin-top: 1.05rem; gap: .35rem; }
+    .threshold-input { display: flex; align-items: center; gap: .6rem; color: var(--muted); }
+    input[type="number"] {
+      width: 6rem; padding: .48rem .6rem; color: var(--ink);
+      border: 1px solid #9fb5aa; border-radius: .45rem; background: var(--surface);
+    }
+    .runtime { margin: 1rem 0 .65rem; overflow-wrap: anywhere; }
+    .primary { width: 100%; color: #fff; background: var(--action); border-color: var(--action); }
+    .primary:hover:enabled { background: #104d39; }
+    .status {
+      margin-top: .8rem; padding: .65rem .8rem; border-radius: .5rem;
+      background: #edf5f0; color: #224f40; overflow-wrap: anywhere; font-size: .91rem;
+    }
+    .status[data-tone="error"] { color: #792b19; background: #fff0ea; }
+    progress { width: 100%; height: .55rem; margin-top: .7rem; accent-color: var(--action); }
+    .report { margin-top: 1rem; }
+    .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem; }
+    .report-actions { display: flex; flex-wrap: wrap; gap: .4rem 1rem; }
+    .playback-review {
+      display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 1.15rem; align-items: start; margin-top: 1rem;
+    }
+    #playback-video {
+      display: block; width: 100%; aspect-ratio: 16 / 9; max-height: 60vh;
+      object-fit: contain; background: #142820; border-radius: .65rem;
+    }
+    #playback-status, #playback-clock { margin-top: .45rem; }
+    .timeline { min-width: 0; }
+    .timeline h3 { font-size: 1.07rem; line-height: 1.25; }
+    #timeline-status { margin: .35rem 0 .5rem; }
+    #timeline-events {
+      display: grid; gap: .4rem; margin: 0; padding: .25rem .3rem .25rem .85rem;
+      list-style: none; max-height: 23rem; overflow: auto;
+    }
+    #timeline-events:empty { display: none; }
+    #timeline-events li { position: relative; border-left: 2px solid #b7d4c8; padding-left: .65rem; }
+    #timeline-events li::before {
+      content: ""; position: absolute; left: -.32rem; top: 1.05rem; width: .5rem; height: .5rem;
+      background: var(--action); border-radius: 50%;
+    }
+    .timeline-event { display: grid; gap: .15rem; width: 100%; text-align: left; overflow-wrap: anywhere; }
+    .timeline-event span { font-variant-numeric: tabular-nums; }
+    .timeline-event[aria-pressed="true"] { background: #e0f2e8; border-color: #4d8e75; }
+    .timeline-event small { color: var(--muted); font-size: .82rem; font-weight: 450; }
+    #timeline-pages { display: flex; gap: .5rem; margin-top: .65rem; }
+    iframe { display: block; width: 100%; height: min(55rem, 78vh); margin-top: .9rem; border: 1px solid var(--line); border-radius: .65rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    @media (max-width: 48rem) {
+      .workspace, .playback-review { grid-template-columns: minmax(0, 1fr); }
+      .container { width: min(100% - 1.25rem, 75rem); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container brandline">
+      <span class="brand">BehaviorKit</span>
+      <a href="/scene">Scene editor</a>
+    </div>
+    <div class="container heading">
+      <h1>Queue review</h1>
+      <p>Analyze a waiting area in a fixed-camera video. Your video stays on this computer.</p>
+    </div>
+  </header>
+  <main class="container">
+    <div class="workspace">
+      <section class="panel" aria-labelledby="video-heading">
+        <h2 id="video-heading">Video and waiting area</h2>
+        <label class="file-field" for="video-file">Open a video</label>
+        <input id="video-file" type="file" accept="video/*,.avi,.mkv,.m4v,.ts,.mts">
+        <p class="help" id="drawing-help">Click at least three corners around the floor where people wait.</p>
+        <p class="sr-only" id="keyboard-help">Use arrow keys to move the marker and Enter to add a corner. Press Backspace to undo a corner.</p>
+        <div class="stage">
+          <p id="empty-frame">The first frame will appear here.</p>
+          <canvas id="waiting-area" hidden tabindex="0" aria-label="Waiting area drawing surface" aria-describedby="drawing-help keyboard-help"></canvas>
+        </div>
+        <div class="tools">
+          <button id="undo" type="button" disabled>Undo corner</button>
+          <button id="clear" type="button" disabled>Clear area</button>
+          <p id="corner-count" class="help" aria-live="polite">0 corners</p>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="analysis-heading">
+        <h2 id="analysis-heading">CPU analysis</h2>
+        <div class="field">
+          <label for="wait-seconds">Waiting threshold</label>
+          <div class="threshold-input">
+            <input id="wait-seconds" type="number" min="0.001" max="86400" step="any" value="3" required aria-describedby="threshold-unit threshold-help">
+            <span id="threshold-unit">seconds</span>
+          </div>
+          <p class="help" id="threshold-help">Report a wait when a tracked person is observed in the area for this long.</p>
+        </div>
+        <p class="runtime help" id="runtime-status">Checking CPU runtime…</p>
+        <button id="run" class="primary" type="button" disabled>Run on CPU</button>
+        <progress id="progress" aria-label="Opening video" max="100" hidden></progress>
+        <p id="status" class="status" role="status" aria-live="polite">Open a video to begin.</p>
+      </section>
+    </div>
+    <section id="results" class="panel report" aria-labelledby="report-heading" hidden>
+      <div class="section-heading">
+        <h2 id="report-heading" tabindex="-1">Analysis report</h2>
+        <div class="report-actions">
+          <a id="report-link" href="/api/report" target="_blank" rel="noopener">Open report in a new tab</a>
+          <a id="report-download" href="/api/report" download="behaviorkit-report.html">Download report</a>
+          <a id="counts-download" href="/api/export/counts.csv" download="counts.csv">Download counts CSV</a>
+          <a id="events-download" href="/api/export/events.csv" download="events.csv">Download events CSV</a>
+        </div>
+      </div>
+      <div class="playback-review">
+        <div>
+          <video id="playback-video" controls playsinline preload="metadata" aria-label="Review video"></video>
+          <p id="playback-status" class="help" role="status" hidden></p>
+          <p id="playback-clock" class="help" hidden></p>
+        </div>
+        <section class="timeline" aria-labelledby="timeline-heading">
+          <h3 id="timeline-heading">Waiting event timeline</h3>
+          <p id="timeline-status" class="help" role="status"></p>
+          <ol id="timeline-events" aria-label="Waiting events"></ol>
+          <div id="timeline-pages" hidden>
+            <button id="timeline-prev" type="button">Previous events</button>
+            <button id="timeline-more" type="button">Next events</button>
+          </div>
+        </section>
+      </div>
+      <iframe id="report" title="BehaviorKit analysis report" sandbox></iframe>
+    </section>
+  </main>
+  <script>
+    const videoFile = document.getElementById("video-file");
+    const canvas = document.getElementById("waiting-area");
+    const context = canvas.getContext("2d");
+    const emptyFrame = document.getElementById("empty-frame");
+    const undo = document.getElementById("undo");
+    const clear = document.getElementById("clear");
+    const cornerCount = document.getElementById("corner-count");
+    const threshold = document.getElementById("wait-seconds");
+    const run = document.getElementById("run");
+    const runtimeStatus = document.getElementById("runtime-status");
+    const statusText = document.getElementById("status");
+    const progress = document.getElementById("progress");
+    const results = document.getElementById("results");
+    const report = document.getElementById("report");
+    const reportLink = document.getElementById("report-link");
+    const reportDownload = document.getElementById("report-download");
+    const countsDownload = document.getElementById("counts-download");
+    const eventsDownload = document.getElementById("events-download");
+    const reportHeading = document.getElementById("report-heading");
+    const player = document.getElementById("playback-video");
+    const playbackStatus = document.getElementById("playback-status");
+    const playbackClock = document.getElementById("playback-clock");
+    const timelineStatus = document.getElementById("timeline-status");
+    const timelineEvents = document.getElementById("timeline-events");
+    const timelinePages = document.getElementById("timeline-pages");
+    const timelinePrev = document.getElementById("timeline-prev");
+    const timelineMore = document.getElementById("timeline-more");
+    const draftKey = "behaviorkit-queue-draft";
+
+    let phase = "idle";
+    let runtimeReady = false;
+    let image = null;
+    let stagedVideo = null;
+    let corners = [];
+    let cursor = [0.5, 0.5];
+    let resourceRevision = 0;
+    let draftRunId = null;
+    let timelineRequest = null;
+    let selectedEvent = null;
+    let pendingSeek = null;
+
+    function updateControls() {
+      const busy = phase !== "idle";
+      videoFile.disabled = busy;
+      threshold.disabled = busy;
+      undo.disabled = busy || !corners.length;
+      clear.disabled = undo.disabled;
+      run.disabled = busy || !runtimeReady || !image || corners.length < 3 || !threshold.validity.valid;
+      run.textContent = phase === "running" ? "Analyzing…" : "Run on CPU";
+      canvas.setAttribute("aria-disabled", String(busy));
+      const label = `${corners.length} ${corners.length === 1 ? "corner" : "corners"}`;
+      if (cornerCount.textContent !== label) cornerCount.textContent = label;
+    }
+
+    function showStatus(message, tone = "") {
+      statusText.dataset.tone = tone;
+      if (statusText.textContent !== message) statusText.textContent = message;
+    }
+
+    function draw() {
+      if (!image) return;
+      const width = canvas.width;
+      const height = canvas.height;
+      const scale = width / Math.max(canvas.clientWidth, 1);
+      context.drawImage(image, 0, 0, width, height);
+      if (corners.length) {
+        context.beginPath();
+        for (const [index, [x, y]] of corners.entries()) {
+          if (index === 0) context.moveTo(x * width, y * height);
+          else context.lineTo(x * width, y * height);
+        }
+        if (corners.length >= 3) {
+          context.closePath();
+          context.fillStyle = "#54da8548";
+          context.fill();
+        }
+        context.lineWidth = 5 * scale;
+        context.strokeStyle = "#16372b";
+        context.stroke();
+        context.lineWidth = 2 * scale;
+        context.strokeStyle = "#a6ffbd";
+        context.stroke();
+        for (const [x, y] of corners) {
+          context.beginPath();
+          context.arc(x * width, y * height, 4 * scale, 0, 2 * Math.PI);
+          context.fillStyle = "#bcffce";
+          context.fill();
+          context.strokeStyle = "#16372b";
+          context.stroke();
+        }
+      }
+      if (canvas.matches(":focus-visible") && phase === "idle") {
+        const x = cursor[0] * width;
+        const y = cursor[1] * height;
+        context.beginPath();
+        context.moveTo(x - 8 * scale, y);
+        context.lineTo(x + 8 * scale, y);
+        context.moveTo(x, y - 8 * scale);
+        context.lineTo(x, y + 8 * scale);
+        context.strokeStyle = "#16372b";
+        context.lineWidth = 4 * scale;
+        context.stroke();
+        context.strokeStyle = "#fff";
+        context.lineWidth = 2 * scale;
+        context.stroke();
+      }
+    }
+
+    function closeReport() {
+      results.hidden = true;
+      report.removeAttribute("src");
+      timelineRequest?.abort();
+      timelineRequest = null;
+      timelineEvents.replaceChildren();
+      timelinePages.hidden = true;
+      selectedEvent = null;
+      pendingSeek = null;
+      if (player.hasAttribute("src")) {
+        player.removeAttribute("src");
+        player.load();
+      }
+    }
+
+    function videoUrl(path, runId) {
+      const query = new URLSearchParams({video_id: stagedVideo.video_id, v: resourceRevision});
+      if (runId) query.set("run_id", runId);
+      return `${path}?${query}`;
+    }
+
+    function showReport(moveFocus) {
+      resourceRevision += 1;
+      const url = videoUrl("/api/report", draftRunId);
+      reportLink.href = url;
+      reportDownload.href = url;
+      countsDownload.href = videoUrl("/api/export/counts.csv", draftRunId);
+      eventsDownload.href = videoUrl("/api/export/events.csv", draftRunId);
+      report.src = url;
+      results.hidden = false;
+      player.hidden = stagedVideo.playback_available === false;
+      const offset = stagedVideo.playback_offset_seconds ?? 0;
+      playbackClock.hidden = player.hidden || offset === 0;
+      if (!playbackClock.hidden) {
+        playbackClock.textContent = `Player 0:00 matches ${formatTimestamp(offset)} in the report and CSVs.`;
+      }
+      if (player.hidden) {
+        setPlaybackStatus("This clip’s timestamps could not be prepared for playback. Event times and downloads are available.");
+      } else {
+        setPlaybackStatus("Loading video…");
+        player.src = videoUrl("/api/video/playback");
+      }
+      void loadTimeline({ offset: 0, rowsBefore: 0, previous: null });
+      if (moveFocus) {
+        reportHeading.focus({ preventScroll: true });
+        results.scrollIntoView({ block: "start", behavior: "instant" });
+      }
+    }
+
+    function setPlaybackStatus(message) {
+      playbackStatus.textContent = message;
+      playbackStatus.hidden = !message;
+    }
+
+    function seekToEvent() {
+      if (pendingSeek === null || results.hidden || player.readyState === 0) return;
+      const seconds = pendingSeek;
+      pendingSeek = null;
+      if (Number.isFinite(player.duration) && seconds > player.duration) {
+        setPlaybackStatus("This event is outside the playable portion of the video.");
+        return;
+      }
+      try {
+        player.currentTime = seconds;
+        setPlaybackStatus("");
+      } catch {
+        setPlaybackStatus("The player could not jump to this event.");
+      }
+    }
+
+    player.addEventListener("loadedmetadata", () => {
+      if (results.hidden) return;
+      setPlaybackStatus("");
+      seekToEvent();
+    });
+    player.addEventListener("error", () => {
+      if (results.hidden || !player.hasAttribute("src") || !player.error) return;
+      pendingSeek = null;
+      for (const button of timelineEvents.querySelectorAll("button")) button.disabled = true;
+      setPlaybackStatus("This browser could not play the clip. Try an H.264 MP4 for playback. Event times and downloads are available.");
+    });
+
+    function formatTimestamp(seconds) {
+      const milliseconds = Math.round(seconds * 1000);
+      const minutes = Math.floor(milliseconds / 60000);
+      const remainder = (milliseconds % 60000 / 1000).toFixed(3).padStart(6, "0");
+      return `${minutes}:${remainder}`;
+    }
+
+    function renderEvent(event) {
+      const offset = stagedVideo.playback_offset_seconds ?? 0;
+      const timestamp = Math.max(0, event.timestamp - offset);
+      const start = Math.max(0, event.start - offset);
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "timeline-event";
+      button.disabled = player.hidden || Boolean(player.error);
+      button.setAttribute("aria-pressed", String(event.id === selectedEvent));
+      const time = document.createElement("span");
+      time.textContent = `Confirmed at ${formatTimestamp(timestamp)}`;
+      const details = document.createElement("small");
+      const duration = event.duration_seconds.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+      details.textContent = `From ${formatTimestamp(start)} · ${duration} s · Track ${event.track_id}`;
+      button.append(time, details);
+      button.addEventListener("click", () => {
+        if (player.error) return;
+        timelineEvents.querySelector('[aria-pressed="true"]')?.setAttribute("aria-pressed", "false");
+        button.setAttribute("aria-pressed", "true");
+        selectedEvent = event.id;
+        pendingSeek = timestamp;
+        seekToEvent();
+        player.scrollIntoView({ block: "nearest" });
+      });
+      item.append(button);
+      return item;
+    }
+
+    async function loadTimeline(cursor) {
+      const { offset, rowsBefore, previous } = cursor;
+      timelineRequest?.abort();
+      const request = new AbortController();
+      timelineRequest = request;
+      timelinePrev.disabled = true;
+      timelineMore.disabled = true;
+      timelineStatus.textContent = "Loading waiting events…";
+      try {
+        const url = `${videoUrl("/api/timeline", draftRunId)}&offset=${encodeURIComponent(offset)}`;
+        const page = await requestJson(url, { signal: request.signal });
+        if (timelineRequest !== request) return;
+        timelineEvents.replaceChildren(...page.events.map(renderEvent));
+        const lastRow = rowsBefore + page.events.length;
+        const first = (rowsBefore + 1).toLocaleString();
+        const last = lastRow.toLocaleString();
+        const total = page.total.toLocaleString();
+        if (page.total === 0) {
+          timelineStatus.textContent = "No waiting events were confirmed.";
+        } else if (page.total === 1) {
+          timelineStatus.textContent = player.hidden || player.error ? "1 waiting event." : "Select the event to jump to it.";
+        } else {
+          timelineStatus.textContent = `Showing ${first}–${last} of ${total} waiting events.`;
+        }
+        timelinePages.hidden = previous === null && page.next_offset === null;
+        timelinePrev.disabled = previous === null;
+        timelinePrev.onclick = () => void loadTimeline(previous);
+        timelineMore.disabled = page.next_offset === null;
+        timelineMore.onclick = () => void loadTimeline({
+          offset: page.next_offset, rowsBefore: lastRow, previous: cursor
+        });
+      } catch (error) {
+        if (timelineRequest !== request) return;
+        timelineEvents.replaceChildren();
+        timelinePages.hidden = true;
+        timelineStatus.textContent = error.status === 404 ? error.message : "The waiting events could not be loaded.";
+      }
+    }
+
+    function editZone() {
+      draftRunId = null;
+      closeReport();
+      rememberDraft();
+      draw();
+      updateControls();
+      showStatus(corners.length >= 3 ? "Waiting area ready." : "Draw at least three corners.");
+    }
+
+    function addCorner(x, y) {
+      if (corners.length >= 100) {
+        showStatus("The area can have up to 100 corners. Undo a corner to make room.", "error");
+        return;
+      }
+      corners.push([x, y]);
+      editZone();
+    }
+
+    function unit(value) {
+      return Math.min(1, Math.max(0, value));
+    }
+
+    canvas.addEventListener("click", event => {
+      if (phase !== "idle" || !image) return;
+      const bounds = canvas.getBoundingClientRect();
+      cursor = [unit((event.clientX - bounds.left) / bounds.width), unit((event.clientY - bounds.top) / bounds.height)];
+      addCorner(...cursor);
+    });
+    canvas.addEventListener("keydown", event => {
+      if (phase !== "idle" || !image) return;
+      const distance = event.shiftKey ? .05 : .01;
+      const moves = { ArrowLeft: [-distance, 0], ArrowUp: [0, -distance], ArrowRight: [distance, 0], ArrowDown: [0, distance] };
+      if (event.key in moves) {
+        event.preventDefault();
+        cursor = cursor.map((value, index) => unit(value + moves[event.key][index]));
+        draw();
+      } else if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        addCorner(...cursor);
+      } else if (event.key === "Backspace" && corners.length) {
+        event.preventDefault();
+        corners.pop();
+        editZone();
+      }
+    });
+    canvas.addEventListener("focus", draw);
+    canvas.addEventListener("blur", draw);
+    new ResizeObserver(draw).observe(canvas);
+    undo.addEventListener("click", () => { corners.pop(); editZone(); });
+    clear.addEventListener("click", () => { corners = []; editZone(); });
+    threshold.addEventListener("input", () => {
+      draftRunId = null;
+      closeReport();
+      rememberDraft();
+      updateControls();
+      if (!threshold.validity.valid) showStatus("Enter a waiting threshold from 0.001 to 86400 seconds.", "error");
+      else if (image && corners.length >= 3) showStatus("Waiting area ready.");
+    });
+
+    async function requestJson(path, options) {
+      const response = await fetch(path, { cache: "no-store", ...options });
+      const value = await response.json();
+      if (!response.ok) {
+        const error = new Error(value.error || value.message || `Request failed (${response.status}).`);
+        error.status = response.status;
+        throw error;
+      }
+      return value;
+    }
+
+    async function checkRuntime() {
+      try {
+        const runtime = await requestJson("/api/status");
+        runtimeReady = runtime.ready === true;
+        runtimeStatus.textContent = runtime.message;
+      } catch {
+        runtimeReady = false;
+        runtimeStatus.textContent = "CPU setup could not be checked. Reload the page to try again.";
+      }
+      updateControls();
+    }
+
+    function sendVideo(file) {
+      return new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
+        request.open("POST", "/api/video");
+        request.responseType = "json";
+        request.setRequestHeader("Content-Type", "application/octet-stream");
+        request.upload.addEventListener("progress", event => {
+          if (!event.lengthComputable) return;
+          progress.value = Math.round(100 * event.loaded / event.total);
+        });
+        request.upload.addEventListener("load", () => {
+          progress.removeAttribute("value");
+          showStatus("Reading the first frame…");
+        });
+        request.addEventListener("load", () => {
+          if (request.status >= 200 && request.status < 300 && request.response) resolve(request.response);
+          else reject(new Error(request.response?.error || "The video could not be opened."));
+        });
+        request.addEventListener("error", () => reject(new Error("The local server could not receive the video.")));
+        request.send(file);
+      });
+    }
+
+    function rememberDraft() {
+      try {
+        if (stagedVideo) {
+          sessionStorage.setItem(draftKey, JSON.stringify({
+            ...stagedVideo, zone: corners, dwell_seconds: threshold.valueAsNumber,
+            run_id: draftRunId
+          }));
+        } else {
+          sessionStorage.removeItem(draftKey);
+        }
+      } catch {
+        // A browser can disable storage without disabling local video review.
+      }
+    }
+
+    async function showFrame() {
+      const { width, height } = stagedVideo;
+      const preview = new Image();
+      resourceRevision += 1;
+      preview.src = videoUrl("/api/video/preview");
+      try {
+        await preview.decode();
+      } catch {
+        throw new Error("The first frame could not be displayed. Open the video again to retry.");
+      }
+      const scale = Math.min(1, 1440 / Math.max(width, height));
+      canvas.width = Math.max(1, Math.round(scale * width));
+      canvas.height = Math.max(1, Math.round(scale * height));
+      canvas.style.setProperty("--frame-max-width", `${560 * width / height}px`);
+      canvas.style.setProperty("--frame-viewport-width", `${50 * width / height}vh`);
+      image = preview;
+      emptyFrame.hidden = true;
+      canvas.hidden = false;
+      draw();
+    }
+
+    videoFile.addEventListener("change", async () => {
+      const file = videoFile.files[0];
+      if (!file) return;
+      phase = "opening";
+      image = null;
+      stagedVideo = null;
+      corners = [];
+      cursor = [0.5, 0.5];
+      draftRunId = null;
+      rememberDraft();
+      closeReport();
+      canvas.hidden = true;
+      emptyFrame.hidden = false;
+      emptyFrame.textContent = "Opening video…";
+      progress.value = 0;
+      progress.hidden = false;
+      showStatus("Opening video locally…");
+      updateControls();
+      try {
+        stagedVideo = await sendVideo(file);
+        await showFrame();
+        rememberDraft();
+        showStatus("Draw the waiting area on the first frame.");
+      } catch (error) {
+        stagedVideo = null;
+        videoFile.value = "";
+        emptyFrame.textContent = "The first frame will appear here.";
+        showStatus(error.message, "error");
+      } finally {
+        progress.hidden = true;
+        phase = "idle";
+        updateControls();
+        if (!runtimeReady) void checkRuntime();
+      }
+    });
+
+    async function watchRun(initial, moveFocus) {
+      let current = initial;
+      let failures = 0;
+      while (!current || current.status === "running") {
+        if (current) {
+          const frames = current.frames > 0 ? ` ${current.frames.toLocaleString()} frames analyzed.` : "";
+          showStatus((current.message || "Analyzing video on CPU…") + frames);
+        }
+        await new Promise(resolve => setTimeout(resolve, 800));
+        try {
+          current = await requestJson(videoUrl("/api/run", draftRunId));
+          failures = 0;
+        } catch (error) {
+          if (error.status === 404) throw error;
+          failures += 1;
+          if (failures === 6) throw new Error("Connection to the local server was lost. Reload the page to reconnect.");
+          current = null;
+          showStatus("Waiting for the local server to respond…");
+        }
+      }
+      if (current.status === "complete") {
+        showStatus(current.message || "Analysis complete.");
+        showReport(moveFocus);
+      } else {
+        showStatus(current.message || "Analysis could not be completed.", "error");
+      }
+    }
+
+    run.addEventListener("click", async () => {
+      const body = JSON.stringify({
+        video_id: stagedVideo.video_id, zone: corners, dwell_seconds: threshold.valueAsNumber
+      });
+      phase = "running";
+      draftRunId = null;
+      rememberDraft();
+      closeReport();
+      showStatus("Starting analysis on CPU…");
+      updateControls();
+      draw();
+      try {
+        const accepted = await requestJson("/api/run", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body
+        });
+        draftRunId = accepted.run_id;
+        rememberDraft();
+        await watchRun(accepted, true);
+      } catch (error) {
+        showStatus(error.message, "error");
+      } finally {
+        phase = "idle";
+        updateControls();
+      }
+    });
+
+    async function restoreDraft() {
+      let draft;
+      try {
+        draft = JSON.parse(sessionStorage.getItem(draftKey));
+      } catch {
+        return;
+      }
+      if (!draft) return;
+      phase = "opening";
+      updateControls();
+      const { video_id, width, height, playback_offset_seconds, playback_available, zone, dwell_seconds, run_id } = draft;
+      stagedVideo = { video_id, width, height, playback_offset_seconds, playback_available };
+      try {
+        const current = await requestJson(videoUrl("/api/run"));
+        corners = zone;
+        draftRunId = run_id && current.run_id === run_id ? run_id : null;
+        if (Number.isFinite(dwell_seconds)) threshold.value = dwell_seconds;
+        await showFrame();
+        if (current.status === "complete" && draftRunId) {
+          showReport(false);
+          showStatus(current.message || "Analysis complete.");
+        } else if (current.status === "running" && draftRunId) {
+          phase = "running";
+          updateControls();
+          await watchRun(current, false);
+        } else if (current.status === "error" && draftRunId) {
+          showStatus(current.message || "Analysis could not be completed.", "error");
+        } else {
+          showStatus(corners.length >= 3 ? "Waiting area ready." : "Draw at least three corners.");
+        }
+      } catch (error) {
+        if (!image) {
+          stagedVideo = null;
+          corners = [];
+          rememberDraft();
+        }
+        showStatus(error.message, "error");
+      } finally {
+        phase = "idle";
+        updateControls();
+      }
+    }
+
+    void checkRuntime();
+    void restoreDraft();
+  </script>
+</body>
+</html>

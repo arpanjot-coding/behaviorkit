@@ -10,21 +10,22 @@ Download and extract the source archive, open a terminal in its root, and use Py
 python -m pip install -e .
 behaviorkit --version
 behaviorkit demo --output runs/demo
+behaviorkit report --run-dir runs/demo --output runs/demo/report.html
 ```
 
-Expect 41 count samples and one dwell event. Person 1 stays for the three-second threshold. Person 2 leaves earlier and produces no dwell event. The data is synthetic and labeled as such.
+Open `runs/demo/report.html` to see 41 count samples and one dwell event. Person 1 stays for the three-second threshold. Person 2 leaves earlier and produces no dwell event. The data is synthetic and labeled as such.
 
-Alternatively, download the [v0.3.0 wheel](https://github.com/arpanjot-coding/behaviorkit/releases/download/v0.3.0/behaviorkit_prototype-0.3.0-py3-none-any.whl) and install the local file:
+The older [v0.3.0 wheel](https://github.com/arpanjot-coding/behaviorkit/releases/download/v0.3.0/behaviorkit_prototype-0.3.0-py3-none-any.whl) supports demo generation and JSONL inspection. Use this checkout for the HTML report.
 
 ```sh
 python -m pip install ./behaviorkit_prototype-0.3.0-py3-none-any.whl
 ```
 
-The wheel contains the dependency-free core, not model weights. The source checkout includes model-preparation scripts and examples. Choose the vision/runtime extras in the installation guide for video inference.
+The source checkout includes model-preparation scripts and examples. Choose the vision/runtime extras in the installation guide for video inference.
 
 ## Inspect the evidence
 
-Open `runs/demo/events.jsonl` for the confirmed rule event, `counts.jsonl` for per-observation visible counts, and `summary.json` for replay hashes. Every event records its rule, zone, track, source epoch, supported interval and gap policy.
+The HTML report shows the confirmed rule event, peak count and count coverage. Open `runs/demo/events.jsonl` for full event evidence, `counts.jsonl` for per-observation visible counts, and `summary.json` for replay hashes. Every event records its rule, zone, track, source epoch, supported interval and gap policy.
 
 ```sh
 behaviorkit replay --observations runs/demo/observations.jsonl --config runs/demo/config.json --output runs/replayed

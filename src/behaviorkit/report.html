@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'">
+  <title>BehaviorKit · Run report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font: 16px/1.5 Inter, "Segoe UI", system-ui, sans-serif;
+      background: #f1f5f3;
+      color: #172c26;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(100% - 2rem, 72rem); margin: 3rem auto; }
+    header { padding: clamp(1.4rem, 4vw, 3rem); border-radius: 1.1rem; background: #12362b; color: #f4fff9; }
+    h1 { margin: .25rem 0 0; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.1; letter-spacing: -.045em; }
+    header p { margin: .6rem 0 0; color: #c9e5d8; overflow-wrap: anywhere; }
+    .brand { font-size: .94rem; font-weight: 650; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin: 1rem 0; }
+    .metrics > div, section { background: #fff; border: 1px solid #d9e5de; border-radius: .85rem; }
+    .metrics > div { display: flex; flex-direction: column-reverse; padding: 1rem; }
+    .metrics dt { font-size: .88rem; color: #3b5a50; }
+    .metrics dd { margin: 0; font-size: clamp(1.4rem, 4vw, 2.1rem); font-weight: 700; }
+    .metrics dd, td { font-variant-numeric: tabular-nums; }
+    section { padding: clamp(1rem, 3vw, 1.75rem); margin-top: 1rem; }
+    h2 { margin: 0; font-size: 1.3rem; }
+    p { margin: .4rem 0 1rem; }
+    .context { color: #3b5a50; font-size: .92rem; }
+    .scroll { overflow-x: auto; }
+    .scroll:focus-visible { outline: 2px solid #237559; outline-offset: .2rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: .9rem; }
+    th, td { padding: .7rem .55rem; border-bottom: 1px solid #e2ebe7; overflow-wrap: anywhere; }
+    th { background: #f0f5f2; font-weight: 650; }
+    .number { text-align: right; }
+    .counts td:nth-child(n+3) { text-align: right; }
+    .counts td[colspan] { text-align: left; }
+    .events td:nth-child(-n+2) { white-space: nowrap; }
+    .events td:last-child { max-width: 9rem; }
+    @media (max-width: 44rem) {
+      main { margin-block: 1rem; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .events { min-width: 50rem; }
+      .counts { min-width: 36rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand">BehaviorKit</div>
+      <h1>Run report</h1>
+      <p>$origin</p>
+    </header>
+    <dl class="metrics">
+      <div><dt>Confirmed events</dt><dd>$events</dd></div>
+      <div><dt>Count samples</dt><dd>$count_samples</dd></div>
+      <div><dt>Observed zero</dt><dd>$observed_zeros</dd></div>
+      <div><dt>Unknown count samples</dt><dd>$unknown_samples</dd></div>
+    </dl>
+    <section aria-labelledby="events">
+      <h2 id="events">Confirmed events</h2>
+      <p class="context">$event_note Evidence start and confirmation mark the interval that triggered the rule.</p>
+      <div class="scroll" tabindex="0" role="region" aria-label="Confirmed event records">
+        <table class="events">
+          <thead><tr><th scope="col">Confirmed at</th><th scope="col">Evidence start</th><th scope="col">Event</th>
+            <th scope="col">Source</th><th scope="col">Rule</th><th scope="col">Zone</th><th scope="col">Track</th>
+            <th scope="col">Source segment</th></tr></thead>
+          <tbody>$event_rows</tbody>
+        </table>
+      </div>
+    </section>
+    <section aria-labelledby="counts">
+      <h2 id="counts">Counts and coverage</h2>
+      <p class="context">$count_note Observed zero means the rule saw no eligible tracks. Unknown samples have no observed count.</p>
+      <div class="scroll" tabindex="0" role="region" aria-label="Count and coverage records">
+        <table class="counts">
+          <thead><tr><th scope="col">Source</th><th scope="col">Rule</th><th scope="col" class="number">Samples</th>
+            <th scope="col" class="number">Observed zero</th><th scope="col" class="number">Unknown</th><th scope="col" class="number">Peak observed</th></tr></thead>
+          <tbody>$count_rows</tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
